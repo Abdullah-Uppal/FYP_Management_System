@@ -11,9 +11,14 @@ Sure. Create an issue so that everybody knows that you're working on a specific 
 To run backend server
 ```
 cd backend
+
 # install packages
 npm i
-# start server
+
+# start server on linux
 npm run serverstart
+
+# start server on windows
+SET DEBUG=backend:* & npm run devstart
 ```
 
