@@ -1,5 +1,4 @@
 import React from 'react'
-
 const WelcomeBanner = () => {
     return (
         <div className="relative bg-indigo-200 p-4 sm:p-6 rounded-sm overflow-hidden mb-8">
