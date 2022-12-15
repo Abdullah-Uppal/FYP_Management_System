@@ -1,7 +1,7 @@
 const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
 
-const PersonScehma=new Schema({
+const PersonSchema=new Schema({
     fname:{
         type:String,
         required:true
@@ -30,5 +30,5 @@ const PersonScehma=new Schema({
 });
 
 
-module.exports = mongoose.model("Person", PersonScehma);
+module.exports = mongoose.model("Person", PersonSchema);
 

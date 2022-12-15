@@ -3,9 +3,10 @@ const Person=require('../models/Person');
 //person adding function
 const addPerson = async (req, res) => {
 
-
+    
     try {
         const { fname, lname, email, contact, gender, password } = req.body;
+        console.log(req.body.lname);
         const persons = new Person({
             fname,
             lname,
@@ -14,8 +15,9 @@ const addPerson = async (req, res) => {
             gender,
             password
         });
+        console.log('Persons',persons.lname);
         await persons.save();
-        return res.status(201).json({ persons });
+        return res.status(200).json(persons);
        
     } catch (error) {
         console.log(error);
