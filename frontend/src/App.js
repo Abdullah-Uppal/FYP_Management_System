@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+
+
+import Dashboard from './pages/dashboard';
 
 function App() {
+    
+//   const location = useLocation();
+
+//   useEffect(() => {
+//     document.querySelector('html').style.scrollBehavior = 'auto'
+//     window.scroll({ top: 0 })
+//     document.querySelector('html').style.scrollBehavior = ''
+//   }, [location.pathname]); 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Dashboard/>
+  )
 }
 
-export default App;
+export default App
