@@ -3,6 +3,7 @@ import Form from './partials/logInSignUp/form';
 import {Routes, Route} from 'react-router-dom';
 
 import Dashboard from './pages/dashboard';
+import SupervisorAllocation from './pages/SupervisorAllocation';
 
 
 function App() {
@@ -19,14 +20,13 @@ function App() {
 
 
   return (
-    
-   
+
         <Routes>
             <Route index path='*' element={<Dashboard user={user} setUser={setUser}/>} />
             <Route exact path="/login" element={<Form str={'Login'} />} />
             <Route exact path="/signup" element={<Form str={'Signup'} />} />
         </Routes>
-    
+   
   )
 }
 

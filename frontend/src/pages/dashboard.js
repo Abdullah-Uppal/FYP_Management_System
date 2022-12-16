@@ -10,7 +10,10 @@ import {
     Route,
     Navigate
 } from 'react-router-dom';
+import SupervisorAllocation from './SupervisorAllocation'
+
 const Dashboard = ({user,setIsLoggedIn}) => {
+
 
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
@@ -30,15 +33,18 @@ const Dashboard = ({user,setIsLoggedIn}) => {
                         {/* Welcome banner */}
                         <Routes>
 
-                            <Route exact path="/" element={<WelcomeBanner />} />
                             <Route exact path="/addperson" element={<Persons />} />
                             <Route exact path="/persons" element={<PersonDetails/>} />
                             <Route exact path="/meetings" element={<h1>Meetings</h1>} />
                             <Route exact path="/login" element={<h1>Login</h1>} />
 
+                            <Route exact path="/allocation" element ={<SupervisorAllocation/>}/>
+
+
                             <Route exact path="/" element={<WelcomeBanner user={user} />} />
                             <Route exact path="/projects/" element={<h1>Projects</h1>} />
                             <Route exact path="/meetings/" element={<h1>Meetings</h1>} />
+
                         </Routes>
                     </div>
                 </main>
