@@ -63,6 +63,7 @@ export default function FAQ() {
                       as='dd'
                       className='mt-2 pr-12'
                     >
+                      {/* // todo update with anything instead of answer  */}
                       <p className='text-base text-gray-500'>{faq.answer}</p>
                     </Disclosure.Panel>
                   </>

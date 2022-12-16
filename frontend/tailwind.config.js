@@ -13,9 +13,5 @@ module.exports = {
         modifySelectors(({ className }) => `.sidebar-expanded .${e(`sidebar-expanded${separator}${className}`)}`);
       });
     }),
-  ],
-  daisyui: {
-    // show in default(light) theme because does not looks good in dark mode
-    themes: false,
-  },
+],
 }
