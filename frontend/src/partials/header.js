@@ -4,7 +4,7 @@ import Help from './header/help';
 import Notifications from './header/notifications';
 import UserMenu from './header/userMenu';
 
-const Header = ({sidebarOpen, setSidebarOpen}) => {
+const Header = ({user,sidebarOpen, setSidebarOpen}) => {
 
     const [searchModalOpen, setSearchModalOpen] = useState(false)
     return (
@@ -49,7 +49,7 @@ const Header = ({sidebarOpen, setSidebarOpen}) => {
                         <Help />
                         {/*  Divider */}
                         <hr className="w-px h-6 bg-slate-200 mx-3" />
-                        <UserMenu />
+                        <UserMenu user={user}/>
 
                     </div>
                 </div>

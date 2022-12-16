@@ -12,7 +12,7 @@ import {
 } from 'react-router-dom';
 import SupervisorAllocation from './SupervisorAllocation'
 
-const Dashboard = ({user,setIsLoggedIn}) => {
+const Dashboard = ({user}) => {
 
 
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -26,14 +26,14 @@ const Dashboard = ({user,setIsLoggedIn}) => {
             <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
             <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-                <Header user={user} loggedIn={setIsLoggedIn} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+                <Header user={user} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
                 <main>
                     <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
 
                         {/* Welcome banner */}
                         <Routes>
 
-                            <Route exact path="/addperson" element={<Persons />} />
+                            <Route exact path="/addPerson" element={<Persons />} />
                             <Route exact path="/persons" element={<PersonDetails/>} />
                             <Route exact path="/meetings" element={<h1>Meetings</h1>} />
                             <Route exact path="/login" element={<h1>Login</h1>} />

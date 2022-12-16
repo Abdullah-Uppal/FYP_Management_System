@@ -2,14 +2,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Transition from '../../utils/transition';
 
-const UserMenu = () => {
+const UserMenu = ({user}) => {
 
 
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const trigger = useRef(null);
     const dropdown = useRef(null);
-    const [user] = useState('Admin')
 
     // close on click outside
     useEffect(() => {
@@ -80,10 +79,10 @@ const UserMenu = () => {
                         <li>
                             <Link
                                 className="font-medium text-sm text-indigo-500 hover:text-indigo-600 flex items-center py-1 px-3"
-                                to="/"
-                                onClick={() => setDropdownOpen(!dropdownOpen)}
+                                to="/login"
+                                onClick={() => {setDropdownOpen(!dropdownOpen);localStorage.setItem('isLoggedIn', false)}}
                             >
-                                Sign Out
+                                Log Out
                             </Link>
                         </li>
                     </ul>
