@@ -7,6 +7,7 @@ import {
     Routes,
     Route,
 } from 'react-router-dom';
+import SupervisorAllocation from './SupervisorAllocation'
 const Dashboard = () => {
 
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -27,6 +28,7 @@ const Dashboard = () => {
                             <Route exact path="/projects" element={<Persons/>} />
                             <Route exact path="/meetings" element={<h1>Meetings</h1>} />
                             <Route exact path="/login" element={<h1>Login</h1>} />
+                            <Route exact path="/allocation" element ={<SupervisorAllocation/>}/>
                         </Routes>
                     </div>
                 </main>

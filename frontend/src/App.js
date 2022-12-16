@@ -2,6 +2,7 @@ import React from 'react';
 
 
 import Dashboard from './pages/dashboard';
+import SupervisorAllocation from './pages/SupervisorAllocation';
 
 function App() {
     
@@ -13,7 +14,9 @@ function App() {
 //     document.querySelector('html').style.scrollBehavior = ''
 //   }, [location.pathname]); 
   return (
+    <>
     <Dashboard/>
+    </>
   )
 }
 
