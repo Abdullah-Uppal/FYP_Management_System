@@ -1,22 +1,32 @@
-import React from 'react';
-
+import React,{useState,useEffect} from 'react';
+import Form from './partials/logInSignUp/form';
+import {Routes, Route} from 'react-router-dom';
 
 import Dashboard from './pages/dashboard';
 import SupervisorAllocation from './pages/SupervisorAllocation';
 
-function App() {
-    
-//   const location = useLocation();
 
-//   useEffect(() => {
-//     document.querySelector('html').style.scrollBehavior = 'auto'
-//     window.scroll({ top: 0 })
-//     document.querySelector('html').style.scrollBehavior = ''
-//   }, [location.pathname]); 
+function App() {
+    const [user, setUser] = useState(null);
+    useEffect(() =>{
+        const loggedInUser = JSON.parse(localStorage.getItem("user"));
+        if(loggedInUser !== null){
+            setUser(loggedInUser.username);
+        }
+        
+    },[])
+
+
+
+
   return (
-    <>
-    <Dashboard/>
-    </>
+
+        <Routes>
+            <Route index path='*' element={<Dashboard user={user} setUser={setUser}/>} />
+            <Route exact path="/login" element={<Form str={'Login'} />} />
+            <Route exact path="/signup" element={<Form str={'Signup'} />} />
+        </Routes>
+   
   )
 }
 

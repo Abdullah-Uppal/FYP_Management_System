@@ -44,10 +44,18 @@ const getPerson = async (req, res) => {
 }
 
 //person deleitng function by id
-const deletePerson = async (req, res) => {
+const deletePerson = async (req, res,next) => {
+    //console.log("ye chieh upon ko -->"+req.params.personid);
     try {
-        const { id } = req.params;
-        const persons = await findByIdAndDelete(id);
+        const _id  = req.params.id;
+        console.log("ye chieh upon ko -->"+_id);
+        const persons = await findById(_id);
+        if (!persons) {
+            return res.status(404).json({ message: 'No Persons found' });
+            console.log("ise uper nhi chala");
+        }else
+    {        await persons.remove();
+    }
         return res.status(200).json({ persons });
     } catch (error) {
         console.log(error);
@@ -74,6 +82,7 @@ const updatePerson = async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 }
+
 
 
 
