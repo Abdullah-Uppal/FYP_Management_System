@@ -2,11 +2,9 @@ import React, { useState } from 'react'
 import Sidebar from '../partials/sidebar'
 import WelcomeBanner from '../partials/dashboard/welcomeBanner'
 import Header from '../partials/header'
-<<<<<<< Updated upstream
 import Persons from '../partials/dashboard/persons'
 import PersonDetails from '../partials/dashboard/personDetails'
-=======
->>>>>>> Stashed changes
+
 import {
     Routes,
     Route,
@@ -31,17 +29,16 @@ const Dashboard = ({user,setIsLoggedIn}) => {
 
                         {/* Welcome banner */}
                         <Routes>
-<<<<<<< Updated upstream
+
                             <Route exact path="/" element={<WelcomeBanner />} />
                             <Route exact path="/addperson" element={<Persons />} />
                             <Route exact path="/persons" element={<PersonDetails/>} />
                             <Route exact path="/meetings" element={<h1>Meetings</h1>} />
                             <Route exact path="/login" element={<h1>Login</h1>} />
-=======
+
                             <Route exact path="/" element={<WelcomeBanner user={user} />} />
                             <Route exact path="/projects/" element={<h1>Projects</h1>} />
                             <Route exact path="/meetings/" element={<h1>Meetings</h1>} />
->>>>>>> Stashed changes
                         </Routes>
                     </div>
                 </main>
