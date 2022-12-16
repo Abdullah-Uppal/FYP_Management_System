@@ -7,7 +7,7 @@ const PersonController=require('../controllers/Person-Controller');
 
 router.post('/addPerson',PersonController.addPerson);
 router.get('/getPerson',PersonController.getPerson);
-router.delete('/deletePerson/:id',PersonController.deletePerson);
+router.delete('/:id',PersonController.deletePerson);
 router.put('/updatePerson/:id',PersonController.updatePerson);
 
 

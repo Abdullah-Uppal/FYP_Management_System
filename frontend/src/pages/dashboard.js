@@ -3,6 +3,7 @@ import Sidebar from '../partials/sidebar'
 import WelcomeBanner from '../partials/dashboard/welcomeBanner'
 import Header from '../partials/header'
 import Persons from '../partials/dashboard/persons'
+import PersonDetails from '../partials/dashboard/personDetails'
 import {
     Routes,
     Route,
@@ -24,7 +25,8 @@ const Dashboard = () => {
 
                         <Routes>
                             <Route exact path="/" element={<WelcomeBanner />} />
-                            <Route exact path="/projects" element={<Persons/>} />
+                            <Route exact path="/addperson" element={<Persons />} />
+                            <Route exact path="/persons" element={<PersonDetails/>} />
                             <Route exact path="/meetings" element={<h1>Meetings</h1>} />
                             <Route exact path="/login" element={<h1>Login</h1>} />
                         </Routes>
