@@ -1,9 +1,9 @@
 import React from 'react'
-
+import  { ImBin2 } from 'react-icons/im'
 const Delete = () => {
   return (
     <div>
-      <button className="btn px-4 rounded-md bg-blue-900 hover:bg-red-500 w-40">Delete</button>
+      <ImBin2 className='text-2xl text-blue-700  hover:text-red-600'/>  
     </div>
   )
 }

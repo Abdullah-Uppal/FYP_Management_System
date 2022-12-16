@@ -29,10 +29,10 @@ const SupervisorAllocation = () => {
     ]
     const Supervisor = [
       {
-          id:1,
+          id:"Talha Waheed",
       },
       {
-          id:2,
+          id:"Samyan Walha",
       },
       // {
       //     id:3,
@@ -43,10 +43,10 @@ const SupervisorAllocation = () => {
   ]
   const Groups= [
     {
-        id:1,
+        id:"Final Year Project",
     },
     {
-        id:2,
+        id:"Next Person Word Prediction",
     },
     // {
     //     id:3,
@@ -57,16 +57,16 @@ const SupervisorAllocation = () => {
 ]
 const CoSupervisors= [
   {
-      id:1,
+      id:"TA's",
   },
   {
-      id:2,
+      id:"GA's",
   },
   {
-      id:3,
+      id:"Faculty",
   },
   {
-      id:4,
+      id:"No idea",
   },
 ]
 
@@ -74,7 +74,7 @@ const CoSupervisors= [
 const Supervisors= ({supervisor}) =>{
   return (
     <>
-      <select className='select select-info w-full min-w-[10rem]  mt-5 rounded-full border-zinc-700' onChange={onChangeSupervisor}>
+      <select className='select select-info w-full min-w-[10rem]  mt-5  border-zinc-700' onChange={onChangeSupervisor}>
       <option value="0">Select the Supervisor</option>
         {
           supervisor.map((supervisor,index) =>{
@@ -99,11 +99,11 @@ const onChangeCoSupervisor = (e) =>{
 const StudentGroups = ({groups}) =>{
   return(
   <>
-      <select className='select select-info w-full min-w-[10rem] mt-5 rounded-full border-zinc-700' onChange={onChangeGroups}>
+      <select className='select select-info w-full min-w-[10rem] mt-5  border-zinc-700' onChange={onChangeGroups}>
       <option value={0}>Select the Groups</option>
         {
           groups.map((group,index) =>{
-            return <option key={index+1} value ={index+1} className='md:w-auto sm:w-auto'>{group.id}</option>
+            return <option key={index+1} value ={index+1} className='md:w-full sm:w-full'>{group.id}</option>
           })
         }
       </select>
@@ -114,11 +114,11 @@ const StudentGroups = ({groups}) =>{
 const CoSupervisor = ({cosupervisor} )=>{
   return(
       <>
-        <select className='select select-info w-full min-w-[10rem] mt-5 rounded-full border-zinc-700' onChange={onChangeCoSupervisor}>
+        <select className='select select-info w-full min-w-[10rem] mt-5  border-zinc-700' onChange={onChangeCoSupervisor}>
       <option value={0}>Select the CoSupervisor</option>
         {
           cosupervisor.map((cosupervisor,index) =>{
-            return <option key={index+1} value ={index+1} className='md:w-auto sm:w-auto'>{cosupervisor.id}</option>
+            return <option key={index+1} value ={index+1} className='md:w-15 sm:w-10 lg:20'>{cosupervisor.id}</option>
           })
         }
       </select>
@@ -143,7 +143,7 @@ const onClick = () =>{
   }
 }
   return (
-    <div className='h-auto w-auto bg-white-200'>
+    <div className='h-auto w-auto'>
     <Supervisors supervisor={Supervisor}/>
     <StudentGroups groups={Groups}/>
     <CoSupervisor cosupervisor={CoSupervisors}/>

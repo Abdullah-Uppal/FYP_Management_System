@@ -1,9 +1,10 @@
 import React from 'react'
+import { FaEdit } from 'react-icons/fa'
 
 const Edit = () => {
   return (
     <div>
-      <button className="btn px-4 rounded-md bg-blue-900 hover:bg-green-500 w-40">Edit</button>
+      <FaEdit className='text-2xl text-blue-700 hover:text-green-600' />
     </div>
   )
 }
