@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Delete from './Delete'
-import Edit from './Edit.js'
+import Delete from '../partials/buttons/Delete'
+import Edit from '../partials/buttons/Edit.js'
 
 const SupervisorAllocation = () => {
   const [sup,setsupervisor] = useState(0)
@@ -74,7 +74,7 @@ const CoSupervisors= [
 const Supervisors= ({supervisor}) =>{
   return (
     <>
-      <select className='select select-info w-full min-w-[10rem]  mt-5 rounded-full border-zinc-700' onChange={onChangeSupervisor}>
+      <select className='select select-info w-full min-w-[10rem]  mt-5  border-zinc-700' onChange={onChangeSupervisor}>
       <option value="0">Select the Supervisor</option>
         {
           supervisor.map((supervisor,index) =>{
@@ -99,7 +99,7 @@ const onChangeCoSupervisor = (e) =>{
 const StudentGroups = ({groups}) =>{
   return(
   <>
-      <select className='select select-info w-full min-w-[10rem] mt-5 rounded-full border-zinc-700' onChange={onChangeGroups}>
+      <select className='select select-info w-full min-w-[10rem] mt-5  border-zinc-700' onChange={onChangeGroups}>
       <option value={0}>Select the Groups</option>
         {
           groups.map((group,index) =>{
@@ -114,7 +114,7 @@ const StudentGroups = ({groups}) =>{
 const CoSupervisor = ({cosupervisor} )=>{
   return(
       <>
-        <select className='select select-info w-full min-w-[10rem] mt-5 rounded-full border-zinc-700' onChange={onChangeCoSupervisor}>
+        <select className='select select-info w-full min-w-[10rem] mt-5  border-zinc-700' onChange={onChangeCoSupervisor}>
       <option value={0}>Select the CoSupervisor</option>
         {
           cosupervisor.map((cosupervisor,index) =>{
@@ -147,30 +147,30 @@ const onClick = () =>{
     <Supervisors supervisor={Supervisor}/>
     <StudentGroups groups={Groups}/>
     <CoSupervisor cosupervisor={CoSupervisors}/>
-    <button className="btn ml-5 mt-5 rounded-md bg-blue-900 hover:bg-green-500 w-40" onClick={onClick}>Submit</button>
+    <button className="btn mt-5 rounded-md  text-white bg-indigo-600 hover:bg-indigo-500 w-40" onClick={onClick}>Submit</button>
     <div className="overflow-x-auto mt-10 ">
   <table className="table table-compact w-full">
     <thead>
-      <tr>
+     
       {heading.map(head =>{
         return(
-          <>
+       <tr>
         <th>{head.Advisor_Name}</th> 
         <th>{head.Project_Title}</th> 
         <th>{head.Project_Description}</th> 
         <th>{head.AssignmentDate}</th> 
         <th>{head.Edit}</th> 
         <th>{head.Delete}</th> 
-        </>
+        </tr>
         )
       })}
-      </tr>
+      
     </thead> 
     <tbody>
-      <tr>
+      
       {data.map(data =>{
         return(
-            <>
+           <tr key={data.id}>
             
             <td>{data.Name}</td> 
             <td>{data.Project_Title}</td> 
@@ -178,10 +178,9 @@ const onClick = () =>{
             <td>{data.AssignmentDate}</td> 
             <td>{<Edit/>}</td> 
             <td>{<Delete/>}</td>
-            </>
+            </tr>
         )
       })}
-      </tr> 
     </tbody> 
   </table>
 </div>

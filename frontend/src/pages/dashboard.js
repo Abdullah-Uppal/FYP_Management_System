@@ -3,7 +3,7 @@ import Sidebar from '../partials/sidebar'
 import WelcomeBanner from '../partials/dashboard/welcomeBanner'
 import Header from '../partials/header'
 import Persons from '../partials/dashboard/persons'
-import PersonDetails from '../partials/dashboard/personDetails'
+import PersonDetails from '../pages/personDetails'
 
 import {
     Routes,
@@ -33,18 +33,12 @@ const Dashboard = ({user}) => {
                         {/* Welcome banner */}
                         <Routes>
 
-                            <Route exact path="/addPerson" element={<Persons />} />
+                            <Route exact path="/" element={<WelcomeBanner user={user} />} />
                             <Route exact path="/persons" element={<PersonDetails/>} />
+                            <Route exact path="/person/new" element={<Persons />} />
                             <Route exact path="/meetings" element={<h1>Meetings</h1>} />
-                            <Route exact path="/login" element={<h1>Login</h1>} />
 
                             <Route exact path="/allocation" element ={<SupervisorAllocation/>}/>
-
-
-                            <Route exact path="/" element={<WelcomeBanner user={user} />} />
-                            <Route exact path="/projects/" element={<h1>Projects</h1>} />
-                            <Route exact path="/meetings/" element={<h1>Meetings</h1>} />
-
                         </Routes>
                     </div>
                 </main>
