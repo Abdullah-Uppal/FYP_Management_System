@@ -1,11 +1,32 @@
-import React from 'react';
-
+import React,{useState,useEffect} from 'react';
+import Form from './partials/logInSignUp/form';
+import {Routes, Route} from 'react-router-dom';
 
 import Dashboard from './pages/dashboard';
 
+
 function App() {
+    const [user, setUser] = useState(null);
+    useEffect(() =>{
+        const loggedInUser = JSON.parse(localStorage.getItem("user"));
+        if(loggedInUser !== null){
+            setUser(loggedInUser.username);
+        }
+        
+    },[])
+
+
+
 
   return (
+    
+   
+        <Routes>
+            <Route index path='*' element={<Dashboard user={user} setUser={setUser}/>} />
+            <Route exact path="/login" element={<Form str={'Login'} />} />
+            <Route exact path="/signup" element={<Form str={'Signup'} />} />
+        </Routes>
+    
   )
 }
 
