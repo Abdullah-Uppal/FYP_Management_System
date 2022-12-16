@@ -8,30 +8,36 @@ import {
 import { FiEdit } from 'react-icons/fi';
 import { FaTrash } from 'react-icons/fa';
 import { useEffect ,useState} from 'react';
+import axios from 'axios';
 
 
 
 const PersonDetails = () => {
-
-  // const [persons, setPersons] = useState({});
+  const i=0;
+  const [persons, setPersons] = useState([]);
 
   useEffect(() => {
-    getPersons();
+    getPersons().then((data) => {
+      setPersons(data.person);
+      
+
+      console.log(persons[0].lname);
+    }); 
   }, []);
 
+  const url="http://localhost:3000/person/getPerson";
   const getPersons = async () => {
-    try {
-      const response = await fetch("http://localhost:3000/person/getPerson");
-      const jsonData = await response.json();
-      if (jsonData) {
-        console.log(jsonData);
-      }else{
-        console.log("No data");
-      }
-     
-      // setPersons(jsonData);
-    } catch (err) {
-      console.error(err.message);
+    console.log('data fetch first')
+    try{
+       return await axios.get(url).then((res)=>
+       res.data
+
+       );
+
+
+    }catch
+    (error) {
+        console.log(error)
     }
   };
 
@@ -89,34 +95,37 @@ const PersonDetails = () => {
                   Actions
                 </th>
               </tr>
-            </thead>
+            </thead> 
            
-            <tbody className="bg-white">
+          
+            
+           {persons.map((person) => (
+             <tbody className="bg-white">
               <tr>
               <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                   1
-                  </td>
+                </td>
                 <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                  Qazi Maaz
+                 {person.fname} {person.lname}
                 </td>
                 <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                   <div className="text-sm leading-5 text-gray-900">
-                 +346 123 4567
+                    {person.contact}
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                 <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-green-800">
-                    Male
+                    {person.gender}
                   </span>
                 </td>
                 <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                   <div className="text-sm leading-5 text-gray-900">
-                   yha kia na
+                    {person.email}
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                   <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                    Active
+                      active
                   </span>
                 </td>
                 
@@ -137,8 +146,8 @@ const PersonDetails = () => {
               </tr>
 
              
-            </tbody>
-           
+            </tbody> 
+            ))} 
           </table>
         </div>
       </div>
