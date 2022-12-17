@@ -4,6 +4,11 @@ import DashboardMenu from './sidebar/sideMenu/dashboardMenu';
 import PersonMenu from './sidebar/sideMenu/personMenu';
 import AllocationMenu from './sidebar/sideMenu/allocationMenu';
 import SidebarLinkGroup from './sidebar/sideMenu/sidebarLinkGroup';
+import GroupMenu from './sidebar/sideMenu/groupMenu';
+import FormatUploaderMenu from './sidebar/sideMenu/formatUploaderMenu';
+import ProjectIdeas from './sidebar/sideMenu/projectIdeas';
+import MeetingMenu from './sidebar/sideMenu/meetingMenu';
+import MilestoneMenu from './sidebar/sideMenu/milestoneMenu';
 
 
 
@@ -132,6 +137,41 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                                 {(handleClick, open) => {
                                     return (
                                         <AllocationMenu handleClick={handleClick} open={open} sidebarExpanded={sidebarExpanded} setSidebarExpanded={setSidebarExpanded} />
+                                    );
+                                }}
+                            </SidebarLinkGroup>
+                            <SidebarLinkGroup activecondition={pathname === '/group' || pathname.includes('group')}>
+                                {(handleClick, open) => {
+                                    return (
+                                        <GroupMenu handleClick={handleClick} open={open} sidebarExpanded={sidebarExpanded} setSidebarExpanded={setSidebarExpanded} />
+                                    );
+                                }}
+                            </SidebarLinkGroup>
+                            <SidebarLinkGroup activecondition={pathname === '/uploadformat' || pathname.includes('uploadformat')}>
+                                {(handleClick, open) => {
+                                    return (
+                                        <FormatUploaderMenu handleClick={handleClick} open={open} sidebarExpanded={sidebarExpanded} setSidebarExpanded={setSidebarExpanded} />
+                                    );
+                                }}
+                            </SidebarLinkGroup>
+                            <SidebarLinkGroup activecondition={pathname === '/projects' || pathname.includes('projects')}>
+                                {(handleClick, open) => {
+                                    return (
+                                        <ProjectIdeas handleClick={handleClick} open={open} sidebarExpanded={sidebarExpanded} setSidebarExpanded={setSidebarExpanded} />
+                                    );
+                                }}
+                            </SidebarLinkGroup>
+                            <SidebarLinkGroup activecondition={pathname === '/meetings' || pathname.includes('meetings')}>
+                                {(handleClick, open) => {
+                                    return (
+                                        <MeetingMenu handleClick={handleClick} open={open} sidebarExpanded={sidebarExpanded} setSidebarExpanded={setSidebarExpanded} />
+                                    );
+                                }}
+                            </SidebarLinkGroup>
+                            <SidebarLinkGroup activecondition={pathname === '/milestone' || pathname.includes('milestone')}>
+                                {(handleClick, open) => {
+                                    return (
+                                        <MilestoneMenu handleClick={handleClick} open={open} sidebarExpanded={sidebarExpanded} setSidebarExpanded={setSidebarExpanded} />
                                     );
                                 }}
                             </SidebarLinkGroup>

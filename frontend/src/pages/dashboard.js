@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Sidebar from '../partials/sidebar'
 import WelcomeBanner from '../partials/dashboard/welcomeBanner'
 import Header from '../partials/header'
+import Page404 from './page404'
 
 import {
     Routes,
@@ -11,10 +12,8 @@ import {
 import SupervisorAllocation from './SupervisorAllocation'
 import Student from './person/student'
 import Supervisor from './person/supervisor'
-import Cosupervisor from './person/cosupervisor'
 import StudentDetail from '../partials/person/studentDetail'
 import SupervisorDetail from '../partials/person/supervisorDetail'
-import CosupervisorDetail from '../partials/person/cosupervisorDetail'
 
 
 const Dashboard = ({user}) => {
@@ -41,16 +40,21 @@ const Dashboard = ({user}) => {
                             <Route exact path="/" element={<WelcomeBanner user={user} />} />
                             <Route exact path="/person/student" element={<Student/>} />
                             <Route exact path="/person/supervisor" element={<Supervisor/>} />
-                            <Route exact path="/person/cosupervisor" element={<Cosupervisor/>} />
                             <Route exact path="/person/student/new" element={<StudentDetail/>} />
                             <Route exact path="/person/supervisor/new" element={<SupervisorDetail/>} />
-                            <Route exact path="/person/cosupervisor/new" element={<CosupervisorDetail/>} />
                             <Route exact path="/person/student/update/:id" element={<StudentDetail/>} />
                             <Route exact path="/person/supervisor/update/:id" element={<SupervisorDetail/>} />
-                            <Route exact path="/person/cosupervisor/update/:id" element={<CosupervisorDetail/>} />
                             <Route exact path="/meetings" element={<h1>Meetings</h1>} />
+                            <Route exact path="/milestone" element={<h1>Milestones</h1>} />
 
-                            <Route exact path="/allocation" element ={<SupervisorAllocation/>}/>
+                            <Route exact path="/allocation/groups" element ={<h1>Hello Groups</h1>}/>
+                            <Route exact path="/allocation/supervisors" element ={<SupervisorAllocation/>}/>
+                            <Route exact path="/allocation/projects" element ={<h1>Hello projects</h1>}/>
+                            <Route exact path="/group" element ={<h1>Hello Groups</h1>}/>
+                            <Route exact path="/uploadformat" element ={<h1>Hello Format</h1>}/>
+                            <Route exact path="/projects/postIdea" element ={<h1>Hello Post Idea</h1>}/>
+                            <Route exact path="/projects/bookIdeas" element ={<h1>Hello Book Ideas</h1>}/>
+                            <Route exact path="/*" element ={<Page404/>}/>
                         </Routes>
                     </div>
                 </main>
