@@ -57,16 +57,16 @@ const SupervisorAllocation = () => {
 ]
 const CoSupervisors= [
   {
-      id:"TA's",
+      id:"Professor",
   },
   {
-      id:"GA's",
+      id:"Associate Professor",
   },
   {
-      id:"Faculty",
+      id:"Lecturar",
   },
   {
-      id:"No idea",
+      id:"Teaching Fellow",
   },
 ]
 
@@ -100,7 +100,7 @@ const StudentGroups = ({groups}) =>{
   return(
   <>
       <select className='select select-info w-full min-w-[10rem] mt-5  border-zinc-700' onChange={onChangeGroups}>
-      <option value={0}>Select the Groups</option>
+      <option value={0}>Select the GroupsProject</option>
         {
           groups.map((group,index) =>{
             return <option key={index+1} value ={index+1} className='md:w-full sm:w-full'>{group.id}</option>
@@ -115,7 +115,7 @@ const CoSupervisor = ({cosupervisor} )=>{
   return(
       <>
         <select className='select select-info w-full min-w-[10rem] mt-5  border-zinc-700' onChange={onChangeCoSupervisor}>
-      <option value={0}>Select the CoSupervisor</option>
+      <option value={0}>Select the AdvisorRole</option>
         {
           cosupervisor.map((cosupervisor,index) =>{
             return <option key={index+1} value ={index+1} className='md:w-15 sm:w-10 lg:20'>{cosupervisor.id}</option>
