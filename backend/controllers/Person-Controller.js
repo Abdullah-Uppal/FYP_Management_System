@@ -49,7 +49,7 @@ const deletePerson = async (req, res,next) => {
     try {
         const _id  = req.params.id;
         console.log("ye chieh upon ko -->"+_id);
-        const persons = await findById(_id);
+        const persons = await Person.findById(_id);
         if (!persons) {
             return res.status(404).json({ message: 'No Persons found' });
             console.log("ise uper nhi chala");

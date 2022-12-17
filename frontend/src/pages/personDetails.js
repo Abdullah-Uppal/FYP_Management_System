@@ -14,7 +14,6 @@ const PersonDetails = () => {
     useEffect(() => {
         getPersons().then((data) => {
             setPersons(data.person);
-
         });
     }, []);
 
@@ -24,7 +23,6 @@ const PersonDetails = () => {
         try {
             return await axios.get(url).then((res) =>
                 res.data
-
             );
 
 
@@ -33,6 +31,12 @@ const PersonDetails = () => {
             console.log(error)
         }
     };
+    const handleDelete = async (id) => {
+      const url = "http://localhost:3000/person/" + id; 
+      await axios.delete(url).then(res => { 
+        setPersons(persons.filter((value, index, arr) => { return value._id !== id }));
+      });
+    }
 
     return (
         <div>
@@ -90,7 +94,7 @@ const PersonDetails = () => {
 
                                     <tbody className="bg-white">
                                         {persons.map((person) => (
-                                            <tr key={persons.indexOf(person) + 1}>
+                                            <tr id={person._id} key={persons.indexOf(person) + 1}>
                                                 <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                                     {persons.indexOf(person) + 1}
                                                 </td>
@@ -120,15 +124,15 @@ const PersonDetails = () => {
 
 
                                                 <td className="whitespace-no-wrap border-b border-gray-200">
-                                                    <NavLink to="$"
+                                                    <NavLink to="#"
                                                         className="text-indigo-600 hover:text-indigo-900 focus:outline-none focus:underline text-lg" >
                                                         <FiEdit />
                                                     </NavLink>
                                                 </td>
                                                 <td className="pr-3 whitespace-no-wrap border-b border-gray-200">
-                                                    <NavLink to="$"
+                                                    <NavLink to="#"
                                                         className="text-indigo-600 hover:text-indigo-900 focus:outline-none  text-lg focus:underline" >
-                                                        <FaTrash />
+                                                        <FaTrash onClick={() => handleDelete(person._id)}/>
                                                     </NavLink>
                                                 </td>
 
