@@ -68,7 +68,7 @@ const updatePerson = async (req, res) => {
     try {
         const { id } = req.params;
         const { fname, lname, email, contact, gender, password } = req.body;
-        const persons = await findByIdAndUpdate(id, {
+        const persons = await Person.findByIdAndUpdate(id, {
                 fname,
                 lname,
                 email,
