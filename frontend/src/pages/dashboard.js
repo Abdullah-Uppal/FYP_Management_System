@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import Sidebar from '../partials/sidebar'
 import WelcomeBanner from '../partials/dashboard/welcomeBanner'
 import Header from '../partials/header'
-import Persons from '../partials/dashboard/persons'
-import PersonDetails from '../pages/personDetails'
 
 import {
     Routes,
@@ -11,6 +9,10 @@ import {
     Navigate
 } from 'react-router-dom';
 import SupervisorAllocation from './SupervisorAllocation'
+import Student from './person/student'
+import StudentDetail from '../partials/person/studentDetail'
+import SupervisorDetail from '../partials/person/supervisorDetail'
+import Supervisor from './person/supervisor'
 
 const Dashboard = ({user}) => {
 
@@ -34,9 +36,12 @@ const Dashboard = ({user}) => {
                         <Routes>
 
                             <Route exact path="/" element={<WelcomeBanner user={user} />} />
-                            <Route exact path="/persons" element={<PersonDetails/>} />
-                            <Route exact path="/person/new" element={<Persons />} />
-                            <Route exact path="/person/update/:id" element={<Persons />} />
+                            <Route exact path="/person/student" element={<Student/>} />
+                            <Route exact path="/person/supervisor" element={<Supervisor/>} />
+                            <Route exact path="/person/student/new" element={<StudentDetail/>} />
+                            <Route exact path="/person/supervisor/new" element={<SupervisorDetail/>} />
+                            <Route exact path="/person/student/update/:id" element={<StudentDetail/>} />
+                            <Route exact path="/person/supervisor/update/:id" element={<SupervisorDetail/>} />
                             <Route exact path="/meetings" element={<h1>Meetings</h1>} />
 
                             <Route exact path="/allocation" element ={<SupervisorAllocation/>}/>

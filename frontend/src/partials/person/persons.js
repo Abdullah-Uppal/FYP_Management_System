@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-const Persons = () => {
+const Persons = ({type}) => {
     const { id } = useParams();
     console.log(id);
 
@@ -15,7 +15,7 @@ const Persons = () => {
         setPerson(res.data);
         setIsUpdate(true);
         });
-    }, [])
+    }, [id])
         
     const [Input, setPerson] = useState(
          {
@@ -116,7 +116,7 @@ const Persons = () => {
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                             Email
                         </label>
-                        <input value={Input.email} onChange={handleChange} name="email" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="email" type="email" placeholder="@uet.edu.pk" required/>
+                        <input value={Input.email} onChange={handleChange} name="email" className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="email" type="email" placeholder="@uet.edu.pk" required />
                     </div>
                 </div>
                 <div className="flex flex-wrap -mx-3 mb-6">
@@ -124,7 +124,7 @@ const Persons = () => {
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                             Contact Number
                         </label>
-                        <input value={Input.contact} onChange={handleChange} name='contact' className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="contact" type="text" placeholder="+9232........" required/>
+                        <input value={Input.contact} onChange={handleChange} name='contact' className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="contact" type="text" placeholder="+9232........" required />
                     </div>
                 </div>
                 <div className="flex flex-wrap -mx-3 mb-2">
@@ -146,7 +146,7 @@ const Persons = () => {
                     </div>
 
                 </div>
-                <button onClick={handleSubmit}  type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">{ isUpdate ?  'Update': 'Register'}</button>
+                <button   type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-2.5 mr-2 mb-2 md:mt-5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">{ isUpdate ?  'Update': 'Register'}</button>
             </form>
 
 
