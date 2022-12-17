@@ -29,10 +29,10 @@ const SupervisorAllocation = () => {
     ]
     const Supervisor = [
       {
-          id:1,
+          id:"Talha Waheed",
       },
       {
-          id:2,
+          id:"Samyan Wahla",
       },
       // {
       //     id:3,
@@ -43,10 +43,10 @@ const SupervisorAllocation = () => {
   ]
   const Groups= [
     {
-        id:1,
+        id:"E-Commerce",
     },
     {
-        id:2,
+        id:"Play Store Scrapping",
     },
     // {
     //     id:3,
@@ -57,16 +57,10 @@ const SupervisorAllocation = () => {
 ]
 const CoSupervisors= [
   {
-      id:1,
+      id:"Main Advisor",
   },
   {
-      id:2,
-  },
-  {
-      id:3,
-  },
-  {
-      id:4,
+      id:"Co Advisor",
   },
 ]
 
@@ -100,7 +94,7 @@ const StudentGroups = ({groups}) =>{
   return(
   <>
       <select className='select select-info w-full min-w-[10rem] mt-5  border-zinc-700' onChange={onChangeGroups}>
-      <option value={0}>Select the Groups</option>
+      <option value={0}>Select the GroupsProject</option>
         {
           groups.map((group,index) =>{
             return <option key={index+1} value ={index+1} className='md:w-auto sm:w-auto'>{group.id}</option>
@@ -115,7 +109,7 @@ const CoSupervisor = ({cosupervisor} )=>{
   return(
       <>
         <select className='select select-info w-full min-w-[10rem] mt-5  border-zinc-700' onChange={onChangeCoSupervisor}>
-      <option value={0}>Select the CoSupervisor</option>
+      <option value={0}>Select the AdvisorRole</option>
         {
           cosupervisor.map((cosupervisor,index) =>{
             return <option key={index+1} value ={index+1} className='md:w-auto sm:w-auto'>{cosupervisor.id}</option>
