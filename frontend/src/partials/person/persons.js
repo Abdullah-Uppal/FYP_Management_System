@@ -22,6 +22,7 @@ const Persons = ({type}) => {
             _id: "",
             fname: "",
             lname: "",
+            regno: "",
             email: "",
             contact: "",
             gender: "Male",
@@ -34,6 +35,7 @@ const Persons = ({type}) => {
             
             fname: String(Input.fname),
             lname: String(Input.lname),
+            regno: String(Input.regno),
             email: String(Input.email),
             contact: String(Input.contact),
             gender: String(Input.gender),
@@ -51,6 +53,7 @@ const Persons = ({type}) => {
             
             fname: String(Input.fname),
             lname: String(Input.lname),
+            regno: String(Input.regno),
             email: String(Input.email),
             contact: String(Input.contact),
             gender: String(Input.gender),
@@ -92,14 +95,23 @@ const Persons = ({type}) => {
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                             First Name
                         </label>
-                        <input value={Input.fname} onChange={handleChange} name='fname' className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" required/>
-                        <p className="text-red-500 text-xs italic">Please fill out this field.</p>
+                        <input value={Input.fname} onChange={handleChange} name='fname' className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane" required/>
+                       
                     </div>
                     <div className="w-full md:w-1/2 px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                             Last Name
                         </label>
                         <input value={Input.lname} onChange={handleChange} name='lname' className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe" required/>
+                    </div>
+                </div>
+                <div className="flex flex-wrap -mx-3 mb-6">
+                    <div className="w-full px-3">
+                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                            Registration Number
+                        </label>
+                        <input value={Input.regno} onChange={handleChange} name='regno' className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-regno" type="text" placeholder="2020-CS-XX" required />
+                       
                     </div>
                 </div>
                 <div className="flex flex-wrap -mx-3 mb-6">

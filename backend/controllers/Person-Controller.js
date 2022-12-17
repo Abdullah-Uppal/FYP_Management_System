@@ -5,11 +5,12 @@ const addPerson = async (req, res) => {
 
     
     try {
-        const { fname, lname, email, contact, gender, password } = req.body;
+        const { fname, lname, regno,email, contact, gender, password } = req.body;
         console.log(req.body.lname);
         const persons = new Person({
             fname,
             lname,
+            regno,
             email,
             contact,
             gender,
@@ -64,11 +65,11 @@ const deletePerson = async (req, res,next) => {
     //console.log("ye chieh upon ko -->"+req.params.personid);
     try {
         const _id  = req.params.id;
-        console.log("ye chieh upon ko -->"+_id);
+       
         const persons = await Person.findById(_id);
         if (!persons) {
             return res.status(404).json({ message: 'No Persons found' });
-            console.log("ise uper nhi chala");
+           
         }else
     {        await persons.remove();
     }
@@ -83,10 +84,11 @@ const deletePerson = async (req, res,next) => {
 const updatePerson = async (req, res) => {
     try {
         const { id } = req.params;
-        const { fname, lname, email, contact, gender, password } = req.body;
+        const { fname, lname, regno,email, contact, gender, password } = req.body;
         const persons = await Person.findByIdAndUpdate(id, {
                 fname,
                 lname,
+                regno,
                 email,
                 contact,
                 gender,

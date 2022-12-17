@@ -73,6 +73,9 @@ const PersonDetails = ({type}) => {
                                                 Name
                                             </th>
                                             <th className="p-2 md:px-6 md:py-3 text-left font-medium">
+                                                Reg No
+                                            </th>
+                                            <th className="p-2 md:px-6 md:py-3 text-left font-medium">
                                                 Contact
                                             </th>
                                             <th className="p-2 md:px-6 md:py-3 text-left font-medium">
@@ -98,8 +101,11 @@ const PersonDetails = ({type}) => {
                                                 <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
                                                     {persons.indexOf(person) + 1}
                                                 </td>
-                                                <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
+                                                <td className="p-2 text-sm md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
                                                     {person.fname} {person.lname}
+                                                </td>
+                                                <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    {person.regno} 
                                                 </td>
                                                 <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
                                                     <div className="text-sm leading-5 text-gray-900">
@@ -129,7 +135,7 @@ const PersonDetails = ({type}) => {
                                                         <FiEdit />
                                                     </NavLink>
                                                 </td>
-                                                <td className="ml-4 pr-2 md:pr-3 whitespace-no-wrap border-b border-gray-200">
+                                                <td className="ml-4  pr-2 md:pr-3 whitespace-no-wrap border-b border-gray-200">
                                                     <NavLink to="#"
                                                         className="text-indigo-600 hover:text-indigo-900 focus:outline-none  text-lg focus:underline" >
                                                         <FaTrash onClick={() => handleDelete(person._id)}/>
