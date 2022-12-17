@@ -10,9 +10,12 @@ import {
 } from 'react-router-dom';
 import SupervisorAllocation from './SupervisorAllocation'
 import Student from './person/student'
+import Supervisor from './person/supervisor'
+import Cosupervisor from './person/cosupervisor'
 import StudentDetail from '../partials/person/studentDetail'
 import SupervisorDetail from '../partials/person/supervisorDetail'
-import Supervisor from './person/supervisor'
+import CosupervisorDetail from '../partials/person/cosupervisorDetail'
+
 
 const Dashboard = ({user}) => {
 
@@ -38,10 +41,13 @@ const Dashboard = ({user}) => {
                             <Route exact path="/" element={<WelcomeBanner user={user} />} />
                             <Route exact path="/person/student" element={<Student/>} />
                             <Route exact path="/person/supervisor" element={<Supervisor/>} />
+                            <Route exact path="/person/cosupervisor" element={<Cosupervisor/>} />
                             <Route exact path="/person/student/new" element={<StudentDetail/>} />
                             <Route exact path="/person/supervisor/new" element={<SupervisorDetail/>} />
+                            <Route exact path="/person/cosupervisor/new" element={<CosupervisorDetail/>} />
                             <Route exact path="/person/student/update/:id" element={<StudentDetail/>} />
                             <Route exact path="/person/supervisor/update/:id" element={<SupervisorDetail/>} />
+                            <Route exact path="/person/cosupervisor/update/:id" element={<CosupervisorDetail/>} />
                             <Route exact path="/meetings" element={<h1>Meetings</h1>} />
 
                             <Route exact path="/allocation" element ={<SupervisorAllocation/>}/>
