@@ -124,7 +124,7 @@ const PersonDetails = () => {
 
 
                                                 <td className="whitespace-no-wrap border-b border-gray-200">
-                                                    <NavLink to="#"
+                                                    <NavLink to={"/person/update/" + person._id}
                                                         className="text-indigo-600 hover:text-indigo-900 focus:outline-none focus:underline text-lg" >
                                                         <FiEdit />
                                                     </NavLink>

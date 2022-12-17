@@ -36,6 +36,7 @@ const Dashboard = ({user}) => {
                             <Route exact path="/" element={<WelcomeBanner user={user} />} />
                             <Route exact path="/persons" element={<PersonDetails/>} />
                             <Route exact path="/person/new" element={<Persons />} />
+                            <Route exact path="/person/update/:id" element={<Persons />} />
                             <Route exact path="/meetings" element={<h1>Meetings</h1>} />
 
                             <Route exact path="/allocation" element ={<SupervisorAllocation/>}/>

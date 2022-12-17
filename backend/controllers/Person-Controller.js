@@ -42,6 +42,22 @@ const getPerson = async (req, res) => {
         return res.status(200).json({person});
     }
 }
+//
+// one person getting function
+const getOnePerson = async (req, res) => {
+    let person;
+    try {
+        person = await Person.findOne({ _id: req.params.id });
+    } catch (error) {
+        console.log(error);
+    }
+
+    if (!person) {
+        return res.status(404).json({ message: 'Not Found' });
+    } else {
+        return res.status(200).json(person);
+    }
+}
 
 //person deleitng function by id
 const deletePerson = async (req, res,next) => {
@@ -91,3 +107,4 @@ exports.addPerson = addPerson;
 exports.getPerson = getPerson;
 exports.deletePerson = deletePerson;
 exports.updatePerson = updatePerson;
+exports.getOnePerson = getOnePerson

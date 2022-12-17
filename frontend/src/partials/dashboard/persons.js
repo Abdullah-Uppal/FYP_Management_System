@@ -1,24 +1,35 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios';
-
+import { useParams } from 'react-router-dom';
 
 const Persons = () => {
+    const { id } = useParams();
+    console.log(id);
 
-
-    const [Input, setPerson] = useState({
-        fname: "",
-        lname: "",
-        email: "",
-        contact: "",
-        gender: "Male",
-        password: ""
-    });
-
+    var [isUpdate, setIsUpdate] = useState(false);
+    useEffect(() => {
+    axios
+        .get("http://localhost:3000/person/getOnePerson/" + id)
+        .then((res) => {
+        setPerson(res.data);
+        setIsUpdate(true);
+        });
+    }, [])
+        
+    const [Input, setPerson] = useState(
+         {
+            _id: "",
+            fname: "",
+            lname: "",
+            email: "",
+            contact: "",
+            gender: "Male",
+            password: "",
+          }
+    );
 
     const addPersonHandler = async () => {
-
-
         await axios.post("http://localhost:3000/person/addPerson", {
             
             fname: String(Input.fname),
@@ -33,7 +44,23 @@ const Persons = () => {
 
             console.log(err);
         });
+    }
 
+    const updatePersonHandler = async (id) => {
+        await axios.put("http://localhost:3000/person/updatePerson/"+id, {
+            
+            fname: String(Input.fname),
+            lname: String(Input.lname),
+            email: String(Input.email),
+            contact: String(Input.contact),
+            gender: String(Input.gender),
+            password: String(Input.password)
+        }).then(res => res.data).then(data => {
+            console.log(data);
+        }).catch(err => {
+
+            console.log(err);
+        });
     }
 
     const handleChange = (e) => {
@@ -45,8 +72,14 @@ const Persons = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addPersonHandler(); 
-        alert("person Added Successfully");
+        if (!isUpdate) {
+            addPersonHandler();
+            alert("person Added Successfully");
+        }
+        else {
+            updatePersonHandler(Input._id);
+            alert("person updated Successfully");
+        }
     }
 
 
@@ -113,7 +146,7 @@ const Persons = () => {
                     </div>
 
                 </div>
-                <button onClick={handleSubmit}  type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Register a user</button>
+                <button onClick={handleSubmit}  type="button" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">{ isUpdate ?  'Update': 'Register'}</button>
             </form>
 
 
