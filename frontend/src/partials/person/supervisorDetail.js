@@ -9,7 +9,7 @@ const SupervisorDetail = () => {
     var [isUpdate, setIsUpdate] = useState(false);
     useEffect(() => {
         axios
-            .get("http://localhost:3000/person/getOneSupervisor/" + id)
+            .get("http://localhost:3000/supervisor/getOneSupervisor/" + id)
             .then((res) => {
                 setPerson(res.data);
                 setIsUpdate(true);
@@ -30,7 +30,7 @@ const SupervisorDetail = () => {
     );
 
     const addPersonHandler = async () => {
-        await axios.post("http://localhost:3000/person/addSupervisor", {
+        await axios.post("http://localhost:3000/supervisor/addSupervisor", {
 
             name: String(Input.name),
             email: String(Input.email),
@@ -48,7 +48,7 @@ const SupervisorDetail = () => {
     }
 
     const updatePersonHandler = async (id) => {
-        await axios.put("http://localhost:3000/person/updateSupervisor/" + id, {
+        await axios.put("http://localhost:3000/supervisor/updateSupervisor/" + id, {
             
             name: String(Input.name),
             email: String(Input.email),
