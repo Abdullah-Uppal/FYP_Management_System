@@ -7,6 +7,11 @@ const mongoose=require('mongoose');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+// for environment variables
+require('dotenv').config()
+
+
+
 var app = express();
 
 app.use(cors());
@@ -23,6 +28,16 @@ app.use('/supervisor', supervisorRouter);
 app.use('/format', formatRouter);
 app.use('/static', express.static('public'))
 mongoose.connect('mongodb+srv://admin:RxQjfN5LczLBfeDG@cluster0.vavaeql.mongodb.net/Fyp_Project_Final?retryWrites=true&w=majority').then(()=>{
+app.use('/project', projectRouter);
+
+var DATABASE = 'mongodb+srv://admin:RxQjfN5LczLBfeDG@cluster0.vavaeql.mongodb.net/Fyp_Project_Final?retryWrites=true&w=majority';
+
+if (process.env.DATABASE !== undefined) {
+    DATABASE = process.env.DATABASE;
+}
+
+mongoose.connect(DATABASE).then(()=>{
+
     console.log('connected to database');
 }
 ).catch(()=>{
