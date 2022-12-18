@@ -17,9 +17,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 const router=require('./routes/person-routes');
 const supervisorRouter=require('./routes/supervisor-routes');
+const formatRouter=require('./routes/formatupload-routes');
 app.use('/person', router);
 app.use('/supervisor', supervisorRouter);
-
+app.use('/format', formatRouter);
+app.use('/static', express.static('public'))
 mongoose.connect('mongodb+srv://admin:RxQjfN5LczLBfeDG@cluster0.vavaeql.mongodb.net/Fyp_Project_Final?retryWrites=true&w=majority').then(()=>{
     console.log('connected to database');
 }
