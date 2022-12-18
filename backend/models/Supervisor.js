@@ -1,20 +1,11 @@
 const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
 
-const PersonSchema=new Schema({
-    fname:{
+const SupervisorSchema=new Schema({
+    name:{
         type:String,
         required:true
     },
-    lname:{
-        type:String,
-        required:true
-    },
-    regno:{
-        type:String,
-        required:true
-    },
-    
     email:{
         type:String,
         required:true
@@ -23,18 +14,28 @@ const PersonSchema=new Schema({
         type:String,
         required:true
     },
+    
+    password:{
+        type:String,
+        required:true
+    }
+    ,
+    role:{
+        type:String,
+        required:true
+    }
+    ,
     gender:{
         type:String,
         required:true
-       
     },
-    password:{
+    
+    description:{
         type:String,
         required:true
     }
 
 });
 
-
-module.exports = mongoose.model("Person", PersonSchema);
+module.exports = mongoose.model("Supervisor", SupervisorSchema);
 

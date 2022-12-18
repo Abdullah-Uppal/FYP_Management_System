@@ -5,19 +5,20 @@ const addPerson = async (req, res) => {
 
     
     try {
-        const { fname, lname, email, contact, gender, password } = req.body;
-        console.log(req.body.lname);
+        const { fname, lname, regno,email, contact, gender, password } = req.body;
+        
         const persons = new Person({
             fname,
             lname,
+            regno,
             email,
             contact,
             gender,
             password
         });
-        console.log('Persons',persons.lname);
+        
         await persons.save();
-        return res.status(200).json(persons);
+        return res.status(200).json({message:"Person Added Successfully"});
        
     } catch (error) {
         console.log(error);
@@ -59,20 +60,20 @@ const getOnePerson = async (req, res) => {
     }
 }
 
-//person deleitng function by id
+//person deleting function by id
 const deletePerson = async (req, res,next) => {
-    //console.log("ye chieh upon ko -->"+req.params.personid);
+    
     try {
         const _id  = req.params.id;
-        console.log("ye chieh upon ko -->"+_id);
+       
         const persons = await Person.findById(_id);
         if (!persons) {
             return res.status(404).json({ message: 'No Persons found' });
-            console.log("ise uper nhi chala");
+           
         }else
     {        await persons.remove();
     }
-        return res.status(200).json({ persons });
+        return res.status(200).json({ message: 'Person Deleted Successfully' });
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: 'Internal server error' });
@@ -83,16 +84,17 @@ const deletePerson = async (req, res,next) => {
 const updatePerson = async (req, res) => {
     try {
         const { id } = req.params;
-        const { fname, lname, email, contact, gender, password } = req.body;
+        const { fname, lname, regno,email, contact, gender, password } = req.body;
         const persons = await Person.findByIdAndUpdate(id, {
                 fname,
                 lname,
+                regno,
                 email,
                 contact,
                 gender,
                 password
             }, { new: true });
-        return res.status(200).json({ persons });
+        return res.status(200).json({message:"Person Updated Successfully" });
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: 'Internal server error' });

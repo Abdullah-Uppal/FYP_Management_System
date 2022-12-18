@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Sidebar from '../partials/sidebar'
 import WelcomeBanner from '../partials/dashboard/welcomeBanner'
 import Header from '../partials/header'
+import Page404 from './page404'
 
 import {
     Routes,
@@ -10,9 +11,10 @@ import {
 } from 'react-router-dom';
 import SupervisorAllocation from './SupervisorAllocation'
 import Student from './person/student'
+import Supervisor from './person/supervisor'
 import StudentDetail from '../partials/person/studentDetail'
 import SupervisorDetail from '../partials/person/supervisorDetail'
-import Supervisor from './person/supervisor'
+
 
 const Dashboard = ({user}) => {
 
@@ -43,8 +45,16 @@ const Dashboard = ({user}) => {
                             <Route exact path="/person/student/update/:id" element={<StudentDetail/>} />
                             <Route exact path="/person/supervisor/update/:id" element={<SupervisorDetail/>} />
                             <Route exact path="/meetings" element={<h1>Meetings</h1>} />
+                            <Route exact path="/milestone" element={<h1>Milestones</h1>} />
 
-                            <Route exact path="/allocation" element ={<SupervisorAllocation/>}/>
+                            <Route exact path="/allocation/groups" element ={<h1>Hello Groups</h1>}/>
+                            <Route exact path="/allocation/supervisors" element ={<SupervisorAllocation/>}/>
+                            <Route exact path="/allocation/projects" element ={<h1>Hello projects</h1>}/>
+                            <Route exact path="/group" element ={<h1>Hello Groups</h1>}/>
+                            <Route exact path="/uploadformat" element ={<h1>Hello Format</h1>}/>
+                            <Route exact path="/projects/postIdea" element ={<h1>Hello Post Idea</h1>}/>
+                            <Route exact path="/projects/bookIdeas" element ={<h1>Hello Book Ideas</h1>}/>
+                            <Route exact path="/*" element ={<Page404/>}/>
                         </Routes>
                     </div>
                 </main>

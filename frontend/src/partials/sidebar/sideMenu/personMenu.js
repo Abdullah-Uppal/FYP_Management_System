@@ -11,6 +11,7 @@ const PersonMenu = ({handleClick,open,sidebarExpanded,setSidebarExpanded}) => {
             path: '/person/supervisor',
             title: 'Supervisor'
         }
+
     ]
     return (
     <SideMenu title={'Persons'} pathname={'/persons'} checkUrl={'/persons'} checkPathName={'persons'} handleClick={handleClick} open={open} sidebarExpanded={sidebarExpanded} setSidebarExpanded={setSidebarExpanded} subMenus={subMenus}/>
