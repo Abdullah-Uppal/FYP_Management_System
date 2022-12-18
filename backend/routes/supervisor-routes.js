@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-const supervisorController=require('../controllers/Supervisor-controller');
+const supervisorController=require('../controllers/Supervisor-Controller');
 
 
 

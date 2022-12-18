@@ -1,7 +1,6 @@
 const express=require('express');
 const router=express.Router();
 const PersonController=require('../controllers/Person-Controller');
-const supervisorController=require('../controllers/supervisor-controller');
 
 //persom or student same
 router.post('/addPerson',PersonController.addPerson);
