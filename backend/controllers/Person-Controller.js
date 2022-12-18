@@ -6,7 +6,7 @@ const addPerson = async (req, res) => {
     
     try {
         const { fname, lname, regno,email, contact, gender, password } = req.body;
-        console.log(req.body.lname);
+        
         const persons = new Person({
             fname,
             lname,
@@ -16,9 +16,9 @@ const addPerson = async (req, res) => {
             gender,
             password
         });
-        console.log('Persons',persons.lname);
+        
         await persons.save();
-        return res.status(200).json(persons);
+        return res.status(200).json({message:"Person Added Successfully"});
        
     } catch (error) {
         console.log(error);
@@ -60,9 +60,9 @@ const getOnePerson = async (req, res) => {
     }
 }
 
-//person deleitng function by id
+//person deleting function by id
 const deletePerson = async (req, res,next) => {
-    //console.log("ye chieh upon ko -->"+req.params.personid);
+    
     try {
         const _id  = req.params.id;
        
@@ -73,7 +73,7 @@ const deletePerson = async (req, res,next) => {
         }else
     {        await persons.remove();
     }
-        return res.status(200).json({ persons });
+        return res.status(200).json({ message: 'Person Deleted Successfully' });
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: 'Internal server error' });
@@ -94,7 +94,7 @@ const updatePerson = async (req, res) => {
                 gender,
                 password
             }, { new: true });
-        return res.status(200).json({ persons });
+        return res.status(200).json({message:"Person Updated Successfully" });
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: 'Internal server error' });

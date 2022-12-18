@@ -26,7 +26,7 @@ const Student = () => {
 
         } catch
         (error) {
-            console.log(error)
+            console.log(error.message)
         }
     };
     const handleDelete = async (id) => {

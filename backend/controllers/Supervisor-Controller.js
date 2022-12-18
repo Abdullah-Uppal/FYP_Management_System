@@ -4,8 +4,8 @@ const Supervisor=require('../models/Supervisor');
 const addSupervisor = async (req, res) => {
     
         try {
+           
             const { name, email, contact, password,role,gender,description } = req.body;
-            console.log(req.body.name);
             const supervisors = new Supervisor({
                     name,
                     email,
@@ -15,9 +15,8 @@ const addSupervisor = async (req, res) => {
                     gender,
                     description
             });
-            console.log('Supervisors',supervisors.name);
             await supervisors.save();
-            return res.status(200).json(supervisors);
+            return res.status(200).json({message:'Ok'});
 
         } catch (error) {
             console.log(error);
@@ -63,7 +62,7 @@ const updateSupervisor = async (req, res) => {
     const { name, email, contact, password,role,gender,description } = req.body;
     let supervisor;
     try {
-        supervisor = await Supervisor.findById(req.params.id,
+        supervisor = await Supervisor.findByIdAndUpdate(req.params.id,
         {
             name,
             email,
@@ -75,7 +74,7 @@ const updateSupervisor = async (req, res) => {
 
         }
         ,{ new: true });
-        return res.status(200).json({ persons });
+        return res.status(200).json({ message:'Ok' });
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: 'Internal server error' });

@@ -12,26 +12,25 @@ const Supervisor = () => {
 
     useEffect(() => {
         getPersons().then((data) => {
-            setPersons(data.person);
+            setPersons(data.supervisor);
         });
     }, []);
 
-    const url = "http://localhost:3000/person/getSupervisor";
+    const url = "http://localhost:3000/supervisor/getSupervisor";
     const getPersons = async () => {
-        console.log('data fetch first')
+        
         try {
             return await axios.get(url).then((res) =>
                 res.data
             );
-
-
+            
         } catch
         (error) {
             console.log(error)
         }
     };
     const handleDelete = async (id) => {
-        const url = "http://localhost:3000/person/deleteSupervisor" + id;
+        const url = "http://localhost:3000/supervisor/deleteSupervisor/" + id;
         await axios.delete(url).then(res => {
             setPersons(persons.filter((value, index, arr) => { return value._id !== id }));
         });
@@ -87,16 +86,16 @@ const Supervisor = () => {
                                     </thead>
 
                                     <tbody className="bg-white">
-                                        {persons.map((person) => (
+                                        {persons && persons.map((person) => (
                                             <tr id={person._id} key={persons.indexOf(person) + 1}>
                                                 <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
                                                     {persons.indexOf(person) + 1}
                                                 </td>
                                                 <td className="p-2 text-sm md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
-                                                    {person.fname} {person.lname}
+                                                    {person.name}
                                                 </td>
                                                 <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
-                                                    {person.regno}
+                                                    {person.email}
                                                 </td>
                                                 <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
                                                     <div className="text-sm leading-5 text-gray-900">
@@ -110,7 +109,7 @@ const Supervisor = () => {
                                                 </td>
                                                 <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
                                                     <div className="text-sm leading-5 text-gray-900">
-                                                        {person.email}
+                                                        {person.role}
                                                     </div>
                                                 </td>
                                                 <td className=" whitespace-no-wrap border-b border-gray-200">
