@@ -22,10 +22,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 const router=require('./routes/person-routes');
 const supervisorRouter=require('./routes/supervisor-routes');
+const projectRouter = require('./routes/projectroutes');
 app.use('/person', router);
 app.use('/supervisor', supervisorRouter);
+app.use('/project', projectRouter);
 
-const DATABASE = 'mongodb+srv://admin:RxQjfN5LczLBfeDG@cluster0.vavaeql.mongodb.net/Fyp_Project_Final?retryWrites=true&w=majority';
+var DATABASE = 'mongodb+srv://admin:RxQjfN5LczLBfeDG@cluster0.vavaeql.mongodb.net/Fyp_Project_Final?retryWrites=true&w=majority';
 
 if (process.env.DATABASE !== undefined) {
     DATABASE = process.env.DATABASE;
