@@ -1,12 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Delete from '../partials/buttons/Delete'
 import Edit from '../partials/buttons/Edit.js'
+import axios from 'axios'
 
 const SupervisorAllocation = () => {
   const [sup,setsupervisor] = useState(0)
   const [group,setgroups] = useState(0)
   const [cosupervisor,setcosupervisor] = useState(0)
+  const [Super,getSupervisor] = useState([])
 
+  const url = "http://localhost:3000/supervisor/getSupervisor";
+
+  useEffect(() => {
+    getSupervisors().then((data) => {
+        getSupervisor(data.supervisor);
+    });
+}, []);
+  const getSupervisors = async () => {
+        console.log('data fetch first')
+        try {
+            return await axios.get(url).then((res) =>
+                res.data
+            );
+
+
+        } catch
+        (error) {
+            console.log(error.message)
+        }
+    };
   
     const heading = [{
         Advisor_Name: "Advisor Name",
@@ -17,7 +39,7 @@ const SupervisorAllocation = () => {
         Delete : "Delete",
     }]
 
-    const data = [
+    const datas = [
         {
             Name : "Ali Ahemd",
             Project_Title : "Web Application",
@@ -72,7 +94,7 @@ const Supervisors= ({supervisor}) =>{
       <option value="0">Select the Supervisor</option>
         {
           supervisor.map((supervisor,index) =>{
-            return <option key={index+1} value ={index+1}>{supervisor.id}</option>
+            return <option key={index+1} value ={index+1} >{supervisor.name}</option>
           })
         }
       </select>
@@ -108,7 +130,7 @@ const StudentGroups = ({groups}) =>{
 const CoSupervisor = ({cosupervisor} )=>{
   return(
       <>
-        <select className='select select-info w-full min-w-[10rem] mt-5  border-zinc-700' onChange={onChangeCoSupervisor}>
+        <select className='select select-info w-full min-w-[10rem] mt-5  border-zinc-700' onChange={onChangeCoSupervisor} >
       <option value={0}>Select the AdvisorRole</option>
         {
           cosupervisor.map((cosupervisor,index) =>{
@@ -138,7 +160,7 @@ const onClick = () =>{
 }
   return (
     <div className='h-auto w-auto bg-white-200'>
-    <Supervisors supervisor={Supervisor}/>
+    <Supervisors supervisor={Super}/>
     <StudentGroups groups={Groups}/>
     <CoSupervisor cosupervisor={CoSupervisors}/>
     <button className="btn mt-5 rounded-md  text-white bg-indigo-600 hover:bg-indigo-500 w-40" onClick={onClick}>Submit</button>
@@ -162,7 +184,7 @@ const onClick = () =>{
     </thead> 
     <tbody>
       
-      {data.map(data =>{
+      {datas.map(data =>{
         return(
            <tr key={data.id}>
             
