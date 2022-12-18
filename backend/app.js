@@ -28,6 +28,12 @@ app.use('/supervisor', supervisorRouter);
 app.use('/format', formatRouter);
 app.use('/static', express.static('public'))
 mongoose.connect('mongodb+srv://admin:RxQjfN5LczLBfeDG@cluster0.vavaeql.mongodb.net/Fyp_Project_Final?retryWrites=true&w=majority').then(()=>{
+    console.log('connected to database');
+}
+).catch(()=>{
+    console.log('error connecting to database');
+});
+
 app.use('/project', projectRouter);
 
 var DATABASE = 'mongodb+srv://admin:RxQjfN5LczLBfeDG@cluster0.vavaeql.mongodb.net/Fyp_Project_Final?retryWrites=true&w=majority';
