@@ -147,7 +147,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                                     );
                                 }}
                             </SidebarLinkGroup>
-                            <SidebarLinkGroup activecondition={pathname === '/uploadformat' || pathname.includes('uploadformat')}>
+                            <SidebarLinkGroup activecondition={pathname === '/formats' || pathname.includes('formats')}>
                                 {(handleClick, open) => {
                                     return (
                                         <FormatUploaderMenu handleClick={handleClick} open={open} sidebarExpanded={sidebarExpanded} setSidebarExpanded={setSidebarExpanded} />

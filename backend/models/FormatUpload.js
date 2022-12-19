@@ -1,18 +1,18 @@
 const mongoose=require('mongoose');
 const Schema=mongoose.Schema;
 
-const FormatUploadSchema = Schema({
+const FormatUploadSchema = new Schema({
     title:{
         type:String,
-        required:false,
+        required:true,
     },
     description:{
         type:String,
-        required:false,
+        required:true,
     },
     file:{
         type:String,
-        required:false,
+        required:true,
     },
 });
 
