@@ -14,6 +14,8 @@ import Student from './person/student'
 import Supervisor from './person/supervisor'
 import StudentDetail from '../partials/person/studentDetail'
 import SupervisorDetail from '../partials/person/supervisorDetail'
+import FormatUpload from './formatUpload'
+import ShowPdf from '../partials/showPdf'
 
 
 const Dashboard = ({user}) => {
@@ -51,9 +53,10 @@ const Dashboard = ({user}) => {
                             <Route exact path="/allocation/supervisors" element ={<SupervisorAllocation/>}/>
                             <Route exact path="/allocation/projects" element ={<h1>Hello projects</h1>}/>
                             <Route exact path="/group" element ={<h1>Hello Groups</h1>}/>
-                            <Route exact path="/uploadformat" element ={<h1>Hello Format</h1>}/>
+                            <Route exact path="/uploadformat" element ={<FormatUpload/>}/>
                             <Route exact path="/projects/postIdea" element ={<h1>Hello Post Idea</h1>}/>
                             <Route exact path="/projects/bookIdeas" element ={<h1>Hello Book Ideas</h1>}/>
+                            <Route exact path="/showpdf/:file" element ={<ShowPdf/>}/>
                             <Route exact path="/*" element ={<Page404/>}/>
                         </Routes>
                     </div>

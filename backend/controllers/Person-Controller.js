@@ -2,7 +2,6 @@ const Person=require('../models/Person');
 
 //person adding function
 const addPerson = async (req, res) => {
-
     
     try {
         const { fname, lname, regno,email, contact, gender, password } = req.body;
