@@ -27,7 +27,7 @@ const projectRouter=require('./routes/projectroutes');
 app.use('/person', router);
 app.use('/supervisor', supervisorRouter);
 app.use('/format', formatRouter);
-app.use('/static', express.static('public'))
+app.use('/assets', express.static('assets'))
 app.use('/project', projectRouter);
 
 var DATABASE = 'mongodb+srv://admin:RxQjfN5LczLBfeDG@cluster0.vavaeql.mongodb.net/Fyp_Project_Final?retryWrites=true&w=majority';
