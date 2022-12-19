@@ -5,6 +5,7 @@ const Schema=mongoose.Schema;
 const ProjectSchema=new Schema({
   title: { type: String, required: true },
   description: { type: String },
+  proposalDocument: { type: String, required: true},
   isAccepted: { type: Boolean, default: false },
   postedBy: { type: Schema.Types.ObjectId, refPath: "modelType" },
   acceptedRejectedBy: { type: Schema.Types.ObjectId, refPath: "modelType" },

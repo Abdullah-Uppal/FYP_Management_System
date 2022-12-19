@@ -1,13 +1,47 @@
 const Project = require('../models/Project');
 
+var multer = require('multer')
+
+// FOR FILE UPLOADS
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+    cb(null,'public')
+  },
+  filename: function (req, file, cb) {
+    cb(null,file.originalname)
+  }
+})
+
+var upload = multer({ storage: storage }).single('file')
+
+const uploadFile = async (req, res) => {
+    try {
+        upload(req, res, function (err) {
+            
+            if (err instanceof multer.MulterError) {
+                return res.status(500).json(err)
+            } else if (err) {
+                return res.status(500).json(err)
+            }
+            return res.status(200).send({message:'Ok'})
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+}
+
+
+// CONTROLLERS
 const create = async (req, res) => {
   try {
-    const { title, description, isAccepted, postedBy, acceptedRejectedBy } =
+    const { title, description, proposalDocument, isAccepted, postedBy, acceptedRejectedBy } =
       req.body;
 
     const project = new Project({
       title,
       description,
+      proposalDocument,
       isAccepted,
       postedBy,
       acceptedRejectedBy,
@@ -83,3 +117,4 @@ exports.allProjects = all;
 exports.oneProject = one;
 exports.deleteProject = remove;
 exports.updateProject = update;
+exports.uploadFile = uploadFile
