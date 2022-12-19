@@ -16,6 +16,8 @@ import StudentDetail from '../partials/person/studentDetail'
 import SupervisorDetail from '../partials/person/supervisorDetail'
 import FormatUpload from './formatUpload'
 import Formats from './formats'
+import PostIdea from '../partials/postIdea'
+import IdeasList from './ideasList'
 
 
 const Dashboard = ({user}) => {
@@ -55,8 +57,8 @@ const Dashboard = ({user}) => {
                             <Route exact path="/group" element ={<h1>Hello Groups</h1>}/>
                             <Route exact path="/formats" element ={<Formats/>}/>
                             <Route exact path="/formats/upload" element ={<FormatUpload/>}/>
-                            <Route exact path="/projects/postIdea" element ={<h1>Hello Post Idea</h1>}/>
-                            <Route exact path="/projects/bookIdeas" element ={<h1>Hello Book Ideas</h1>}/>
+                            <Route exact path="/project/new" element ={<PostIdea />}/>
+                            <Route exact path="/project/all" element ={<IdeasList/>}/>
                             <Route exact path="/*" element ={<Page404/>}/>
                         </Routes>
                     </div>

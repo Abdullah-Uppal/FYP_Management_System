@@ -154,7 +154,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                                     );
                                 }}
                             </SidebarLinkGroup>
-                            <SidebarLinkGroup activecondition={pathname === '/projects' || pathname.includes('projects')}>
+                            <SidebarLinkGroup activecondition={pathname === '/project/all' || pathname.includes('projects')}>
                                 {(handleClick, open) => {
                                     return (
                                         <ProjectIdeas handleClick={handleClick} open={open} sidebarExpanded={sidebarExpanded} setSidebarExpanded={setSidebarExpanded} />

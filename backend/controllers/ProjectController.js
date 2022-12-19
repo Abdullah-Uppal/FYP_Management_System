@@ -5,7 +5,7 @@ var multer = require('multer')
 // FOR FILE UPLOADS
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-    cb(null,'public')
+    cb(null,'assets')
   },
   filename: function (req, file, cb) {
     cb(null,file.originalname)
@@ -35,16 +35,15 @@ const uploadFile = async (req, res) => {
 // CONTROLLERS
 const create = async (req, res) => {
   try {
-    const { title, description, proposalDocument, isAccepted, postedBy, acceptedRejectedBy } =
+    console.log(req.body);
+    const { title, description, proposalDocument,  postedBy } =
       req.body;
 
     const project = new Project({
       title,
       description,
       proposalDocument,
-      isAccepted,
       postedBy,
-      acceptedRejectedBy,
     });
     await project.save();
     return res.status(200).json({

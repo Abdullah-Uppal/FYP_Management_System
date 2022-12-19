@@ -56,6 +56,7 @@ const FormatUpload = () => {
         }
         const formData = new FormData();
         formData.append('file',file);
+        formData.append('name','file');
         const url = 'http://localhost:3000/format/uploadfile'
         uploadFile(formData,url)
         const url1  = 'http://localhost:3000/format/addformat'
@@ -73,7 +74,7 @@ const FormatUpload = () => {
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-first-name">
                             Title
                         </label>
-                        <input value={Input.title} onChange={handleChange} name='title' className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-title" type="text" placeholder="Jane" />
+                        <input value={Input.title} onChange={handleChange} name='title' className="appearance-none block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-title" type="text" placeholder="Title" required/>
 
                     </div>
                 </div>
@@ -82,7 +83,7 @@ const FormatUpload = () => {
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="description">
                             description
                         </label>
-                        <textarea value={Input.description} onChange={handleChange} name='description' className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="description" placeholder="Description........" />
+                        <textarea value={Input.description} onChange={handleChange} name='description' className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="description" placeholder="Description........" required />
                     </div>
                 </div>
                 <div className="flex flex-wrap -mx-3 mb-2">
