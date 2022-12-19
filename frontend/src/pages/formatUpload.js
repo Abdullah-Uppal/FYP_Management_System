@@ -25,8 +25,6 @@ const FormatUpload = () => {
             .then((res) => {
                 if(res.status === 200){
                     console.log('File Uploaded Successfully')
-                    setAlert({ redirect: '/showpdf/'+file.name, message: 'Format Updated Successfully'});
-                    setIsAlert(true);
                 }
             });
         } catch (err) {
@@ -58,10 +56,12 @@ const FormatUpload = () => {
         }
         const formData = new FormData();
         formData.append('file',file);
-        const url = 'http://localhost:3000/format/uploadFile'
+        const url = 'http://localhost:3000/format/uploadfile'
         uploadFile(formData,url)
-        const url1  = 'http://localhost:3000/format/addFormat'
+        const url1  = 'http://localhost:3000/format/addformat'
         uploadFile(d,url1)
+        setAlert({ redirect: '/formats', message: 'Format Updated Successfully'});
+        setIsAlert(true);
     }
 
     return (

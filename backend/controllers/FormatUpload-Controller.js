@@ -6,7 +6,7 @@ var storage = multer.diskStorage({
     cb(null,'public')
   },
   filename: function (req, file, cb) {
-    cb(null,file.originalname )
+    cb(null,file.originalname)
   }
 })
 var upload = multer({ storage: storage }).single('file')
@@ -21,7 +21,7 @@ const uploadFile = async (req, res) => {
             } else if (err) {
                 return res.status(500).json(err)
             }
-            return res.status(200).send(req.file)
+            return res.status(200).send({message:'Ok'})
         })
     } catch (error) {
         console.log(error);
@@ -34,7 +34,7 @@ const uploadFile = async (req, res) => {
 const addFormatUpload = async (req, res) => {
     try {
         const { title, description, file } = req.body;
-        console.log(req.body);
+        
         const formatuploads = new FormatUpload({
             title,
             description,
@@ -50,23 +50,22 @@ const addFormatUpload = async (req, res) => {
 
 
 //formatupload getting function
-const getFormatUpload = async (req, res) => {
-    let formatupload;
-    console.log(req.params.file);
+const getFormatData = async (req, res) => {
     try {
-        formatupload = await FormatUpload.findOne({ file: req.params.file });
-    } catch (error) {
-        console.log(error);
+      console.log('getFormatData')
+      const formats = await FormatUpload.find();
+      console.log('formats',formats)
+      return res.status(200).json(formats);
     }
-
-    if (!formatupload) {
-        return res.status(404).json({ message: 'No FormatUploads found' });
-    } else {
-        return res.status(200).json({formatupload});
+    catch (err) {
+      console.log(err);
+      res.status(500).json({
+        message: "Internal Server Error",
+      })
     }
-}
+  }
 
 
 exports.addFormatUpload = addFormatUpload;
-exports.getFormatUpload = getFormatUpload;
+exports.getFormatData = getFormatData;
 exports.uploadFile = uploadFile;
