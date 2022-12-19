@@ -7,5 +7,8 @@ const FormatUploadController=require('../controllers/FormatUpload-Controller');
 router.post('/addformat',FormatUploadController.addFormatUpload);
 router.get('/all',FormatUploadController.getFormatData);
 router.post('/uploadfile',FormatUploadController.uploadFile);
+router.delete('/:id',FormatUploadController.removeFormatUpload);
+router.delete('/removefile/:id',FormatUploadController.removeSync);
+
 
 module.exports=router;

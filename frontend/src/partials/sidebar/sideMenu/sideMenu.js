@@ -42,8 +42,7 @@ const SideMenu = ({ title, pathname, checkUrl, checkPathName, handleClick, open,
     
     return (
         <React.Fragment>
-            <NavLink
-                href="#0"
+            <div
                 className={`block text-slate-200 hover:text-white truncate transition duration-150 ${(pathname === checkUrl || pathname.includes(checkPathName)) && 'hover:text-slate-200'
                     }`}
                 onClick={(e) => {
@@ -60,7 +59,7 @@ const SideMenu = ({ title, pathname, checkUrl, checkPathName, handleClick, open,
                         </NavLink>
 
                 }
-            </NavLink>
+            </div>
             {subMenus.length > 0 &&
                 <div className="lg:hidden lg:sidebar-expanded:block 2xl:block">
                     <ul className={`pl-9 mt-1 ${!open && 'hidden'}`}>

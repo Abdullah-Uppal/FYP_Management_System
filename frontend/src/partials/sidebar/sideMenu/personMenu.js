@@ -3,18 +3,22 @@ import SideMenu from './sideMenu';
 const PersonMenu = ({handleClick,open,sidebarExpanded,setSidebarExpanded}) => {
   
     const subMenus = [
-        {
-            path: '/person/student',
-            title: 'Student'
+        {   
+            path: '/user/advisors',
+            title: 'Advisor',
         },
-        {
-            path: '/person/supervisor',
-            title: 'Supervisor'
-        }
-
+        {   
+            path: '/user/students',
+            title: 'Students',
+        },
+        {   
+            path: '/user/groups',
+            title: 'Groups',
+        },
     ]
-    return (
-    <SideMenu title={'Persons'} pathname={'/persons'} checkUrl={'/persons'} checkPathName={'persons'} handleClick={handleClick} open={open} sidebarExpanded={sidebarExpanded} setSidebarExpanded={setSidebarExpanded} subMenus={subMenus}/>
+
+  return (
+    <SideMenu title={'Users'} pathname={'/users'} checkUrl={'/users'} checkPathName={'users'} handleClick={handleClick} open={open} sidebarExpanded={sidebarExpanded} setSidebarExpanded={setSidebarExpanded} subMenus={subMenus}/>
   )
 }
 
