@@ -48,7 +48,7 @@ const SupervisorDetail = () => {
         }).then(res => {
 
             if (res.status === 200) {
-                setAlert({ redirect: '/person/supervisor', message: Input.role + " Added Successfully" })
+                setAlert({ redirect: '/user/advisors', message: Input.role + " Added Successfully" })
                 setIsAlert(true)
             }
 
@@ -72,7 +72,7 @@ const SupervisorDetail = () => {
 
             if (res.status === 200) {
 
-                setAlert({ redirect: '/person/supervisor', message: Input.role + " updated Successfully" })
+                setAlert({ redirect: '/user/advisors', message: Input.role + " updated Successfully" })
                 setIsAlert(true)
             }
         }

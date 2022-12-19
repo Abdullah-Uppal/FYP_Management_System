@@ -1,19 +1,20 @@
 import React from 'react'
 import SideMenu from './sideMenu';
-const PersonMenu = ({handleClick,open,sidebarExpanded,setSidebarExpanded}) => {
-  
+
+const UserMenu = ({handleClick,open,sidebarExpanded,setSidebarExpanded}) => {
+
     const subMenus = [
         {   
             path: '/user/advisors',
             title: 'Advisor',
         },
         {   
-            path: '/user/students',
-            title: 'Students',
-        },
-        {   
             path: '/user/groups',
             title: 'Groups',
+        },
+        {   
+            path: '/user/students',
+            title: 'Students',
         },
     ]
 
@@ -22,4 +23,4 @@ const PersonMenu = ({handleClick,open,sidebarExpanded,setSidebarExpanded}) => {
   )
 }
 
-export default PersonMenu
+export default UserMenu

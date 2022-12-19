@@ -4,11 +4,11 @@ import DashboardMenu from './sidebar/sideMenu/dashboardMenu';
 import PersonMenu from './sidebar/sideMenu/personMenu';
 import AllocationMenu from './sidebar/sideMenu/allocationMenu';
 import SidebarLinkGroup from './sidebar/sideMenu/sidebarLinkGroup';
-import GroupMenu from './sidebar/sideMenu/groupMenu';
 import FormatUploaderMenu from './sidebar/sideMenu/formatUploaderMenu';
 import ProjectIdeas from './sidebar/sideMenu/projectIdeas';
 import MeetingMenu from './sidebar/sideMenu/meetingMenu';
 import MilestoneMenu from './sidebar/sideMenu/milestoneMenu';
+
 
 
 
@@ -126,7 +126,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                                     );
                                 }}
                             </SidebarLinkGroup>
-                            <SidebarLinkGroup activecondition={pathname === '/persons' || pathname.includes('persons')}>
+                            <SidebarLinkGroup activecondition={pathname === '/users' || pathname.includes('users')}>
                                 {(handleClick, open) => {
                                     return (
                                         <PersonMenu handleClick={handleClick} open={open} sidebarExpanded={sidebarExpanded} setSidebarExpanded={setSidebarExpanded} />
@@ -137,13 +137,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                                 {(handleClick, open) => {
                                     return (
                                         <AllocationMenu handleClick={handleClick} open={open} sidebarExpanded={sidebarExpanded} setSidebarExpanded={setSidebarExpanded} />
-                                    );
-                                }}
-                            </SidebarLinkGroup>
-                            <SidebarLinkGroup activecondition={pathname === '/group' || pathname.includes('group')}>
-                                {(handleClick, open) => {
-                                    return (
-                                        <GroupMenu handleClick={handleClick} open={open} sidebarExpanded={sidebarExpanded} setSidebarExpanded={setSidebarExpanded} />
                                     );
                                 }}
                             </SidebarLinkGroup>

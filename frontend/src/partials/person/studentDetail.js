@@ -48,7 +48,7 @@ const StudentDetail = () => {
         }).then(res => {
                 
                 if (res.status === 200) {
-                    setAlert({redirect:"/person/student",message:"Student Added Successfully"})
+                    setAlert({redirect:"/user/students",message:"Student Added Successfully"})
                     setIsAlert(true)
                 }
         }).catch(err => {
@@ -70,7 +70,7 @@ const StudentDetail = () => {
         }).then(res => {
                 
                 if (res.status === 200) {
-                    setAlert({redirect:"/person/student",message:"Student Updated Successfully"})
+                    setAlert({redirect:"/user/students",message:"Student Updated Successfully"})
                     setIsAlert(true)
                     
 
