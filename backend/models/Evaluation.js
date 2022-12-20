@@ -7,7 +7,8 @@ const Schema = mongoose.Schema;
 const EvaluationSchema = new Schema({
   name: { type: String, required: true }, 
   totalMarks: { type: Number, required: true },
-  totalWeightage: { type: Number, required: true }
+  totalWeightage: { type: Number, required: true },
+  project: { type: Schema.Types.ObjectId, ref: "Project" }
 });
 
 

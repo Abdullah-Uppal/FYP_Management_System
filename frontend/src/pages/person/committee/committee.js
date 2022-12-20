@@ -6,29 +6,44 @@ import UiTable from "./uiTable";
 const Committee = () => {
   const [advisors, setAdvisors] = useState([]);
   const [committee, setCommittee] = useState([]);
-
+  //   let arr = [];
 
   useEffect(() => {
     getAdvisors().then((data) => {
       getCommittee(data.supervisor);
     });
-   
   }, []);
 
   const committee_url = "http://localhost:3000/committee/getMembers";
-    const getCommittee = async (advisors) => {
-        axios.get(committee_url).then((res) => {
-            // console.log(res.data)
-            console.log(res.data.members.length)
-            res.data.members.map((member) => {
-                setCommittee(advisors.filter((advisor) => advisor._id === member));
-                setAdvisors(advisors.filter((advisor) => advisor._id !== member));
-                // console.log(committee)
-                // console.log(advisors)
-            })
-            //setCommittee([...advisors.filter,...advisors.filter((advisor) => advisor._id !== res.data.committee._id)]);
-        })
-    }  
+  const getCommittee = async (advisors) => {
+    axios.get(committee_url).then((res) => {
+      // console.log(res.data)
+      res.data.members.map((member) => {
+        // arr.push(advisors.filter((advisor) => advisor._id === member));
+        console.log("member", member);
+
+        console.log(
+          "advisor",
+          advisors.filter((advisor) => advisor._id === member)
+        );
+        setCommittee([
+          ...committee,
+          ...advisors.filter((advisor) => advisor._id === member),
+        ]);
+        setAdvisors([
+          //   ...advisors,
+          ...advisors.filter((advisor) => advisor._id !== member),
+        ]);
+        // console.log(committee)
+        // console.log(advisors)
+      });
+
+      //   console.log(res.data.members);
+      //   setCommittee(res.data.members);
+      //   console.log("arr", arr);
+      //setCommittee([...advisors.filter,...advisors.filter((advisor) => advisor._id !== res.data.committee._id)]);
+    });
+  };
 
   const url = "http://localhost:3000/supervisor/getSupervisor";
   const getAdvisors = async () => {
@@ -38,27 +53,28 @@ const Committee = () => {
       console.log(error);
     }
   };
-    const add_committee_url = "http://localhost:3000/committee/addMember";
-    const addCommittee = async (id) => {
-    
-        axios.post(add_committee_url, {id:id}).then((res) => {
-            console.log(res);
-        })
-        .catch((err) => {
-            console.log(err);
-        })
-    }
-    const delete_committee_url = "http://localhost:3000/committee/deleteMember";
-    const deleteCommittee = async (id) => {
-        
-            axios.post(delete_committee_url, {id:id}).then((res) => {
-                console.log(res);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    }
-
+  const add_committee_url = "http://localhost:3000/committee/addMember";
+  const addCommittee = async (id) => {
+    axios
+      .post(add_committee_url, { id: id })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const delete_committee_url = "http://localhost:3000/committee/deleteMember/";
+  const deleteCommittee = async (id) => {
+    axios
+      .post(delete_committee_url + id)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const handleAdd = (id) => {
     setCommittee([
@@ -67,8 +83,7 @@ const Committee = () => {
     ]);
     setAdvisors(advisors.filter((advisor) => advisor._id !== id));
     console.log(id);
-    addCommittee(id);    
-    
+    addCommittee(id);
   };
   const handleDelete = (id) => {
     console.log(id);
@@ -90,12 +105,12 @@ const Committee = () => {
         />
       )}
       {advisors && advisors.length > 0 && (
-      <UiTable
-        title={"Add Supervisor or Co-Supervisor to committee"}
-        objs={advisors}
-        handleEvent={handleAdd}
-        btnTitle={"Add"}
-      />
+        <UiTable
+          title={"Add Supervisor or Co-Supervisor to committee"}
+          objs={advisors}
+          handleEvent={handleAdd}
+          btnTitle={"Add"}
+        />
       )}
     </div>
   );
