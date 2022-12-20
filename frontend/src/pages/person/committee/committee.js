@@ -17,31 +17,15 @@ const Committee = () => {
   const committee_url = "http://localhost:3000/committee/getMembers";
   const getCommittee = async (advisors) => {
     axios.get(committee_url).then((res) => {
-      // console.log(res.data)
-      res.data.members.map((member) => {
-        // arr.push(advisors.filter((advisor) => advisor._id === member));
-        console.log("member", member);
-
-        console.log(
-          "advisor",
-          advisors.filter((advisor) => advisor._id === member)
-        );
-        setCommittee([
-          ...committee,
-          ...advisors.filter((advisor) => advisor._id === member),
-        ]);
-        setAdvisors([
-          //   ...advisors,
-          ...advisors.filter((advisor) => advisor._id !== member),
-        ]);
-        // console.log(committee)
-        // console.log(advisors)
+      // setAdvisors(advisors);
+      setCommittee(res.data.members);
+      // start filtering out members in committee
+      res.data.members.forEach(element => {
+          advisors = advisors.filter(each => each._id !== element._id)
       });
-
-      //   console.log(res.data.members);
-      //   setCommittee(res.data.members);
-      //   console.log("arr", arr);
-      //setCommittee([...advisors.filter,...advisors.filter((advisor) => advisor._id !== res.data.committee._id)]);
+      setAdvisors(advisors);
+    }).catch(err => {
+      console.log(err);
     });
   };
 
@@ -67,7 +51,7 @@ const Committee = () => {
   const delete_committee_url = "http://localhost:3000/committee/deleteMember/";
   const deleteCommittee = async (id) => {
     axios
-      .post(delete_committee_url + id)
+      .delete(delete_committee_url + id)
       .then((res) => {
         console.log(res);
       })
