@@ -9,4 +9,4 @@ const MilestoneSchema = new Schema({
   project: { type: Schema.Types.ObjectId, ref: "Supervisor" }
 });
 
-const Milestone = mongoose.model("Milestone", MilestoneSchema);
+module.exports = mongoose.model("Milestone", MilestoneSchema);

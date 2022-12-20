@@ -11,4 +11,4 @@ const MeetingSchema = new Schema({
   happened: { type: Boolean, default: false }
 });
 
-const Meeting = mongoose.model("Meeting", MeetingSchema);
+module.exports = mongoose.model("Meeting", MeetingSchema);
