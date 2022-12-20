@@ -7,18 +7,26 @@ const Committee = () => {
   const [advisors, setAdvisors] = useState([]);
   const [committee, setCommittee] = useState([]);
 
+
   useEffect(() => {
     getAdvisors().then((data) => {
-      setAdvisors(data.supervisor);
+      getCommittee(data.supervisor);
     });
-    getCommittee();
+   
   }, []);
 
-
   const committee_url = "http://localhost:3000/committee/getMembers";
-    const getCommittee = async () => {
+    const getCommittee = async (advisors) => {
         axios.get(committee_url).then((res) => {
-            setCommittee(res.data.committee,...advisors.filter((advisor) => advisor._id !== res.data.committee._id));
+            // console.log(res.data)
+            console.log(res.data.members.length)
+            res.data.members.map((member) => {
+                setCommittee(advisors.filter((advisor) => advisor._id === member));
+                setAdvisors(advisors.filter((advisor) => advisor._id !== member));
+                // console.log(committee)
+                // console.log(advisors)
+            })
+            //setCommittee([...advisors.filter,...advisors.filter((advisor) => advisor._id !== res.data.committee._id)]);
         })
     }  
 
@@ -58,6 +66,7 @@ const Committee = () => {
       ...advisors.filter((advisor) => advisor._id === id),
     ]);
     setAdvisors(advisors.filter((advisor) => advisor._id !== id));
+    console.log(id);
     addCommittee(id);    
     
   };
@@ -72,7 +81,7 @@ const Committee = () => {
   };
   return (
     <div className="flex flex-col gap-5 p-3">
-      {committee.length > 0 && (
+      {committee && committee.length > 0 && (
         <UiTable
           title={"Committee Members"}
           objs={committee}
@@ -80,7 +89,7 @@ const Committee = () => {
           btnTitle={"Remove"}
         />
       )}
-      {advisors.length > 0 && (
+      {advisors && advisors.length > 0 && (
       <UiTable
         title={"Add Supervisor or Co-Supervisor to committee"}
         objs={advisors}
