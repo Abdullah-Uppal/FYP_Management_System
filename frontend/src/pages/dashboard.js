@@ -20,6 +20,7 @@ import PostIdea from '../partials/postIdea'
 import IdeasList from './ideasList'
 import Group from './person/group/group'
 import Commtiee from './person/committee/committee'
+import Milestones from './milestones'
 
 
 const Dashboard = ({user}) => {
@@ -53,7 +54,7 @@ const Dashboard = ({user}) => {
                             <Route exact path="/user/student/update/:id" element={<StudentDetail/>} />
                             <Route exact path="/user/advisor/update/:id" element={<SupervisorDetail/>} />
                             <Route exact path="/meetings" element={<h1>Meetings</h1>} />
-                            <Route exact path="/milestone" element={<h1>Milestones</h1>} />
+                            <Route exact path="/milestone/new" element={<Milestones/>} />
 
                             <Route exact path="/allocation/groups" element ={<h1>Hello Groups</h1>}/>
                             <Route exact path="/allocation/supervisors" element ={<SupervisorAllocation/>}/>

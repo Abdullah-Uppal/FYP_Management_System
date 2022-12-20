@@ -1,6 +1,7 @@
 import React from 'react'
 
 const GroupCard = () => {
+ 
     return (
 
         <div className="w-full flex flex-row gap-5 py-4 px-3 items-center max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
