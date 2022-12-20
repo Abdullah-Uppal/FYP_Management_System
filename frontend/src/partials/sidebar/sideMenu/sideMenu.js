@@ -41,9 +41,9 @@ const Option = ({ title, pathname, open, checkUrl, checkPathName, subMenus }) =>
 const SideMenu = ({ title, pathname, checkUrl, checkPathName, handleClick, open, sidebarExpanded, setSidebarExpanded, subMenus }) => {
     
     return (
-        <React.Fragment>
+        <React.Fragment >
             <div
-                className={`block text-slate-200 hover:text-white truncate transition duration-150 ${(pathname === checkUrl || pathname.includes(checkPathName)) && 'hover:text-slate-200'
+                className={`block cursor-pointer  text-slate-200 select-none hover:text-white truncate transition duration-150 ${(pathname === checkUrl || pathname.includes(checkPathName)) && 'hover:text-slate-200'
                     }`}
                 onClick={(e) => {
                     e.preventDefault();
