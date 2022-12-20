@@ -19,7 +19,7 @@ import Formats from './formats'
 import PostIdea from '../partials/postIdea'
 import IdeasList from './ideasList'
 import Groups from './person/groups'
-import Commtiee from './person/committee'
+import Commtiee from './person/committee/committee'
 
 
 const Dashboard = ({user}) => {
