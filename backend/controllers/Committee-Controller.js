@@ -38,14 +38,16 @@ const getMembers = async (req, res) => {
 
 const removeMember = async (req, res) => {
   try {
-    const committee = await Committee.findOne();
+    const committee = await Committee.findOne().populate("members");
     if (committee) {
       await Committee.updateOne(
         { _id: committee._id },
         {
-          members: committee.members.filter((k) => k._id !== req.params.id),
+          members: committee.members.filter((k) => String(k._id) !== req.params.id),
         }
       );
+      console.log("Before")
+      console.log(committee.members.filter((k) => String(k._id) !== req.params.id))
     }
     res.status(200).json({
       message: "Successfully added",
