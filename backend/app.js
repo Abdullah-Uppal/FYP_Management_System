@@ -28,6 +28,7 @@ const formatRouter=require('./routes/formatupload-routes');
 const projectRouter=require('./routes/projectroutes');
 const milestoneRouter = require('./routes/milestoneroutes');
 const groupRouter = require('./routes/grouproutes');
+const committeeRouter = require('./routes/committeeroutes');
 app.use('/person', router);
 app.use('/supervisor', supervisorRouter);
 app.use('/format', formatRouter);
@@ -35,6 +36,7 @@ app.use('/assets', express.static('assets'))
 app.use('/project', projectRouter);
 app.use('/milestone', milestoneRouter);
 app.use('/group', groupRouter);
+app.use('/committee', committeeRouter);
 
 var DATABASE = 'mongodb+srv://admin:RxQjfN5LczLBfeDG@cluster0.vavaeql.mongodb.net/Fyp_Project_Final?retryWrites=true&w=majority';
 
