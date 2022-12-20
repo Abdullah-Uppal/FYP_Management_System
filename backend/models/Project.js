@@ -10,6 +10,7 @@ const ProjectSchema=new Schema({
   postedBy: { type: Schema.Types.ObjectId, refPath: "modelType" },
   acceptedRejectedBy: { type: Schema.Types.ObjectId, refPath: "modelType" },
   modelType: { type: String, enum: ["Person", "Supervisor"] },
+  date: { type: Date, default: Date.now }
 });
 
 module.exports = mongoose.model("Project", ProjectSchema);

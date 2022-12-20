@@ -48,7 +48,7 @@ const Student = () => {
                                 <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-search" type="text" placeholder="Search" />
                             </div>
                             <div className="flex items-center py-2">
-                                <NavLink to={'/person/student/new'} className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline">
+                                <NavLink to={'/user/student/new'} className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline">
                                     Create
                                 </NavLink>
 
@@ -113,7 +113,7 @@ const Student = () => {
                                                     </div>
                                                 </td>
                                                 <td className=" whitespace-no-wrap border-b border-gray-200">
-                                                    <NavLink to={"/person/student/update/" + person._id}
+                                                    <NavLink to={"/user/student/update/" + person._id}
                                                         className="text-indigo-600 hover:text-indigo-900 focus:outline-none focus:underline text-lg" >
                                                         <FiEdit />
                                                     </NavLink>
