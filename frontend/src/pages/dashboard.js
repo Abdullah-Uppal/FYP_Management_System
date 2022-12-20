@@ -18,7 +18,7 @@ import FormatUpload from '../partials/formatUpload'
 import Formats from './formats'
 import PostIdea from '../partials/postIdea'
 import IdeasList from './ideasList'
-import Groups from './person/groups'
+import Group from './person/group/group'
 import Commtiee from './person/committee/committee'
 
 
@@ -46,7 +46,7 @@ const Dashboard = ({user}) => {
                             <Route exact path="/" element={<WelcomeBanner user={user} />} />
                             <Route exact path="/user/students" element={<Student/>} />
                             <Route exact path="/user/advisors" element={<Supervisor/>} />
-                            <Route exact path="/user/groups" element ={<Groups/>}/>
+                            <Route exact path="/user/groups" element ={<Group/>}/>
                             <Route exact path="/user/committee" element={<Commtiee/>} />
                             <Route exact path="/user/student/new" element={<StudentDetail/>} />
                             <Route exact path="/user/advisor/new" element={<SupervisorDetail/>} />
