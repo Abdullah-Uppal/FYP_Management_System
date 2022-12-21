@@ -3,6 +3,7 @@ import Card from "../partials/card";
 import ShowPdf from "../partials/showPdf";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
+import {AiFillPlusCircle} from "react-icons/ai";
 const Formats = () => {
     const [files, setFile] = React.useState(null);
     const [isShow, setIsShow] = React.useState(false);
@@ -54,7 +55,7 @@ const Formats = () => {
                         className={
                             files.length === 1
                             ?
-                            "main-container relative grid grid-flow-col justify-items-start  py-2 overflow-hidden"
+                            "main-container  relative grid grid-flow-col justify-items-start  py-2 overflow-hidden"
                             :
                             files.length === 2
                                 ? "main-container relative grid grid-flow-col justify-items-center  py-2 overflow-hidden overflow-x-scroll gap-3 md:overflow-none md:gap-0"
@@ -77,12 +78,11 @@ const Formats = () => {
                         })}
                     </div>
                     <ShowPdf file={filename} showFile={isShow} setShowFile={setIsShow} />
-                    <div className="flex py-2 self-end">
+                    <div className="absolute right-10 bottom-10">
                         <NavLink
                             to={"/formats/upload"}
-                            className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline"
                         >
-                            Create
+                            <AiFillPlusCircle size={45} className='text-indigo-600'/>
                         </NavLink>
                     </div>
                 </div>
@@ -94,7 +94,7 @@ const Formats = () => {
                             to={"/formats/upload"}
                             className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline"
                         >
-                            Create
+                            <AiFillPlusCircle/>
                         </NavLink>
                     </div>
                 </div>
