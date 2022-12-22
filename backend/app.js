@@ -29,7 +29,9 @@ const projectRouter=require('./routes/projectroutes');
 const milestoneRouter = require('./routes/milestoneroutes');
 const groupRouter = require('./routes/grouproutes');
 const committeeRouter = require('./routes/committeeroutes');
+const departmentRouter = require('./routes/departmentroutes');
 const evaluationRouter = require('./routes/evaluation-routes'); 
+
 app.use('/person', router);
 app.use('/supervisor', supervisorRouter);
 app.use('/format', formatRouter);
@@ -38,6 +40,7 @@ app.use('/project', projectRouter);
 app.use('/milestone', milestoneRouter);
 app.use('/group', groupRouter);
 app.use('/committee', committeeRouter);
+app.use('/department', departmentRouter);
 app.use('/misc', require('./routes/miscroutes'));
 app.use('/evaluation', evaluationRouter);
 
