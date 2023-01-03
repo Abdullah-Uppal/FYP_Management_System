@@ -22,7 +22,7 @@ import Group from './person/group/group'
 import Commtiee from './person/committee/committee'
 import Milestones from './milestones'
 import Department from './department'
-import DepartmentModel from '../partials/department/departmentModel'
+import DepartmentDetails from '../partials/department/departmentDetails'
 
 const Dashboard = ({user}) => {
 
@@ -57,8 +57,8 @@ const Dashboard = ({user}) => {
                             <Route exact path="/meetings" element={<h1>Meetings</h1>} />
                             <Route exact path="/milestone/new" element={<Milestones/>} />
                             <Route exact path="/departments" element={<Department />} />
-                            {/* <Route exact path="/department/new" element={<DepartmentModel />} /> */}
-                            <Route exact path="/department/update/:id" element={<DepartmentModel />} />
+                            <Route exact path="/department/new" element={<DepartmentDetails />} />
+                            <Route exact path="/department/update/:id" element={<DepartmentDetails />} />
                         
                             <Route exact path="/allocation/groups" element ={<h1>Hello Groups</h1>}/>
                             <Route exact path="/allocation/supervisors" element ={<SupervisorAllocation/>}/>
