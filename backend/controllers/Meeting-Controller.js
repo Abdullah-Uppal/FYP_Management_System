@@ -1,4 +1,4 @@
-const Meeeting = require('../models/Meeeting');   
+const Meeeting = require('../models/Meeting');   
 
 //meeting adding function
 const addMeeeting = async (req, res) => {

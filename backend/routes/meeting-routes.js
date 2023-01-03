@@ -1,6 +1,6 @@
 const express=require('express');
 const router=express.Router();
-const MeeetingController=require('../controllers/Meeting-Controller');meeeting
+const MeeetingController=require('../controllers/Meeting-Controller');
 
 
 
