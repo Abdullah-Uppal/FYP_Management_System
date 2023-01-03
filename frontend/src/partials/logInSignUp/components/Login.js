@@ -31,8 +31,20 @@ export default function Login({setUser}) {
     try {
       await axios
         .post(url, { email: email })
-        .then((res) => setUser(res.data.model));
+        .then((res) => {
+            console.log('res',res.data)
+            let user = JSON.stringify(res.data)
+            setUser(user);
+            localStorage.setItem('isLoggedIn',true);
+            localStorage.setItem('user',user);
+            navigate('/');
+            
+   
+        });
     } catch (error) {
+        if(error.response.status === 404){
+            alert('User not found');
+        }   
       console.log(error.message);
     }
   };
@@ -40,12 +52,10 @@ export default function Login({setUser}) {
   const authenticateUser = () => {
     // password:loginState['password']
 
-    console.log("loginFields", loginState["email"]);
-
     const url = "http://localhost:3000/misc/modelType";
 
     getRole(url, loginState["email"]);
-    localStorage.setItem('isLoggedIn',true);
+    
     // const data = JSON.parse(localStorage.getItem('user'));
     // console.log('data',data)
     // if((data !== null) && (data.email === loginFields.email && data.password === loginFields.password)){

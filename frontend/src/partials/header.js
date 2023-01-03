@@ -5,7 +5,7 @@ import Notifications from './header/notifications';
 import UserMenu from './header/userMenu';
 
 const Header = ({user,sidebarOpen, setSidebarOpen}) => {
-
+    
     const [searchModalOpen, setSearchModalOpen] = useState(false)
     return (
         <header className="sticky top-0 bg-white border-b border-slate-200 z-30">

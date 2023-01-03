@@ -1,5 +1,4 @@
-import React from "react";
-import DashboardMenu from "../sidebar/sideMenu/dashboardMenu";
+import React from "react"
 import PersonMenu from "../sidebar/sideMenu/personMenu";
 import AllocationMenu from "../sidebar/sideMenu/allocationMenu";
 import SidebarLinkGroup from "../sidebar/sideMenu/sidebarLinkGroup";

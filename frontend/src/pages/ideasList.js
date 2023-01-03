@@ -1,13 +1,14 @@
 import React from "react";
 import { FiEdit } from 'react-icons/fi';
 import { FaTrash } from 'react-icons/fa';
+import { MdOpenInNew } from 'react-icons/md';
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 
 const IdeaList = () => {
     const [files, setFile] = React.useState([]);
-    const [isShow, setIsShow] = React.useState(false);
-    const [filename, setFilename] = React.useState("");
+    // const [isShow, setIsShow] = React.useState(false);
+    // const [filename, setFilename] = React.useState("");
 
     React.useEffect(() => {
         const fetchPdf = async () => {
@@ -23,29 +24,36 @@ const IdeaList = () => {
         };
         fetchPdf();
     }, []);
-
-    const handleClick = (e) => {
-        setFilename(e);
-        setIsShow(true);
-    };
-    const Delete = async (file, url) => {
-        await axios.delete(url + file)
-            .then((res) => {
-                console.log(res);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-
+    const getFile = (file) => {
+        try{
+            return "http://localhost:3000/assets/" + file
+        }
+        catch(err){
+            alert('File not found');
+        }
     }
+    // const handleClick = (e) => {
+    //     setFilename(e);
+    //     setIsShow(true);
+    // };
+    // const Delete = async (file, url) => {
+    //     await axios.delete(url + file)
+    //         .then((res) => {
+    //             console.log(res);
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         });
 
-    const handleDelete = (e, file) => {
-        const url = "http://localhost:3000/project/deleteProject/";
-        // Delete(e, url);
-        // const url1 = "http://localhost:3000/format/removefile/";
-        // Delete(file, url1);
-        // setFile(files.filter((file) => file._id !== e));
-    }
+    // }
+
+    // const handleDelete = (e, file) => {
+    //     const url = "http://localhost:3000/project/deleteProject/";
+    //     // Delete(e, url);
+    //     // const url1 = "http://localhost:3000/format/removefile/";
+    //     // Delete(file, url1);
+    //     // setFile(files.filter((file) => file._id !== e));
+    // }
     return (
         <div>
             <div className="w-full bg-gray-100 py-10 px-5 md:px-0">
@@ -72,7 +80,7 @@ const IdeaList = () => {
                                     <thead>
                                         <tr className="bg-gray-50 border-b border-gray-200 text-xs leading-4 text-gray-500 uppercase tracking-wider">
                                             <th className="p-2 md:px-6 md:py-3 text-left font-medium">
-                                                Title 
+                                                Title
                                             </th>
                                             <th className="p-2 md:px-6 md:py-3 text-left font-medium">
                                                 Description
@@ -93,14 +101,14 @@ const IdeaList = () => {
                                         {files.map((file) => (
                                             <tr id={file._id} key={files.indexOf(file) + 1}>
                                                 <td className="p-2 text-sm md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
-                                                    {file.title} 
+                                                    {file.title}
                                                 </td>
                                                 <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
-                                                    {file.description.length >= 30 ? file.description: file.description.slice(0, 30)} 
+                                                    {file.description.length >= 30 ? file.description.slice(0, 30) + '...' : file.description}
                                                 </td>
                                                 <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
                                                     <div className="text-sm leading-5 text-gray-900">
-                                                        {new Date(file.date.toString()).toLocaleDateString(undefined, {year: 'numeric', month: 'long', day: 'numeric'})}
+                                                        {new Date(file.date.toString()).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
                                                     </div>
                                                 </td>
                                                 <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
@@ -110,26 +118,32 @@ const IdeaList = () => {
                                                 </td>
 
 
-                                                <td className=" whiespace-no-wrap border-b border-gray-200">
+                                                <td className=" whitespace-no-wrap border-b border-gray-200">
                                                     <div style={{
                                                         display: "flex",
                                                         gap: "1rem"
                                                     }}>
-                                                    <NavLink to={"#"}
-                                                        className="text-indigo-600 hover:text-indigo-900 focus:outline-none focus:underline text-lg" >
-                                                        <FiEdit />
-                                                    </NavLink>
-                                                    
-                                                    <NavLink to="#"
-                                                        className="text-indigo-600 hover:text-indigo-900 focus:outline-none  text-lg focus:underline" >
-                                                        <FaTrash onClick={async () => {
-                                                          await axios.delete("http://localhost:3000/project/deleteProject/" + file._id)
-                                                          .then(res => { 
-                                                            console.log(res);
-                                                            setFile(files.filter((f) => f._id !== file._id));
-                                                          }).catch(err => console.log(err));
-                                                        }}/>
-                                                    </NavLink></div>
+                                                        <NavLink to={"#"}
+                                                            className="text-indigo-600 hover:text-indigo-900 focus:outline-none focus:underline text-lg" >
+                                                            <FiEdit />
+                                                        </NavLink>
+
+                                                        <NavLink to="#"
+                                                            className="text-indigo-600 hover:text-indigo-900 focus:outline-none  text-lg focus:underline" >
+                                                            <FaTrash onClick={async () => {
+                                                                await axios.delete("http://localhost:3000/project/deleteProject/" + file._id)
+                                                                    .then(res => {
+                                                                        console.log(res);
+                                                                        setFile(files.filter((f) => f._id !== file._id));
+                                                                    }).catch(err => console.log(err));
+                                                            }} />
+                                                        </NavLink>
+
+                                                        <a href={getFile(file.proposalDocument)} target="_blank" rel="noopener noreferrer"
+                                                            className="text-indigo-600 hover:text-indigo-900 focus:outline-none  text-lg focus:underline" >
+                                                            <MdOpenInNew />
+                                                        </a>
+                                                    </div>
                                                 </td>
                                                 {/* <td className="ml-4  pr-2 md:pr-3 whitespace-no-wrap border-b border-gray-200">
                                                 </td> */}

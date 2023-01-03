@@ -2,7 +2,7 @@ import Header from "../partials/logInSignUp/components/Header"
 import Login from "../partials/logInSignUp/components/Login"
 
 
-export default function LoginPage(){
+export default function LoginPage({setUser}){
 
     return(
         
@@ -13,7 +13,7 @@ export default function LoginPage(){
                 linkName="Signup"
                 linkUrl="/signup"
                 />
-            <Login/>
+            <Login setUser={setUser}/>
         </>
     )
 }

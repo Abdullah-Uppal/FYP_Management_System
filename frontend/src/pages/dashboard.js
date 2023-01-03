@@ -26,16 +26,15 @@ import DepartmentModel from '../partials/department/departmentModel'
 
 const Dashboard = ({user}) => {
 
-
+    
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
     return (
-
         !isLoggedIn ? <Navigate replace to="/login" /> :
 
         <div className="flex h-screen overflow-hidden">
             {/* Sidebar */}
-            <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+            <Sidebar role={JSON.parse(user).model} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
             <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
                 <Header user={user} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
