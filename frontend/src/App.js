@@ -8,13 +8,13 @@ import SupervisorAllocation from './pages/SupervisorAllocation';
 
 function App() {
     const [user, setUser] = useState(null);
-    useEffect(() =>{
-        const loggedInUser = JSON.parse(localStorage.getItem("user"));
-        if(loggedInUser !== null){
-            setUser(loggedInUser.username);
-        }
+    // useEffect(() =>{
+    //     const loggedInUser = JSON.parse(localStorage.getItem("user"));
+    //     if(loggedInUser !== null){
+    //         setUser(loggedInUser.username);
+    //     }
         
-    },[])
+    // },[])
 
 
 
@@ -23,8 +23,8 @@ function App() {
 
         <Routes>
             <Route index path='*' element={<Dashboard user={user} setUser={setUser}/>} />
-            <Route exact path="/login" element={<Form str={'Login'} />} />
-            <Route exact path="/signup" element={<Form str={'Signup'} />} />
+            <Route exact path="/login" element={<Form str={'Login'} setUser={setUser} />} />
+            {/* <Route exact path="/signup" element={<Form str={'Sign Up'} />} /> */}
         </Routes>
    
   )

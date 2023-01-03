@@ -2,6 +2,7 @@ const Person = require('../models/Person');
 const Supervisor = require('../models/Supervisor');
 
 const modelType = async (req, res) => {
+  console.log('req.body',req.body)
   const _email = req.body.email;
   try {
     var person = await Person.find({ email: _email });
