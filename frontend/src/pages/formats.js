@@ -58,7 +58,7 @@ const Formats = () => {
                             "main-container  relative grid grid-flow-col justify-items-start  py-2 overflow-hidden"
                             :
                             files.length === 2
-                                ? "main-container relative grid grid-flow-col justify-items-center  py-2 overflow-hidden overflow-x-scroll gap-3 md:overflow-none md:gap-0"
+                                ? "main-container relative grid grid-flow-col justify-items-center  py-2 overflow-hidden overflow-x-scroll gap-3 md:overflow-none md:gap-0 lg:gap-3"
                                 : "main-container relative grid grid-flow-col justify-items-center py-2 gap-3 overflow-x-scroll scroll-smooth"
                         }
                     >

@@ -32,6 +32,8 @@ const committeeRouter = require('./routes/committeeroutes');
 const departmentRouter = require('./routes/departmentroutes');
 const evaluationRouter = require('./routes/evaluation-routes'); 
 
+
+const meetingRouter = require('./routes/meeting-routes'); 
 app.use('/person', router);
 app.use('/supervisor', supervisorRouter);
 app.use('/format', formatRouter);
@@ -43,6 +45,7 @@ app.use('/committee', committeeRouter);
 app.use('/department', departmentRouter);
 app.use('/misc', require('./routes/miscroutes'));
 app.use('/evaluation', evaluationRouter);
+app.use('/meeting', meetingRouter);
 
 var DATABASE = 'mongodb+srv://admin:RxQjfN5LczLBfeDG@cluster0.vavaeql.mongodb.net/Fyp_Project_Final?retryWrites=true&w=majority';
 

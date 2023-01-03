@@ -13,6 +13,7 @@ const Milestones = () => {
     const [file, setFile] = useState(null);
     const [projects, setProjects] = useState([]);
     const [selectedProject, setSelectedProject] = useState("");
+    const [deadline,setDeadline] = useState('')
     var [isUpdate, setIsUpdate] = useState(false);
     useEffect(() => {
         id && axios
@@ -28,8 +29,6 @@ const Milestones = () => {
             _id: "",
             title: "",
             description: "",
-            deadline: "",
-            project: "",
         }
     );
 
@@ -95,13 +94,15 @@ const Milestones = () => {
             [e.target.name]: e.target.value
         }));
     };
+
+
+ const handleDateChange = (e) =>{
+    console.log(e.target.value)
+    setDeadline(e.target.value)
+ }   
 const handleProjectChange = (e) => {
     console.log(e.target.value)
-        setSelectedProject(e.target.value);
-        setInput((prevState) => ({
-            ...prevState,
-            [e.target.name]: e.target.value
-        }));
+            setSelectedProject(e.target.value)
 }
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -109,9 +110,9 @@ const handleProjectChange = (e) => {
         const d = {
             title: Input.title,
             description: Input.description,
-            deadline: Input.deadline,
+            deadline: deadline,
             attachement: file.name,
-            project: Input.project
+            project: selectedProject
         }
         const formData = new FormData();
         formData.append('file', file);
@@ -155,12 +156,12 @@ const handleProjectChange = (e) => {
                 </div>
                 <div className="flex flex-wrap  mb-6">
                     <div className="datepicker relative form-floating mb-3 xl:w-96">
-                        <input datepicker type="date" value={Input.deadline} onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select deadline" />
+                        <input datepicker type="date" value={deadline} onChange={handleDateChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select deadline" />
                     </div>
                 </div>
                 <div className="flex flex-wrap  mb-6">
                     <div className="mb-3 xl:w-96">
-                        <select className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={Input.project} onChange={handleProjectChange} aria-label="Default select example">
+                        <select className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={selectedProject} onChange={handleProjectChange} aria-label="Default select example">
                             <option value={''}>Open this select menu</option>
                             {
                                 projects.map((project) => {
