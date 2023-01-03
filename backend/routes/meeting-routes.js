@@ -7,11 +7,11 @@ const MeeetingController=require('../controllers/Meeting-Controller');
 
 
 //Meeeting
-router.post('/addMeeeting',MeeetingController.addMeeeting);
-router.get('/getMeeeting',MeeetingController.getMeeeting);
-router.get('/getOneMeeeting/:id', MeeetingController.getOneMeeeting);
-router.delete('/deleteMeeeting/:id',MeeetingController.deleteMeeeting);
-router.put('/updateMeeeting/:id',MeeetingController.updateMeeeting);
+router.post('/addMeeting',MeeetingController.addMeeeting);
+router.get('/getMeeting',MeeetingController.getMeeeting);
+router.get('/getOneMeeting/:id', MeeetingController.getOneMeeeting);
+router.delete('/deleteMeeting/:id',MeeetingController.deleteMeeeting);
+router.put('/updateMeeting/:id',MeeetingController.updateMeeeting);
 
 
 module.exports=router;

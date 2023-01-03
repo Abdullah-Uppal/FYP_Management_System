@@ -1,6 +1,6 @@
 import React from 'react'
-import PersonMenu from '../sidebar/sideMenu/personMenu'
 import SidebarLinkGroup from '../sidebar/sideMenu/sidebarLinkGroup'
+import StudentsUnderAdvisor from '../sidebar/sideMenu/studentsUnderAdvisor'
 
 const AdvisorSection = ({pathname,sidebarExpanded,setSidebarExpanded}) => {
   return (
@@ -10,7 +10,7 @@ const AdvisorSection = ({pathname,sidebarExpanded,setSidebarExpanded}) => {
     >
       {(handleClick, open) => {
         return (
-          <PersonMenu
+          <StudentsUnderAdvisor
             handleClick={handleClick}
             open={open}
             sidebarExpanded={sidebarExpanded}

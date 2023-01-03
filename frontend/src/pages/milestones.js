@@ -13,7 +13,8 @@ const Milestones = () => {
     const [file, setFile] = useState(null);
     const [projects, setProjects] = useState([]);
     const [selectedProject, setSelectedProject] = useState("");
-    const [deadline,setDeadline] = useState('')
+    const [deadline, setDeadline] = useState('')
+    const [send, setSend] = useState(false);
     var [isUpdate, setIsUpdate] = useState(false);
     useEffect(() => {
         id && axios
@@ -96,14 +97,14 @@ const Milestones = () => {
     };
 
 
- const handleDateChange = (e) =>{
-    console.log(e.target.value)
-    setDeadline(e.target.value)
- }   
-const handleProjectChange = (e) => {
-    console.log(e.target.value)
-            setSelectedProject(e.target.value)
-}
+    const handleDateChange = (e) => {
+        console.log(e.target.value)
+        setDeadline(e.target.value)
+    }
+    const handleProjectChange = (e) => {
+        console.log(e.target.value)
+        setSelectedProject(e.target.value)
+    }
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -112,7 +113,8 @@ const handleProjectChange = (e) => {
             description: Input.description,
             deadline: deadline,
             attachement: file.name,
-            project: selectedProject
+            project: selectedProject,
+            sendToAll:send
         }
         const formData = new FormData();
         formData.append('file', file);
@@ -162,7 +164,7 @@ const handleProjectChange = (e) => {
                 <div className="flex flex-wrap  mb-6">
                     <div className="mb-3 xl:w-96">
                         <select className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={selectedProject} onChange={handleProjectChange} aria-label="Default select example">
-                            <option value={''}>Open this select menu</option>
+                            <option value={''}>Open this to select Project</option>
                             {
                                 projects.map((project) => {
                                     return (
@@ -171,6 +173,14 @@ const handleProjectChange = (e) => {
                                 })
                             }
                         </select>
+                    </div>
+                </div>
+                <div className="flex flex-wrap  mb-6 form-check">
+                    <div className="form-control">
+                        <label className="label cursor-pointer flex gap-2">
+                            <input type="checkbox" className="checkbox checkbox-dark" onChange={(e)=>setSend(e.target.checked)} />
+                            <span className="label-text">send to all</span>
+                        </label>
                     </div>
                 </div>
                 <div className="flex flex-wrap -mx-3 mb-6">

@@ -75,7 +75,7 @@ const AdminSection = ({pathname,sidebarExpanded,setSidebarExpanded}) => {
       </SidebarLinkGroup>
       <SidebarLinkGroup
         activecondition={
-          pathname === "/meetings" || pathname.includes("meetings")
+          pathname === "/meeting/all" || pathname.includes("meetings")
         }
       >
         {(handleClick, open) => {
