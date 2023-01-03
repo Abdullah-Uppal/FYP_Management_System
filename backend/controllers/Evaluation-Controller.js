@@ -22,7 +22,7 @@ const addEvaluation = async (req, res) => {
 const getEvaluation = async (req, res) => {
   let evaluation;
   try {
-    evaluation = await evaluation.find();
+    evaluation = await Evaluation.find();
   } catch (error) {
     console.log(error);
   }
@@ -38,7 +38,7 @@ const getEvaluation = async (req, res) => {
 const getOneEvaluation = async (req, res) => {
   let evaluation;
   try {
-    evaluation = await evaluation.findOne({ _id: req.params.id });
+    evaluation = await Evaluation.findOne({ _id: req.params.id });
   } catch (error) {
     console.log(error);
   }
@@ -55,7 +55,7 @@ const updateEvaluation = async (req, res) => {
   const { name, totalMarks, totalWeightage, project } = req.body;
   let evaluation;
   try {
-    evaluation = await evaluation.findByIdAndUpdate(
+    evaluation = await Evaluation.findByIdAndUpdate(
       req.params.id,
       {
         name,
@@ -76,7 +76,7 @@ const updateEvaluation = async (req, res) => {
 const deleteEvaluation = async (req, res) => {
   let evaluation;
   try {
-    evaluation = await evaluation.findById(req.params.id);
+    evaluation = await Evaluation.findById(req.params.id);
     await evaluation.remove();
     return res.status(200).json({ message: "Evaluation deleted" });
   } catch (error) {

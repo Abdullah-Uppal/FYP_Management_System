@@ -19,6 +19,10 @@ const PersonMenu = ({handleClick,open,sidebarExpanded,setSidebarExpanded}) => {
             path: '/user/committee',
             title: 'Committee',
         },
+        {   
+            path: '/departments',
+            title: 'Departments',
+        }
     ]
 
   return (
