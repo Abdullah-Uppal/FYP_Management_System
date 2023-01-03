@@ -41,10 +41,10 @@ const IdeaList = () => {
 
     const handleDelete = (e, file) => {
         const url = "http://localhost:3000/project/deleteProject/";
-        Delete(e, url);
-        const url1 = "http://localhost:3000/format/removefile/";
-        Delete(file, url1);
-        setFile(files.filter((file) => file._id !== e));
+        // Delete(e, url);
+        // const url1 = "http://localhost:3000/format/removefile/";
+        // Delete(file, url1);
+        // setFile(files.filter((file) => file._id !== e));
     }
     return (
         <div>
@@ -59,7 +59,7 @@ const IdeaList = () => {
                                 <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-search" type="text" placeholder="Search" />
                             </div>
                             <div className="flex items-center py-2">
-                                <NavLink to={"#"} className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline">
+                                <NavLink to={"/project/new/"} className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline">
                                     Post new idea
                                 </NavLink>
 
@@ -122,7 +122,13 @@ const IdeaList = () => {
                                                     
                                                     <NavLink to="#"
                                                         className="text-indigo-600 hover:text-indigo-900 focus:outline-none  text-lg focus:underline" >
-                                                        <FaTrash onClick={() => {}}/>
+                                                        <FaTrash onClick={async () => {
+                                                          await axios.delete("http://localhost:3000/project/deleteProject/" + file._id)
+                                                          .then(res => { 
+                                                            console.log(res);
+                                                            setFile(files.filter((f) => f._id !== file._id));
+                                                          }).catch(err => console.log(err));
+                                                        }}/>
                                                     </NavLink></div>
                                                 </td>
                                                 {/* <td className="ml-4  pr-2 md:pr-3 whitespace-no-wrap border-b border-gray-200">
