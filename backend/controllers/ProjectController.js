@@ -44,6 +44,7 @@ const create = async (req, res) => {
       description,
       proposalDocument,
       postedBy,
+      isPostedByAdmin
     });
     await project.save();
     return res.status(200).json({
@@ -60,7 +61,7 @@ const create = async (req, res) => {
 
 const all = async (req, res) => {
   try {
-    const projects = await Project.find().populate();
+    const projects = await Project.find().populate('postedBy');
     return res.status(200).json(projects);
   }
   catch (err) {
@@ -75,7 +76,7 @@ const one = async (req, res) => {
   try {
     const project = await Project.findOne({
       _id: req.params.id,
-    }).populate();
+    }).populate('postedBy');
     return res.status(200).json(project);
   }
   catch (err) {
@@ -99,10 +100,10 @@ const remove = async (req, res) => {
 
 const update = async (req, res) => {
   try {
-    const { title, description, isAccepted, postedBy, acceptedRejectedBy } =
+    const { title, description, isAccepted, postedBy, isPostedByAdmin } =
       req.body;
     return res.status(200).json(await Project.updateOne({ _id: req.params.id }, {
-       title, description, isAccepted, postedBy, acceptedRejectedBy 
+       title, description, isAccepted, postedBy, isPostedByAdmin
     }));
   }
   catch (err) {
