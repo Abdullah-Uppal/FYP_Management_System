@@ -6,7 +6,7 @@ const Alert = ({ redirect, message }) => {
     const navigate = useNavigate();
 
     const Goto = (path) => {
-    
+        console.log(path)
         setTimeout(() => {
             navigate(path);
         }, 1500);

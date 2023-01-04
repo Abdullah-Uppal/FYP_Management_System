@@ -14,7 +14,7 @@ const Department = () => {
     })
   }, [])
 
-  const url = 'http://localhost:3000/department/getDepartment'
+  const url = 'http://localhost:5000/department/getDepartment'
   const getDepartments = async () => {
     console.log('data fetch first')
     try {
@@ -24,7 +24,7 @@ const Department = () => {
     }
   }
   const handleDelete = async id => {
-    const url = 'http://localhost:3000/department/deleteDepartment/' + id
+    const url = 'http://localhost:5000/department/deleteDepartment/' + id
     await axios.delete(url).then(res => {
       setDepartments(
         departments.filter((value, index, arr) => {
@@ -79,19 +79,18 @@ const Department = () => {
                 />
               </div>
               <div className='flex items-center py-2'>
-                {/* <NavLink
-                  to={'/department/new'}
-                  className='inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline'
-                >
-                  Create New
-                </NavLink> */}
                 <button
                   className='inline-flex px-8 py-2 mr-5 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-red-600 hover:bg-red-500 focus:outline-none focus:shadow-outline'
                   onClick={() => downloadCSV()}
                 >
                   Generate CSV
                 </button>
-                <DepartmentModel />
+                <NavLink
+                  to={'/department/new'}
+                  className='inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline'
+                >
+                  Add Department
+                </NavLink>
               </div>
             </div>
             <div className='-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8'>
@@ -125,7 +124,7 @@ const Department = () => {
                           {department.title}
                         </td>
                         <td className=' whitespace-no-wrap border-b border-gray-200'>
-                          <NavLink
+                        <NavLink
                             to={'/department/update/' + department._id}
                             className='text-indigo-600 hover:text-indigo-900 focus:outline-none focus:underline text-lg'
                           >
