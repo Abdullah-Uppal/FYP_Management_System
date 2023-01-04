@@ -63,6 +63,33 @@ const add_students = async (req, res) => {
   }
 }
 
+// controller to remove students from a group
+const remove_students = async (req, res) => {
+  try {
+    const { groupid, students } = req.body;
+    console.log(req.body)
+    const group
+    = await Group.findOne({
+      _id: groupid,
+    });
+    
+    group.students = group.students.filter((student) => {
+      return !students.includes(student.toString());
+    });
+    console.log(group.students);
+    await group.save();
+    return res.status(200).json({
+      message: "Successfully Removed Students",
+    });
+  }
+  catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Internal Server Error"
+    });
+  }
+}
+
 // controller to add advisors to a group of id
 const add_advisors = async (req, res) => {
   try {
@@ -75,6 +102,30 @@ const add_advisors = async (req, res) => {
     await group.save();
     return res.status(200).json({
       message: "Successfully Added Advisors",
+    });
+  }
+  catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Internal Server Error"
+    });
+  }
+}
+
+// controller to remove advisors from a group
+const remove_advisors = async (req, res) => {
+  try {
+    const { groupid, advisors } = req.body;
+    const group
+    = await Group.findOne({
+      _id: groupid,
+    });
+    group.advisors = group.advisors.filter((advisor) => {
+      return !advisors.includes(advisor.toString());
+    });
+    await group.save();
+    return res.status(200).json({
+      message: "Successfully Removed Advisors",
     });
   }
   catch (err) {
@@ -184,6 +235,7 @@ const getStudentGroup = async (req, res) => {
 }
 
 
+
 exports.createGroup = create;
 exports.allGroups = all;
 exports.oneGroup = one;
@@ -194,3 +246,4 @@ exports.add_students = add_students;
 exports.add_advisors = add_advisors;
 exports.add_project = add_project;
 exports.getStudentGroup = getStudentGroup;
+exports.remove_students = remove_students;

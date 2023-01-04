@@ -111,7 +111,6 @@ const ungroupedStudents = async (req, res) => {
     grouped = grouped.map(group => group._id.toString());
 
     res.status(200).json(persons.filter(person => {
-
         const b = !grouped.includes(person._id.toString())
         return b;
     }))
