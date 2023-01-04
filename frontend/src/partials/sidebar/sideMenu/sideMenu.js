@@ -2,24 +2,26 @@ import React from 'react'
 import SideSubMenu from './sideSubMenu';
 import { NavLink } from 'react-router-dom';
 
-const Option = ({ title, pathname, open, checkUrl, checkPathName, subMenus }) => {
+const Option = ({ title, pathname, open, checkUrl, checkPathName, icon, subMenus }) => {
     return (
         <div className="flex items-center justify-between">
             <div className="flex items-center">
-                <svg className="shrink-0 h-6 w-6" viewBox="0 0 24 24">
-                    <path
-                        className={`fill-current text-slate-400 ${(pathname === checkUrl || pathname.includes(checkPathName)) && '!text-indigo-500'
-                            }`}
-                        d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0z"
-                    />
-                    <path
-                        className={`fill-current text-slate-600 ${(pathname === checkUrl || pathname.includes(checkPathName)) && 'text-indigo-600'}`}
-                        d="M12 3c-4.963 0-9 4.037-9 9s4.037 9 9 9 9-4.037 9-9-4.037-9-9-9z"
-                    />
-                    <path
-                        className={`fill-current text-slate-400 ${(pathname === checkUrl || pathname.includes(checkPathName)) && 'text-indigo-200'}`}
-                        d="M12 15c-1.654 0-3-1.346-3-3 0-.462.113-.894.3-1.285L6 6l4.714 3.301A2.973 2.973 0 0112 9c1.654 0 3 1.346 3 3s-1.346 3-3 3z"
-                    />
+                <svg className='shrink-0 w-6 h-6'
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlnsXlink="http://www.w3.org/1999/xlink"
+                    width="100"
+                    height="100"
+                    viewBox="0 0 100 100"
+                >
+                    <defs>
+                        <image
+                            id={"icon_"+checkPathName}
+                            width="100"
+                            height="100"
+                            xlinkHref={icon}
+                        ></image>
+                    </defs>
+                    <use fill="#FFF" xlinkHref={"#icon_"+checkPathName}></use>
                 </svg>
                 <span className="text-sm font-medium ml-3 lg:opacity-0 lg:sidebar-expanded:opacity-100 2xl:opacity-100 duration-200">
                     {title}
@@ -38,8 +40,8 @@ const Option = ({ title, pathname, open, checkUrl, checkPathName, subMenus }) =>
 }
 
 
-const SideMenu = ({ title, pathname, checkUrl, checkPathName, handleClick, open, sidebarExpanded, setSidebarExpanded, subMenus }) => {
-    
+const SideMenu = ({ title, pathname, checkUrl, checkPathName, icon, handleClick, open, sidebarExpanded, setSidebarExpanded, subMenus }) => {
+
     return (
         <React.Fragment >
             <div
@@ -53,9 +55,9 @@ const SideMenu = ({ title, pathname, checkUrl, checkPathName, handleClick, open,
                 {
 
                     subMenus.length > 0 ?
-                        <Option title={title} pathname={pathname} open={open} checkUrl={checkUrl} checkPathName={checkPathName} subMenus={subMenus} /> :
+                        <Option title={title} pathname={pathname} open={open} checkUrl={checkUrl} checkPathName={checkPathName} icon={icon} subMenus={subMenus} /> :
                         <NavLink to={pathname}>
-                            <Option title={title} pathname={pathname} open={open} checkUrl={checkUrl} checkPathName={checkPathName} subMenus={subMenus} />
+                            <Option title={title} pathname={pathname} open={open} checkUrl={checkUrl} checkPathName={checkPathName} icon={icon} subMenus={subMenus} />
                         </NavLink>
 
                 }
