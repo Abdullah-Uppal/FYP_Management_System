@@ -1,4 +1,6 @@
 const Person=require('../models/Person');   
+const Group = require('../models/Group');
+
 
 //person adding function
 const addPerson = async (req, res) => {
@@ -100,6 +102,21 @@ const updatePerson = async (req, res) => {
     }
 }
 
+const ungroupedStudents = async (req, res) => {
+    var groups = await Group.find({});
+    var persons = await Person.find();
+    // console.log(persons);
+    // console.log(groups);
+    var grouped = groups.map(group => group.students).flat();
+    grouped = grouped.map(group => group._id.toString());
+
+    res.status(200).json(persons.filter(person => {
+
+        const b = !grouped.includes(person._id.toString())
+        return b;
+    }))
+}
+
 
 
 
@@ -109,3 +126,4 @@ exports.getPerson = getPerson;
 exports.deletePerson = deletePerson;
 exports.updatePerson = updatePerson;
 exports.getOnePerson = getOnePerson
+exports.ungroupedStudents = ungroupedStudents;

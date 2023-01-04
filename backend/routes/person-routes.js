@@ -8,6 +8,7 @@ router.get('/getPerson',PersonController.getPerson);
 router.get('/getOnePerson/:id', PersonController.getOnePerson);
 router.delete('/:id',PersonController.deletePerson);
 router.put('/updatePerson/:id',PersonController.updatePerson);
+router.get('/ungroupedStudents', PersonController.ungroupedStudents);
 
 
 
