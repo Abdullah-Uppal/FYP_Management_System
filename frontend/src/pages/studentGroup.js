@@ -4,7 +4,7 @@ import Model from '../partials/group/components/model'
 import GroupCard from '../partials/group/groupCard';
 
 const StudentGroup = () => {
-  const [members,setMembers] =useState([ ]);
+  const [members,setMembers] =useState([]);
   const [myGroup,setMyGroup] = useState({})
   const id = JSON.parse(localStorage.getItem('user')).id
   useEffect(() => {
