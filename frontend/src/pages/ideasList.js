@@ -10,6 +10,7 @@ const IdeaList = () => {
     const [files, setFile] = React.useState([]);
     const statusList = ["Waiting", "Approved", "Rejected"];
     const [status, setStatus] = React.useState(statusList[0])
+    const role = JSON.parse(localStorage.getItem("user")).model;
     // const [isShow, setIsShow] = React.useState(false);
     // const [filename, setFilename] = React.useState("");
 
@@ -136,17 +137,18 @@ const IdeaList = () => {
                                                         <div className="text-indigo-600 hover:text-indigo-900 focus:outline-none  text-lg focus:underline">
                                                             <ShowModel title={file.title} description={file.description} />
                                                         </div>
-                                                        <NavLink to="#"
-                                                            className="text-indigo-600 hover:text-indigo-900 focus:outline-none  text-lg focus:underline" >
-                                                            <FaTrash onClick={async () => {
-                                                                await axios.delete("http://localhost:3000/project/deleteProject/" + file._id)
-                                                                    .then(res => {
-                                                                        console.log(res);
-                                                                        setFile(files.filter((f) => f._id !== file._id));
-                                                                    }).catch(err => console.log(err));
-                                                            }} />
-                                                        </NavLink>
-
+                                                        {role === "Admin" &&
+                                                            <NavLink to="#"
+                                                                className="text-indigo-600 hover:text-indigo-900 focus:outline-none  text-lg focus:underline" >
+                                                                <FaTrash onClick={async () => {
+                                                                    await axios.delete("http://localhost:3000/project/deleteProject/" + file._id)
+                                                                        .then(res => {
+                                                                            console.log(res);
+                                                                            setFile(files.filter((f) => f._id !== file._id));
+                                                                        }).catch(err => console.log(err));
+                                                                }} />
+                                                            </NavLink>
+                                                        }
                                                         <a href={getFile(file.proposalDocument)} target="_blank" rel="noopener noreferrer"
                                                             className="text-indigo-600 hover:text-indigo-900 focus:outline-none  text-lg focus:underline" >
                                                             <MdOpenInNew />

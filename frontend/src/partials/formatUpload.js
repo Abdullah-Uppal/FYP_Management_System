@@ -8,6 +8,7 @@ const FormatUpload = () => {
     const [alert, setAlert] = useState({});
     const [isAlert, setIsAlert] = useState(false);
     const [file,setFile] = useState(null);
+  
     const [Input, setPerson] = useState(
         {
             title: "",

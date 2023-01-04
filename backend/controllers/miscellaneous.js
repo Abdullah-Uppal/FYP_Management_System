@@ -8,6 +8,7 @@ const modelType = async (req, res) => {
   if (_email === "fypmanagement20@gmail.com"){
     return res.status(200).json({
       model: "Admin",
+      id:"Admin",
       username:"Admin"
     })
   }

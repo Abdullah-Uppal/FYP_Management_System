@@ -12,6 +12,7 @@ const Formats = () => {
     const [files, setFile] = React.useState(null);
     const statusList = ["Waiting", "Approved", "Rejected"];
     const [status, setStatus] = React.useState(statusList[0])
+    const role = JSON.parse(localStorage.getItem("user")).model;
     React.useEffect(() => {
         const fetchPdf = async () => {
             await axios
@@ -60,6 +61,7 @@ const Formats = () => {
         console.log(s)
         setStatus(statusList[(statusList.indexOf(s) + 1) % 3])
     }
+    
     return (
         <div>
             <div className="w-full bg-gray-100 py-10 px-5 md:px-0">
@@ -132,21 +134,21 @@ const Formats = () => {
                                                         <div className="text-indigo-600 hover:text-indigo-900 focus:outline-none  text-lg focus:underline">
                                                             <ShowModel title={file.title} description={file.description} />
                                                         </div>
-
-                                                        <NavLink to="#"
-                                                            className="text-indigo-600 hover:text-indigo-900 focus:outline-none  text-lg focus:underline" >
-                                                            <FaTrash onClick={
-                                                                //     async () => {
-                                                                //     await axios.delete("http://localhost:3000/project/deleteProject/" + file._id)
-                                                                //         .then(res => {
-                                                                //             console.log(res);
-                                                                //             setFile(files.filter((f) => f._id !== file._id));
-                                                                //         }).catch(err => console.log(err));
-                                                                // }
-                                                                () => handleDelete(file)
-                                                            } />
-                                                        </NavLink>
-
+                                                        {role === "Admin" &&
+                                                            <NavLink to="#"
+                                                                className="text-indigo-600 hover:text-indigo-900 focus:outline-none  text-lg focus:underline" >
+                                                                <FaTrash onClick={
+                                                                    //     async () => {
+                                                                    //     await axios.delete("http://localhost:3000/project/deleteProject/" + file._id)
+                                                                    //         .then(res => {
+                                                                    //             console.log(res);
+                                                                    //             setFile(files.filter((f) => f._id !== file._id));
+                                                                    //         }).catch(err => console.log(err));
+                                                                    // }
+                                                                    () => handleDelete(file)
+                                                                } />
+                                                            </NavLink>
+                                                        }
                                                         <a href={getFile(file.file)} target="_blank" rel="noopener noreferrer"
                                                             className="text-indigo-600 hover:text-indigo-900 focus:outline-none  text-lg focus:underline" >
                                                             <MdOpenInNew />
