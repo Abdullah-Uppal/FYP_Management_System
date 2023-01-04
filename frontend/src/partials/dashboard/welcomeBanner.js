@@ -1,7 +1,9 @@
 import React from 'react'
+import ShowTitle from '../../utils/showTitle';
 
 const WelcomeBanner = ({user}) => {
 
+    const u = JSON.parse(user);
     const greeting = () => {
         const today = new Date();
         const curHr = today.getHours();
@@ -60,7 +62,7 @@ const WelcomeBanner = ({user}) => {
 
             {/* Content */}
             <div className="relative">
-                <h1 className="text-2xl md:text-3xl text-slate-800 font-bold mb-1">{greeting()}, {user}     👋</h1>
+                <h1 className="text-2xl md:text-3xl text-slate-800 font-bold mb-1 flex">{greeting()},<ShowTitle name={u ? u.username:''} />  👋</h1>
                 <p>Here is what’s happening with your projects today:</p>
             </div>
 

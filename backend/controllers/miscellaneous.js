@@ -1,23 +1,38 @@
+const { getMaxListeners } = require('../models/Person');
 const Person = require('../models/Person');
 const Supervisor = require('../models/Supervisor');
 
 const modelType = async (req, res) => {
-  console.log('req.body',req.body)
-  const _email = req.body.email;
+
+  var _email = req.body.email;
+  if (_email === "fypmanagement20@gmail.com"){
+    return res.status(200).json({
+        model: "Admin",
+        username:"Admin"
+  })
+}
+else{
   try {
+    console.log('req.body.email',req.body.email)
     var person = await Person.find({ email: _email });
-    if (person.length > 0) {
+    console.log(person)
+    if (person) {
+        console.log('person',person)
       return res.status(200).json({
-        model: "Student"
+            model: "Student",
+            username:person.fname
       })
     }
 
-    person = await Supervisor.find({ email: _email });
-    if (person.length > 0) {
+    var advisor = await Supervisor.find({ email: _email });
+    if (advisor) {
       return res.status(200).json({
-        model: "Advisor"
+        model: "Advisor",
+        username:advisor.name
+
       })
     }
+   
     return res.status(404).json({
       message: "No such email exists"
     })
@@ -28,6 +43,7 @@ const modelType = async (req, res) => {
       'message': 'Internal server error!'
     })
   }
+}
 }
 
 exports.modelType = modelType;

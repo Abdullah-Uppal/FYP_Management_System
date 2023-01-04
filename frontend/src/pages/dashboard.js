@@ -23,19 +23,21 @@ import Commtiee from './person/committee/committee'
 import Milestones from './milestones'
 import Department from './department'
 import DepartmentDetails from '../partials/department/departmentDetails'
+import DepartmentModel from '../partials/department/departmentModel'
+import Meeting from '../partials/meeting'
+import Meetings from './meetings'
 
 const Dashboard = ({user}) => {
 
-
+    
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
     return (
-
         !isLoggedIn ? <Navigate replace to="/login" /> :
 
         <div className="flex h-screen overflow-hidden">
             {/* Sidebar */}
-            <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+            <Sidebar role={JSON.parse(user).model} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
             <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
                 <Header user={user} sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
@@ -54,7 +56,8 @@ const Dashboard = ({user}) => {
                             <Route exact path="/user/advisor/new" element={<SupervisorDetail/>} />
                             <Route exact path="/user/student/update/:id" element={<StudentDetail/>} />
                             <Route exact path="/user/advisor/update/:id" element={<SupervisorDetail/>} />
-                            <Route exact path="/meetings" element={<h1>Meetings</h1>} />
+                            <Route exact path="/meeting/new" element={<Meeting/>} />
+                            <Route exact path="/meeting/all" element={<Meetings/>} />
                             <Route exact path="/milestone/new" element={<Milestones/>} />
                             <Route exact path="/departments" element={<Department />} />
                             <Route exact path="/department/new" element={<DepartmentDetails />} />

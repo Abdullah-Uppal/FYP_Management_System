@@ -1,5 +1,4 @@
-import React from "react";
-import DashboardMenu from "../sidebar/sideMenu/dashboardMenu";
+import React from "react"
 import PersonMenu from "../sidebar/sideMenu/personMenu";
 import AllocationMenu from "../sidebar/sideMenu/allocationMenu";
 import SidebarLinkGroup from "../sidebar/sideMenu/sidebarLinkGroup";
@@ -76,7 +75,7 @@ const AdminSection = ({pathname,sidebarExpanded,setSidebarExpanded}) => {
       </SidebarLinkGroup>
       <SidebarLinkGroup
         activecondition={
-          pathname === "/meetings" || pathname.includes("meetings")
+          pathname === "/meeting/all" || pathname.includes("meetings")
         }
       >
         {(handleClick, open) => {

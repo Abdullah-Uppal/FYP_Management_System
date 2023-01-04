@@ -3,15 +3,18 @@ import Form from './partials/logInSignUp/form';
 import {Routes, Route} from 'react-router-dom';
 
 import Dashboard from './pages/dashboard';
-import SupervisorAllocation from './pages/SupervisorAllocation';
+
 
 
 function App() {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(JSON.stringify({
+        model: '',
+        username:''
+    }));
     useEffect(() =>{
-        const loggedInUser = JSON.parse(localStorage.getItem("user"));
+        const loggedInUser = localStorage.getItem("user");
         if(loggedInUser !== null){
-            setUser(loggedInUser.username);
+            setUser(loggedInUser);
         }
         
     },[])
@@ -22,7 +25,7 @@ function App() {
   return (
 
         <Routes>
-            <Route index path='*' element={<Dashboard user={user} setUser={setUser}/>} />
+            <Route index path='*' element={<Dashboard user={user}/>} />
             <Route exact path="/login" element={<Form str={'Login'} setUser={setUser} />} />
             <Route exact path="/signup" element={<Form str={'Sign Up'} />} />
         </Routes>

@@ -4,9 +4,9 @@ import SignupPage from '../../pages/signup';
 import { Navigate } from "react-router-dom";
 
 const Form = ({ str,setUser}) => {
-    console.log('Form.js',typeof(setUser))
+    
     const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn'));
-    console.log('Form.js',isLoggedIn)
+   
     return (
         isLoggedIn  ? <Navigate replace to="/" /> :
         <div className="min-h-full h-screen flex items-center justify-center  py-12 px-4 sm:px-6 lg:px-8">
