@@ -7,6 +7,8 @@ import { NavLink } from "react-router-dom";
 
 const IdeaList = () => {
     const [files, setFile] = React.useState([]);
+    const statusList = ["Waiting", "Approved", "Rejected"];
+    const [status,setStatus]= React.useState(statusList[0])
     // const [isShow, setIsShow] = React.useState(false);
     // const [filename, setFilename] = React.useState("");
 
@@ -46,7 +48,10 @@ const IdeaList = () => {
     //         });
 
     // }
-
+    const changeStatus = (s)=>{
+       console.log(s)
+       setStatus(statusList[(statusList.indexOf(s)+1)%3])
+    }
     // const handleDelete = (e, file) => {
     //     const url = "http://localhost:3000/project/deleteProject/";
     //     // Delete(e, url);
@@ -112,8 +117,8 @@ const IdeaList = () => {
                                                     </div>
                                                 </td>
                                                 <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
-                                                    <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-green-800">
-                                                        {file.isAccepted}
+                                                    <span  className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-green-800 hover:cursor-pointer" onClick={()=>changeStatus(status)}>
+                                                        {status}
                                                     </span>
                                                 </td>
 

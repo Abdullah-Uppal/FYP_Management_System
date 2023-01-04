@@ -1,16 +1,17 @@
 import React from 'react'
-import PersonMenu from '../sidebar/sideMenu/personMenu'
+import FaqMenu from '../sidebar/sideMenu/faqMenu'
+// import PersonMenu from '../sidebar/sideMenu/personMenu'
 import SidebarLinkGroup from '../sidebar/sideMenu/sidebarLinkGroup'
 
 const StudentSection = ({pathname,sidebarExpanded,setSidebarExpanded}) => {
   return (
    <>
       <SidebarLinkGroup
-        activecondition={pathname === "/users" || pathname.includes("users")}
+        activecondition={pathname === "/faq" || pathname.includes("faq")}
       >
         {(handleClick, open) => {
           return (
-            <PersonMenu
+            <FaqMenu
               handleClick={handleClick}
               open={open}
               sidebarExpanded={sidebarExpanded}

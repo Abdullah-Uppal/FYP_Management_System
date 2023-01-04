@@ -6,6 +6,7 @@ import FormatUploaderMenu from "../sidebar/sideMenu/formatUploaderMenu";
 import ProjectIdeas from "../sidebar/sideMenu/projectIdeas";
 import MeetingMenu from "../sidebar/sideMenu/meetingMenu";
 import MilestoneMenu from "../sidebar/sideMenu/milestoneMenu";
+import EvaluationMenu from "../sidebar/sideMenu/evaluationMenu";
 
 const AdminSection = ({pathname,sidebarExpanded,setSidebarExpanded}) => {
   return (
@@ -97,6 +98,22 @@ const AdminSection = ({pathname,sidebarExpanded,setSidebarExpanded}) => {
         {(handleClick, open) => {
           return (
             <MilestoneMenu
+              handleClick={handleClick}
+              open={open}
+              sidebarExpanded={sidebarExpanded}
+              setSidebarExpanded={setSidebarExpanded}
+            />
+          );
+        }}
+      </SidebarLinkGroup>
+      <SidebarLinkGroup
+        activecondition={
+          pathname === "/evaluation" || pathname.includes("evaluation")
+        }
+      >
+        {(handleClick, open) => {
+          return (
+            <EvaluationMenu
               handleClick={handleClick}
               open={open}
               sidebarExpanded={sidebarExpanded}
