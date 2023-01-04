@@ -14,6 +14,7 @@ import Student from './person/student'
 import Supervisor from './person/supervisor'
 import StudentDetail from '../partials/person/studentDetail'
 import SupervisorDetail from '../partials/person/supervisorDetail'
+import StudentsUnderAdvisor from '../partials/studentsUnderAdvisor'
 import FormatUpload from '../partials/formatUpload'
 import Formats from './formats'
 import PostIdea from '../partials/postIdea'
@@ -26,6 +27,8 @@ import DepartmentDetails from '../partials/department/departmentDetails'
 import DepartmentModel from '../partials/department/departmentModel'
 import Meeting from '../partials/meeting'
 import Meetings from './meetings'
+import FAQ from '../partials/FAQ'
+import Evaluation from '../partials/evaluation'
 
 const Dashboard = ({user}) => {
 
@@ -64,12 +67,15 @@ const Dashboard = ({user}) => {
                             <Route exact path="/department/update/:id" element={<DepartmentDetails />} />
                         
                             <Route exact path="/allocation/groups" element ={<h1>Hello Groups</h1>}/>
+                            <Route exact path="/myStudents" element ={<StudentsUnderAdvisor/>}/>
                             <Route exact path="/allocation/supervisors" element ={<SupervisorAllocation/>}/>
                             <Route exact path="/allocation/projects" element ={<h1>Hello projects</h1>}/>
                             <Route exact path="/formats" element ={<Formats/>}/>
                             <Route exact path="/formats/upload" element ={<FormatUpload/>}/>
                             <Route exact path="/project/new" element ={<PostIdea />}/>
                             <Route exact path="/project/all" element ={<IdeasList/>}/>
+                            <Route exact path="/evaluation" element ={<Evaluation/>}/>
+                            <Route exact path="/faq" element ={<FAQ/>}/>
                             <Route exact path="/*" element ={<Page404/>}/>
                         </Routes>
                     </div>

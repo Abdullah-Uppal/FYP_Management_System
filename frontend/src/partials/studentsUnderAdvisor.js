@@ -1,6 +1,6 @@
 import React from 'react'
 import { FiEdit } from 'react-icons/fi';
-import { FaTrash } from 'react-icons/fa';
+// import { FaTrash } from 'react-icons/fa';
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 
