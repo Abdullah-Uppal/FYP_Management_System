@@ -36,6 +36,7 @@ const create = async (req, res) => {
   try {
     console.log(req.body);
     let { title, description, proposalDocument,postedBy } =
+
       req.body;
       let post;
      
