@@ -27,7 +27,7 @@ function App() {
         <Routes>
             <Route index path='*' element={<Dashboard user={user}/>} />
             <Route exact path="/login" element={<Form str={'Login'} setUser={setUser} />} />
-            {/* <Route exact path="/signup" element={<Form str={'Sign Up'} />} /> */}
+            <Route exact path="/signup" element={<Form str={'Sign Up'} />} />
         </Routes>
    
   )
