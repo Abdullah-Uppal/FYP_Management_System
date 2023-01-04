@@ -4,10 +4,10 @@ const Person = require('../models/Person');
 const create = async (req, res) => {
   try {
     console.log(req.body);
-    const { project, students, advisors } = req.body;
+    const { id, project, students, advisors } = req.body;
 
     const group = new Group({
-      project, students, advisors 
+      id, project, students, advisors 
     });
     await group.save();
     return res.status(200).json({
@@ -25,13 +25,14 @@ const create = async (req, res) => {
 const create_empty_group = async (req, res) => {
   try {
     const group = new Group({
+      id: req.body.id,
       project: null,
       students: [],
       advisors: [],
     });
     await group.save();
     return res.status(200).json({
-      groupid: group._id,
+      id: group.id,
     });
   }
   catch (err) {
@@ -45,9 +46,9 @@ const create_empty_group = async (req, res) => {
 // controller to add students to a group of id
 const add_students = async (req, res) => {
   try {
-    const { groupid, students } = req.body;
+    const { id, students } = req.body;
     const group = await Group.findOne({
-      _id: groupid,
+      id: id,
     });
     group.students = students;
     await group.save();
@@ -66,11 +67,11 @@ const add_students = async (req, res) => {
 // controller to remove students from a group
 const remove_students = async (req, res) => {
   try {
-    const { groupid, students } = req.body;
+    const { id, students } = req.body;
     console.log(req.body)
     const group
     = await Group.findOne({
-      _id: groupid,
+      id: id,
     });
     
     group.students = group.students.filter((student) => {
@@ -93,10 +94,10 @@ const remove_students = async (req, res) => {
 // controller to add advisors to a group of id
 const add_advisors = async (req, res) => {
   try {
-    const { groupid, advisors } = req.body;
+    const { id, advisors } = req.body;
     const group
     = await Group.findOne({
-      _id: groupid,
+      id: id,
     });
     group.advisors = advisors;
     await group.save();
@@ -115,10 +116,10 @@ const add_advisors = async (req, res) => {
 // controller to remove advisors from a group
 const remove_advisors = async (req, res) => {
   try {
-    const { groupid, advisors } = req.body;
+    const { id, advisors } = req.body;
     const group
     = await Group.findOne({
-      _id: groupid,
+      id: id,
     });
     group.advisors = group.advisors.filter((advisor) => {
       return !advisors.includes(advisor.toString());
@@ -139,10 +140,10 @@ const remove_advisors = async (req, res) => {
 // controller to add project to a group of id
 const add_project = async (req, res) => {
   try {
-    const { groupid, project } = req.body;
+    const { id, project } = req.body;
     const group
     = await Group.findOne({
-      _id: groupid,
+      id: id,
     });
     group.project = project;
     await group.save();
@@ -175,7 +176,7 @@ const all = async (req, res) => {
 const one = async (req, res) => {
   try {
     const group = await Group.findOne({
-      _id: req.params.id,
+      id: req.params.id,
     }).populate();
     return res.status(200).json(group);
   }
@@ -190,7 +191,7 @@ const one = async (req, res) => {
 const remove = async (req, res) => {
   try {
     return res.status(200).json(
-      await Group.deleteOne({ _id: req.params.id })
+      await Group.deleteOne({ id: req.params.id })
     );
   } catch (error) {
     console.log(error);
@@ -201,7 +202,7 @@ const remove = async (req, res) => {
 const update = async (req, res) => {
   try {  
     const { project, students, advisors } = req.body;
-    return res.status(200).json(await Group.updateOne({ _id: req.params.id }, {
+    return res.status(200).json(await Group.updateOne({ id: req.params.id }, {
       project, students, advisors 
     }));
   }

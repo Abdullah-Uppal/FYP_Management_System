@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 
 const GroupSchema = new Schema({
+  id:       { type: String, required: true, unique: true },
   project:  { type: Schema.Types.ObjectId, ref: "Project" },
   students: { type: [ Schema.Types.ObjectId ], ref: "Person", min: 2, max: 5 },
   advisors: { type: [ Schema.Types.ObjectId ], ref: "Supervisor", min: 2, max: 2 },
