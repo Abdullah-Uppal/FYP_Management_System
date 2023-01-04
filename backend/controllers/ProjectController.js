@@ -36,7 +36,7 @@ const uploadFile = async (req, res) => {
 const create = async (req, res) => {
   try {
     console.log(req.body);
-    const { title, description, proposalDocument,  postedBy } =
+    const { title, description, proposalDocument,  postedBy, isPostedByAdmin } =
       req.body;
 
     const project = new Project({
