@@ -5,6 +5,7 @@ import SidebarLinkGroup from "./sidebar/sideMenu/sidebarLinkGroup";
 import DashboardMenu from "./sidebar/sideMenu/dashboardMenu";
 import StudentSection from "./sections/studentSection";
 import AdvisorSection from "./sections/advisorSection";
+import ProjectIdeas from "./sidebar/sideMenu/projectIdeas";
 
 
 const Sidebar = ({ role, sidebarOpen, setSidebarOpen }) => {
@@ -87,7 +88,7 @@ const Sidebar = ({ role, sidebarOpen, setSidebarOpen }) => {
                     {/* Logo */}
                     <NavLink end to="/" className="block">
                         <div className="w-full flex justify-between align-middle items-center flex-wrap">
-                        <svg
+                            <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 xmlnsXlink="http://www.w3.org/1999/xlink"
                                 width="200"
@@ -139,8 +140,8 @@ const Sidebar = ({ role, sidebarOpen, setSidebarOpen }) => {
                                     );
                                 }}
                             </SidebarLinkGroup>
-                            
-                             { role === "Admin" &&
+
+                            {role === "Admin" &&
 
                                 <AdminSection
                                     pathname={pathname}
@@ -148,21 +149,36 @@ const Sidebar = ({ role, sidebarOpen, setSidebarOpen }) => {
                                     setSidebarExpanded={setSidebarExpanded}
                                 />
                             }
-                             { role === "Student" &&
-                                 <StudentSection
-                                pathname={pathname}
-                                sidebarExpanded={sidebarExpanded}
-                                setSidebarExpanded={setSidebarExpanded}
-                            />
+                            {role === "Student" &&
+                                <StudentSection
+                                    pathname={pathname}
+                                    sidebarExpanded={sidebarExpanded}
+                                    setSidebarExpanded={setSidebarExpanded}
+                                />
                             }
                             {role === "Advisor" &&
-                                                           <AdvisorSection
-                                pathname={pathname}
-                                sidebarExpanded={sidebarExpanded}
-                                setSidebarExpanded={setSidebarExpanded}
-                            /> 
+                                <AdvisorSection
+                                    pathname={pathname}
+                                    sidebarExpanded={sidebarExpanded}
+                                    setSidebarExpanded={setSidebarExpanded}
+                                />
                             }
-              
+                            <SidebarLinkGroup
+                                activecondition={
+                                    pathname === "/project/all" || pathname.includes("projects")
+                                }
+                            >
+                                {(handleClick, open) => {
+                                    return (
+                                        <ProjectIdeas
+                                            handleClick={handleClick}
+                                            open={open}
+                                            sidebarExpanded={sidebarExpanded}
+                                            setSidebarExpanded={setSidebarExpanded}
+                                        />
+                                    );
+                                }}
+                            </SidebarLinkGroup>
                         </ul>
                     </div>
                 </div>

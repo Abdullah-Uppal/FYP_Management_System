@@ -13,7 +13,7 @@ const AdminSection = ({pathname,sidebarExpanded,setSidebarExpanded}) => {
     <>
    
       <SidebarLinkGroup
-        activecondition={pathname === "/users" || pathname.includes("users")}
+        activecondition={pathname === "/user" || pathname.includes("user")}
       >
         {(handleClick, open) => {
           return (
@@ -58,7 +58,7 @@ const AdminSection = ({pathname,sidebarExpanded,setSidebarExpanded}) => {
           );
         }}
       </SidebarLinkGroup>
-      <SidebarLinkGroup
+      {/* <SidebarLinkGroup
         activecondition={
           pathname === "/project/all" || pathname.includes("projects")
         }
@@ -73,7 +73,7 @@ const AdminSection = ({pathname,sidebarExpanded,setSidebarExpanded}) => {
             />
           );
         }}
-      </SidebarLinkGroup>
+      </SidebarLinkGroup> */}
       <SidebarLinkGroup
         activecondition={
           pathname === "/meeting/all" || pathname.includes("meetings")

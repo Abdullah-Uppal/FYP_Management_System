@@ -4,10 +4,10 @@ const Person = require('../models/Person');
 const create = async (req, res) => {
   try {
     console.log(req.body);
-    const { id, project, students, advisors } = req.body;
+    const { id,  students } = req.body;
 
     const group = new Group({
-      id, project, students, advisors 
+      id, students
     });
     await group.save();
     return res.status(200).json({

@@ -1,8 +1,8 @@
 import React from "react";
 import List from "./list";
 
-const Model = ({ min, max, members,count,handleClick,addGroup }) => {
-  const [title, setTitle] = React.useState("");
+const Model = ({ min, max, members,count,handleClick,addGroup,setTitle }) => {
+
   return (
     <div>
       <label htmlFor="my-modal" className="btn">
