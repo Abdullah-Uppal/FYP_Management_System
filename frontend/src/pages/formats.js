@@ -10,8 +10,6 @@ import ShowModel from "../utils/showModel";
 // import {AiFillPlusCircle} from "react-icons/ai";
 const Formats = () => {
     const [files, setFile] = React.useState(null);
-    const statusList = ["Waiting", "Approved", "Rejected"];
-    const [status, setStatus] = React.useState(statusList[0])
     const role = JSON.parse(localStorage.getItem("user")).model;
     React.useEffect(() => {
         const fetchPdf = async () => {
@@ -57,11 +55,6 @@ const Formats = () => {
         Delete(file.file, url1);
         setFile(files.filter((f) => f._id !== file._id));
     }
-    const changeStatus = (s) => {
-        console.log(s)
-        setStatus(statusList[(statusList.indexOf(s) + 1) % 3])
-    }
-    
     return (
         <div>
             <div className="w-full bg-gray-100 py-10 px-5 md:px-0">
@@ -74,12 +67,14 @@ const Formats = () => {
                             <div className="flex items-center py-2">
                                 <input className="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-search" type="text" placeholder="Search" />
                             </div>
-                            <div className="flex items-center py-2">
-                                <NavLink to={"/formats/upload/"} className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline">
-                                    Upload Format
-                                </NavLink>
+                            {role === "Admin" &&
+                                <div className="flex items-center py-2">
+                                    <NavLink to={"/formats/upload/"} className="inline-block px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline">
+                                        Upload Format
+                                    </NavLink>
 
-                            </div>
+                                </div>
+                            }
                         </div>
                         <div className="-my-2 py-2 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                             <div className="align-middle inline-block w-full shadow overflow-x-auto sm:rounded-lg border-b border-gray-200">
@@ -95,9 +90,6 @@ const Formats = () => {
                                             </th>
                                             <th className="p-2 md:px-6 md:py-3 text-left font-medium">
                                                 Date Posted
-                                            </th>
-                                            <th className="p-2 md:px-6 md:py-3 text-left font-medium">
-                                                Status
                                             </th>
                                             <th className=" md:px-0 md:py-0 text-left font-medium">
                                                 Actions
@@ -119,12 +111,6 @@ const Formats = () => {
                                                         {new Date(file.date.toString()).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })}
                                                     </div>
                                                 </td>
-                                                <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200" >
-                                                    <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-green-800 hover:cursor-pointer" onClick={() => changeStatus(status)}>
-                                                        {status}
-                                                    </span>
-                                                </td>
-
 
                                                 <td className=" whitespace-no-wrap border-b border-gray-200">
                                                     <div style={{

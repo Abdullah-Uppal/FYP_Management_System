@@ -88,7 +88,8 @@ const StudentGroup = () => {
         try {
             return await axios.post(url1, data).then((res) => {
                 if (res.status === 200) {
-                    console.log('data is added')
+                    alert('data is added')
+
                 }
          } );
         

@@ -8,7 +8,7 @@ const PostIdea = () => {
     const [alert, setAlert] = useState({});
     const [isAlert, setIsAlert] = useState(false);
     const [file,setFile] = useState(null);
-    const id = JSON.parse(localStorage.getItem('user'))._id
+    const id = JSON.parse(localStorage.getItem('user')).id
     const [Input, setPerson] = useState(
         {
             title: "",
@@ -67,12 +67,12 @@ const PostIdea = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-            console.log(id)
+            
             const d = {
             title: Input.title,
             description: Input.description,
             proposalDocument:file.name,
-            postedBy: id 
+            postedBy: id,
              
         }
         

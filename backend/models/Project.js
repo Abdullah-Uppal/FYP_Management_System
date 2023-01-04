@@ -8,7 +8,7 @@ const ProjectSchema=new Schema({
   proposalDocument: { type: String, required: true},
   isAccepted: { type: String, default: "Waiting", enum: ["Approved", "Rejected", "Waiting"] },
   postedBy: { type: Schema.Types.ObjectId, refPath: "modelType" },
-  isPostedByAdmin: { type: Boolean, default: false },
+  
   modelType: { type: String, enum: ["Person", "Supervisor"] },
   date: { type: Date, default: Date.now }
 });

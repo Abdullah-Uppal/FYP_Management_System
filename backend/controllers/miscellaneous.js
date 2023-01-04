@@ -1,14 +1,14 @@
 const { getMaxListeners } = require('../models/Person');
 const Person = require('../models/Person');
 const Supervisor = require('../models/Supervisor');
-
+const { ObjectId } = require('mongodb');
 const modelType = async (req, res) => {
 
   var _email = req.body.email;
   if (_email === "fypmanagement20@gmail.com"){
     return res.status(200).json({
       model: "Admin",
-      id:"Admin",
+      id:ObjectId("adf203921d31"),
       username:"Admin"
     })
   }

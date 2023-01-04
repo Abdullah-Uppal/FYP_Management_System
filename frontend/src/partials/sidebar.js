@@ -6,6 +6,7 @@ import DashboardMenu from "./sidebar/sideMenu/dashboardMenu";
 import StudentSection from "./sections/studentSection";
 import AdvisorSection from "./sections/advisorSection";
 import ProjectIdeas from "./sidebar/sideMenu/projectIdeas";
+import FormatUploaderMenu from "./sidebar/sideMenu/formatUploaderMenu";
 
 
 const Sidebar = ({ role, sidebarOpen, setSidebarOpen }) => {
@@ -163,6 +164,22 @@ const Sidebar = ({ role, sidebarOpen, setSidebarOpen }) => {
                                     setSidebarExpanded={setSidebarExpanded}
                                 />
                             }
+                            <SidebarLinkGroup
+                                activecondition={
+                                    pathname === "/formats" || pathname.includes("formats")
+                                }
+                            >
+                                {(handleClick, open) => {
+                                    return (
+                                        <FormatUploaderMenu
+                                            handleClick={handleClick}
+                                            open={open}
+                                            sidebarExpanded={sidebarExpanded}
+                                            setSidebarExpanded={setSidebarExpanded}
+                                        />
+                                    );
+                                }}
+                            </SidebarLinkGroup>
                             <SidebarLinkGroup
                                 activecondition={
                                     pathname === "/project/all" || pathname.includes("projects")

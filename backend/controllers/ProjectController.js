@@ -1,5 +1,4 @@
 const Project = require('../models/Project');
-
 var multer = require('multer')
 
 // FOR FILE UPLOADS
@@ -36,15 +35,15 @@ const uploadFile = async (req, res) => {
 const create = async (req, res) => {
   try {
     console.log(req.body);
-    const { title, description, proposalDocument,  postedBy } =
+    let { title, description, proposalDocument,postedBy } =
       req.body;
-
+      let post;
+     
     const project = new Project({
       title,
       description,
       proposalDocument,
-      postedBy,
-      isPostedByAdmin
+      postedBy  
     });
     await project.save();
     return res.status(200).json({

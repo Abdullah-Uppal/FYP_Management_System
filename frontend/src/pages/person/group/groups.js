@@ -23,6 +23,7 @@ const Groups = () => {
             }
         };
       getGroups().then((data) => {
+        console.log('data',data)
             setGroups(data);
       })
     }, []);

@@ -42,7 +42,7 @@ const AdminSection = ({pathname,sidebarExpanded,setSidebarExpanded}) => {
           );
         }}
       </SidebarLinkGroup>
-      <SidebarLinkGroup
+      {/* <SidebarLinkGroup
         activecondition={
           pathname === "/formats" || pathname.includes("formats")
         }
@@ -57,7 +57,7 @@ const AdminSection = ({pathname,sidebarExpanded,setSidebarExpanded}) => {
             />
           );
         }}
-      </SidebarLinkGroup>
+      </SidebarLinkGroup> */}
       {/* <SidebarLinkGroup
         activecondition={
           pathname === "/project/all" || pathname.includes("projects")
