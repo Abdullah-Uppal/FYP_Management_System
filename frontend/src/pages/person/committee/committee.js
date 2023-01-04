@@ -97,9 +97,7 @@ const Committee = () => {
   //   setCommittee(committee.filter((com) => com._id !== id));
   //   deleteCommittee(id);
   // };
-  const handleCreateCommittee = () => {
 
-  }
   const [advisors, setAdvisors] = useState([]);
   const [advisorsToAdd, setAdvisorsToAdd] = useState([]);
   const handleAddClick = (id) => {

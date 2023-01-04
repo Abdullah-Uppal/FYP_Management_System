@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Alert from '../utils/alert';
 import axios from 'axios';
 
@@ -14,21 +14,45 @@ const Meeting = () => {
     const [time, setTime] = useState('');
     const [date, setDate] = useState('');
 
+    const [committees, setCommittees] = useState([]);
+    const [groups, setGroups] = useState([])
+    useEffect(() => {
+        // getAdvisors().then((data) => {
+        //   getCommittee(data.supervisor);
+        // }); 
+        const getCommittees = async () => {
+            // await getAdvisors();
+            return await axios.get("http://localhost:3000/committee/getCommittees").then(res => {
+                console.log(res.data);
+                setCommittees(res.data);
+    
+    
+            });
+        }
+        getCommittees()
+
+    }, []);
+    useEffect(() => {
+
+        const url = "http://localhost:3000/group/getGroups";
+        const getGroups = async () => {
+            console.log('data fetch first')
+            try {
+                return await axios.get(url).then((res) =>
+                    res.data
+                );
 
 
-    const committees = [
-        'committee1',
-        'committee2',
-        'committee3',
-        'committee4'
-    ];
-    const groups = [
-        'group1',
-        'group2',
-        'group3',
-        'group4'
-    ];
-
+            } catch
+            (error) {
+                console.log(error)
+            }
+        };
+        getGroups().then((data) => {
+            console.log('data', data)
+            setGroups(data);
+        })
+    }, []);
     // React.useEffect(() => {
     //     getStudentId();
     // }, [])
@@ -131,7 +155,7 @@ const Meeting = () => {
                                     {
                                         groups.map((g) => {
                                             return (
-                                                <option value={groups.indexOf(g)}>{g}</option>
+                                                <option value={g._id}>{g.students.map(s => s.regno).join()}</option>
                                             )
                                         })
                                     }
@@ -151,7 +175,7 @@ const Meeting = () => {
                                     {
                                         committees.map((c) => {
                                             return (
-                                                <option value={committees.indexOf(c)}>{c}</option>
+                                                <option value={c._id}>{c.members.map(m=>m.name).join()}</option>
                                             )
                                         })
                                     }

@@ -12,8 +12,8 @@ const Meetings = () => {
             await axios
                 .get("http://localhost:3000/meeting/getMeeting")
                 .then((res) => {
-                    setMeetings(res.data);
-                    console.log(res.data);
+                    setMeetings(res.data.meeeting);
+                    console.log(res.data.meeeting);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -65,7 +65,7 @@ const Meetings = () => {
                                         Date 
                                     </th>
                                     <th className="p-2 md:px-6 md:py-3 text-left font-medium">
-                                        Status
+                                        Time
                                     </th>
                                     <th className="p-2 md:px-6 md:py-3 text-left font-medium">
                                         Location
@@ -87,14 +87,15 @@ const Meetings = () => {
                                         </td>
                                         <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
                                             <div className="text-sm leading-5 text-gray-900">
-                                                {m.time}
+                                                {m.time.split('T')[0]}
                                             </div>
                                         </td>
                                         <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
-                                            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-green-800">
-                                                {m.happened}
-                                            </span>
+                                            <div className="text-sm leading-5 text-gray-900">
+                                            {m.time.split('T')[1]}
+                                            </div>
                                         </td>
+                                        
                                         <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
                                                     {m.location.length >= 30 ? m.location.slice(0, 30) + '...' : m.location}
                                                 </td>
