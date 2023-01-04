@@ -162,7 +162,7 @@ const add_project = async (req, res) => {
 
 const all = async (req, res) => {
   try {
-    const groups = await Group.find().populate();
+    const groups = await Group.find().populate('students');
     return res.status(200).json(groups);
   }
   catch (err) {
