@@ -14,13 +14,13 @@ const GroupCard = ({group}) => {
                         {group.id}
                     </p>
                     <div className='flex flex-row flex-wrap gap-1 '>
+                            <p className="text-sm text-gray-501 truncate dark:text-gray-400">
                     {group.students.map((student,index) => {
                         return(
-                            <p key={index} className="text-sm text-gray-500 truncate dark:text-gray-400">
-                                {student}
-                            </p>
+                                student.fname + ' ' + student.lname
                         )
-                    })}
+                    }).join(', ')}
+                            </p>
                     </div>
                     <p className="text-sm text-gray-500 truncate dark:text-gray-400">
                         
