@@ -19,7 +19,9 @@ const UserMenu = ({handleClick,open,sidebarExpanded,setSidebarExpanded}) => {
     ]
 
   return (
-    <SideMenu title={'Users'} pathname={'/users'} checkUrl={'/users'} checkPathName={'users'} handleClick={handleClick} open={open} sidebarExpanded={sidebarExpanded} setSidebarExpanded={setSidebarExpanded} subMenus={subMenus}/>
+    <SideMenu title={'Users'} pathname={'/users'} checkUrl={'/users'} checkPathName={'users'}
+    icon={''}
+    handleClick={handleClick} open={open} sidebarExpanded={sidebarExpanded} setSidebarExpanded={setSidebarExpanded} subMenus={subMenus}/>
   )
 }
 
