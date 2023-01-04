@@ -215,16 +215,17 @@ const update = async (req, res) => {
 const getStudentGroup = async (req, res) => {
   try {
     const groups = await Group.find();
+    console.log(groups);
     if (groups) {
       const studentGroups = groups.filter(
         (group) => {
           return group.students.includes(req.params.id);
         }
       );
-      return res.status(404).json(studentGroups[0]);
+      return res.status(200).json(await studentGroups[0].populate('students'));
     }
     else {
-      return res.status(200).json(null);
+      return res.status(404).json(null);
     }
   }
   catch (err) {
