@@ -222,8 +222,11 @@ const getStudentGroup = async (req, res) => {
           return group.students.map(student => student.toString()).includes(req.params.id);
         }
       );
+      console.log(studentGroups)
+      if (studentGroups[0] === undefined) {
+        return res.status(200).json([]);
+      }
       return res.status(200).json(await studentGroups[0].populate('students'));
-
     }
     else {
       return res.status(404).json(null);

@@ -13,7 +13,10 @@ const StudentGroup = () => {
     });
     getMyGroup().then((d)=>{
       console.log(d)
-      d.students = d.students.map(student => student.regno);
+      if (d) {
+        d.students = d.students.map(student => student.regno);
+      }
+      
       console.log('myGroup',d)
       setMyGroup(d)
     })
@@ -63,9 +66,10 @@ const StudentGroup = () => {
   const addGroup = () =>{
     console.log('group',group);
   }
+  console.log(myGroup)
   return(
     <>
-   { !myGroup ? <Model min={2} max={4} members={members} count={count} handleClick={handleClick} addGroup={addGroup} /> : <GroupCard group = {myGroup}/>}
+   { myGroup ?  <Model min={2} max={4} members={members} count={count} handleClick={handleClick} addGroup={addGroup} /> : <GroupCard group = {myGroup}/>}
    </>
   )
   

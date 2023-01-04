@@ -15,7 +15,7 @@ const GroupCard = ({group}) => {
                     </p>
                 
                     <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                        {/* {group.students.join()} */}
+                        {group.students.join()}
                     </p>
                 </div>
 
