@@ -14,13 +14,21 @@ const GroupCard = ({group}) => {
                         {JSON.parse(group).id}
                     </p>
                     <div className='flex flex-row flex-wrap gap-1 '>
+<<<<<<< HEAD
                     {JSON.parse(group).students.map((student,index) => {
                         return(
                             <p key={index} className="text-sm text-gray-500 truncate dark:text-gray-400">
                                 {student.regno}
                             </p>
+=======
+                            <p className="text-sm text-gray-501 truncate dark:text-gray-400">
+                    {group.students.map((student,index) => {
+                        return(
+                                student.fname + ' ' + student.lname
+>>>>>>> 00942051e8d6b1edd2a280d4e8160c29fc4c0abe
                         )
-                    })}
+                    }).join(', ')}
+                            </p>
                     </div>
                     <p className="text-sm text-gray-500 truncate dark:text-gray-400">
                         
