@@ -1,5 +1,80 @@
 const Committee = require("../models/Committee");
 
+const createCommittee = async (req, res) => {
+  try {
+    const members = req.body;
+    const committee = new Committee({
+      members: members,
+    });
+    committee.save();
+    res.status(200).json(await committee.populate('members'));
+  }
+  catch(err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+}
+
+const deleteCommittee = async (req, res) => {
+  try {
+    const id = req.params.id;
+    await Committee.deleteOne({ _id: id });
+    res.status(200).json({
+      message: "Successfully deleted",  
+    });
+  }
+  catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+}
+const removeMembers = async (req, res) => {
+  try {
+    const { id, members } = req.body;
+    console.log(req.body)
+    const committee
+    = await Committee.findOne({_id: id,});
+    
+    committee.members = committee.members.filter((member) => {
+      return !member.includes(member.toString());
+    });
+    console.log(committee.members);
+    await committee.save();
+    return res.status(200).json({
+      message: "Successfully Removed members",
+    });
+  }
+  catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Internal Server Error"
+    });
+  }
+}
+
+const addMembers = async (req, res) => {
+    try {
+      const { id, members } = req.body;
+      const committee = await Committee.findOne({
+        id: id,
+      });
+      committee.members = members;
+      await committee.save();
+      return res.status(200).json({
+        message: "Successfully Added members",
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({
+        message: "Internal Server Error",
+      });
+    }
+}
+
 const addMember = async (req, res) => {
   try {
     const committee = await Committee.findOne();
@@ -63,3 +138,7 @@ const removeMember = async (req, res) => {
 exports.getMembers = getMembers;
 exports.removeMember = removeMember;
 exports.addMember = addMember;
+exports.createCommittee = createCommittee;
+exports.addMembers = addMembers;
+exports.removeMembers = removeMembers;
+exports.deleteCommittee = deleteCommittee;

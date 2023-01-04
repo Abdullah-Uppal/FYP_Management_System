@@ -1,3 +1,4 @@
+const Committee = require('../models/Committee');
 const Supervisor=require('../models/Supervisor');
 
 //supervisor adding function
@@ -94,9 +95,22 @@ const deleteSupervisor = async (req, res) => {
     }
 }
 
+const notIncommittee = async (req, res) => {
+    var committees = await Committee.find({});
+    var advisors = await Supervisor.find();
+    var l = committees.map(committee => committee.members).flat();
+    l = l.map(group => group._id.toString());
+
+    res.status(200).json(advisors.filter(advisor => {
+        const b = !l.includes(advisor._id.toString())
+        return b;
+    }))
+}
+
 exports.addSupervisor=addSupervisor;
 exports.getSupervisor=getSupervisor;
 exports.getOneSupervisor=getOneSupervisor;
 exports.updateSupervisor=updateSupervisor;
 exports.deleteSupervisor=deleteSupervisor;
+exports.notIncommittee = notIncommittee;
 

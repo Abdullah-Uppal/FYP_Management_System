@@ -7,4 +7,5 @@ const CommitteeSchema = new Schema({
   members: { type: [ Schema.Types.ObjectId ], ref: "Supervisor" }
 });
 
+
 module.exports = mongoose.model("Committee", CommitteeSchema);

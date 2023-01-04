@@ -12,6 +12,7 @@ router.get('/getSupervisor',supervisorController.getSupervisor);
 router.get('/getOneSupervisor/:id', supervisorController.getOneSupervisor);
 router.delete('/deleteSupervisor/:id',supervisorController.deleteSupervisor);
 router.put('/updateSupervisor/:id',supervisorController.updateSupervisor);
+router.get('notInCommittee', supervisorController.notIncommittee);
 
 
 module.exports=router;
