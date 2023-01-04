@@ -219,10 +219,11 @@ const getStudentGroup = async (req, res) => {
     if (groups) {
       const studentGroups = groups.filter(
         (group) => {
-          return group.students.includes(req.params.id);
+          return group.students.map(student => student.toString()).includes(req.params.id);
         }
       );
       return res.status(200).json(await studentGroups[0].populate('students'));
+
     }
     else {
       return res.status(404).json(null);

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const GroupCard = () => {
+const GroupCard = ({group}) => {
  
     return (
 
@@ -11,10 +11,11 @@ const GroupCard = () => {
                 </div>
                 <div className="flex-1 min-w-0">
                     <p className="text-lg font-medium text-gray-900 truncate dark:text-white">
-                        Neil Sims
+                        {group.id}
                     </p>
+                
                     <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                        email@flowbite.com
+                        {/* {group.students.join()} */}
                     </p>
                 </div>
 

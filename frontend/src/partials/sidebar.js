@@ -68,7 +68,7 @@ const Sidebar = ({ role, sidebarOpen, setSidebarOpen }) => {
             >
                 <div className="flex justify-between mb-10 pr-3 sm:px-2">
                     {/* Close button */}
-                    <button
+                    {/* <button
                         ref={trigger}
                         className="lg:hidden text-slate-500 hover:text-slate-400"
                         onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -83,7 +83,7 @@ const Sidebar = ({ role, sidebarOpen, setSidebarOpen }) => {
                         >
                             <path d="M10.7 18.7l1.4-1.4L7.8 13H20v-2H7.8l4.3-4.3-1.4-1.4L4 12z" />
                         </svg>
-                    </button>
+                    </button> */}
                     {/* Logo */}
                     <NavLink end to="/" className="block">
                         <div className="w-full flex justify-between align-middle items-center flex-wrap">

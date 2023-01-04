@@ -1,7 +1,13 @@
 import React from 'react'
 import { AiOutlinePlus } from 'react-icons/ai'
 
-const Item = ({handleClick}) => {
+const Item = ({member,max,count,handleClick}) => {
+
+   const [pointer,setPointer] = React.useState('cursor-pointer hover:cursor-pointer');
+
+   const handleEvenet = () => {
+      count < max ? handleClick(member) : setPointer('cursor-not-allowed hover:coursor-not-allowed');
+   }
   return (
     <li className="p-3 sm:pb-4 rounded-md">
     <div className="flex items-center space-x-4">
@@ -10,14 +16,15 @@ const Item = ({handleClick}) => {
        </div>
        <div className="flex-1 min-w-0">
           <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
-             Neil Sims
+            {member.fname+" "+member.lname}
           </p>
           <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-             email@flowbite.com
+             {member.regNo}
           </p>
        </div>
        <div className="flex-3 min-w-0">
-          <p className="text-sm items-center flex cursor-pointer font-medium text-gray-900 truncate dark:text-white hover:text-indigo-500" onClick={()=>handleClick('hello')}>
+
+          <p className={"text-sm items-center flex  font-medium text-gray-900 truncate dark:text-white hover:text-indigo-500 "+pointer} onClick={handleEvenet}>
              <AiOutlinePlus/> Add
           </p>
        </div>

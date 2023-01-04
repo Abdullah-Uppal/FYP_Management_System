@@ -22,6 +22,7 @@ const modelType = async (req, res) => {
         console.log('name', person.fname);
         return res.status(200).json({
           model: "Student",
+          id:person._id,
           username: person.fname
         })
       }
@@ -30,6 +31,7 @@ const modelType = async (req, res) => {
       if (advisor) {
         return res.status(200).json({
           model: "Advisor",
+          id:advisor._id,
           username:advisor.name
 
         })

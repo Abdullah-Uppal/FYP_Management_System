@@ -20,6 +20,7 @@ import Formats from './formats'
 import PostIdea from '../partials/postIdea'
 import IdeasList from './ideasList'
 import Group from './person/group/group'
+
 import Commtiee from './person/committee/committee'
 import Milestones from './milestones'
 import Department from './department'
@@ -29,6 +30,7 @@ import Meeting from '../partials/meeting'
 import Meetings from './meetings'
 import FAQ from '../partials/FAQ'
 import Evaluation from '../partials/evaluation'
+import StudentGroup from './studentGroup';
 
 const Dashboard = ({user}) => {
 
@@ -65,7 +67,7 @@ const Dashboard = ({user}) => {
                             <Route exact path="/departments" element={<Department />} />
                             <Route exact path="/department/new" element={<DepartmentDetails />} />
                             <Route exact path="/department/update/:id" element={<DepartmentDetails />} />
-                        
+                            <Route exact path ="/group" element={<StudentGroup/>}/>
                             <Route exact path="/allocation/groups" element ={<h1>Hello Groups</h1>}/>
                             <Route exact path="/myStudents" element ={<StudentsUnderAdvisor/>}/>
                             <Route exact path="/allocation/supervisors" element ={<SupervisorAllocation/>}/>
