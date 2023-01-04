@@ -104,7 +104,12 @@ const notIncommittee = async (req, res) => {
     res.status(200).json(advisors.filter(advisor => {
         const b = !l.includes(advisor._id.toString())
         return b;
-    }))
+    }).map(advisor => {
+        return {
+        _id: advisor._id,
+        name: advisor.name,
+        role: advisor.role
+    }}))
 }
 
 exports.addSupervisor=addSupervisor;

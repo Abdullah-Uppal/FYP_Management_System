@@ -1,11 +1,12 @@
 import React from 'react'
-const UiTable = ({title,objs,handleEvent,btnTitle}) => {
+import Model from './model'
+const UiTable = ({title,objs,handleEvent, btnTitle}) => {
   return (
     <div className="w-full bg-gray-100 rounded-lg py-10 px-5 md:px-0">
     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div className="flex flex-col">
+        <div className="flex flex-col align-stretch">
             <div className="-mb-2 py-4 flex flex-wrap flex-grow justify-between">
-            <div className="my-4">
+            <div className="my-4 flex flex-grow justify-between">
                 <h1 className=" font-bolder leading-tight text-gray-900 text-sm md:text-3xl">{title}</h1>
             </div>
               
@@ -20,13 +21,7 @@ const UiTable = ({title,objs,handleEvent,btnTitle}) => {
                                     No.
                                 </th>
                                 <th className="p-2 md:px-6 md:py-3 text-left font-medium">
-                                    Name
-                                </th>
-                                <th className="p-2 md:px-6 md:py-3 text-left font-medium">
-                                    Gender
-                                </th>
-                                <th className="p-2 md:px-6 md:py-3 text-left font-medium">
-                                    Role
+                                    Members
                                 </th>
                                 <th className=" md:px-0 md:py-0 text-left font-medium">
                                     Actions
@@ -42,17 +37,7 @@ const UiTable = ({title,objs,handleEvent,btnTitle}) => {
                                         {objs.indexOf(obj) + 1}
                                     </td>
                                     <td className="p-2 text-sm md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
-                                        {obj.name}
-                                    </td>
-                                    <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-green-800">
-                                            {obj.gender}
-                                        </span>
-                                    </td>
-                                    <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
-                                        <div className="text-sm leading-5 text-gray-900">
-                                            {obj.role}
-                                        </div>
+                                        {obj.members.map(e => e.name).join()}
                                     </td>
                                     <td className=" whitespace-no-wrap border-b border-gray-200">
                                         <button className='btn btn-sm bg-indigo-600  hover:bg-indigo-500' onClick={()=>handleEvent(obj._id)}>{btnTitle}</button>

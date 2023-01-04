@@ -1,10 +1,13 @@
+const { default: mongoose } = require("mongoose");
 const Committee = require("../models/Committee");
 
 const createCommittee = async (req, res) => {
   try {
-    const members = req.body;
+
+    const members = req.body.members;
+    console.log(members);
     const committee = new Committee({
-      members: members,
+      members: members
     });
     committee.save();
     res.status(200).json(await committee.populate('members'));
@@ -17,6 +20,17 @@ const createCommittee = async (req, res) => {
   }
 }
 
+const getCommittees = async (req, res) => {
+  try {
+    res.status(200).json(await Committee.find().populate('members'));
+  }
+  catch (err) {
+    console.log(err);
+    res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+}
 const deleteCommittee = async (req, res) => {
   try {
     const id = req.params.id;
@@ -142,3 +156,4 @@ exports.createCommittee = createCommittee;
 exports.addMembers = addMembers;
 exports.removeMembers = removeMembers;
 exports.deleteCommittee = deleteCommittee;
+exports.getCommittees = getCommittees;
