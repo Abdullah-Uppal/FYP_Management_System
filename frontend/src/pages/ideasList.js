@@ -1,14 +1,15 @@
 import React from "react";
-import { FiEdit } from 'react-icons/fi';
+// import { FiEdit } from 'react-icons/fi';
 import { FaTrash } from 'react-icons/fa';
 import { MdOpenInNew } from 'react-icons/md';
 import axios from "axios";
 import { NavLink } from "react-router-dom";
+import ShowModel from "../utils/showModel";
 
 const IdeaList = () => {
     const [files, setFile] = React.useState([]);
     const statusList = ["Waiting", "Approved", "Rejected"];
-    const [status,setStatus]= React.useState(statusList[0])
+    const [status, setStatus] = React.useState(statusList[0])
     // const [isShow, setIsShow] = React.useState(false);
     // const [filename, setFilename] = React.useState("");
 
@@ -27,10 +28,10 @@ const IdeaList = () => {
         fetchPdf();
     }, []);
     const getFile = (file) => {
-        try{
+        try {
             return "http://localhost:3000/assets/" + file
         }
-        catch(err){
+        catch (err) {
             alert('File not found');
         }
     }
@@ -48,9 +49,9 @@ const IdeaList = () => {
     //         });
 
     // }
-    const changeStatus = (s)=>{
-       console.log(s)
-       setStatus(statusList[(statusList.indexOf(s)+1)%3])
+    const changeStatus = (s) => {
+        console.log(s)
+        setStatus(statusList[(statusList.indexOf(s) + 1) % 3])
     }
     // const handleDelete = (e, file) => {
     //     const url = "http://localhost:3000/project/deleteProject/";
@@ -117,7 +118,7 @@ const IdeaList = () => {
                                                     </div>
                                                 </td>
                                                 <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
-                                                    <span  className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-green-800 hover:cursor-pointer" onClick={()=>changeStatus(status)}>
+                                                    <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-green-800 hover:cursor-pointer" onClick={() => changeStatus(status)}>
                                                         {status}
                                                     </span>
                                                 </td>
@@ -128,11 +129,13 @@ const IdeaList = () => {
                                                         display: "flex",
                                                         gap: "1rem"
                                                     }}>
-                                                        <NavLink to={"#"}
+                                                        {/* <NavLink to={"#"}
                                                             className="text-indigo-600 hover:text-indigo-900 focus:outline-none focus:underline text-lg" >
                                                             <FiEdit />
-                                                        </NavLink>
-
+                                                        </NavLink> */}
+                                                        <div className="text-indigo-600 hover:text-indigo-900 focus:outline-none  text-lg focus:underline">
+                                                            <ShowModel title={file.title} description={file.description} />
+                                                        </div>
                                                         <NavLink to="#"
                                                             className="text-indigo-600 hover:text-indigo-900 focus:outline-none  text-lg focus:underline" >
                                                             <FaTrash onClick={async () => {

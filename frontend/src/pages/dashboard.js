@@ -19,13 +19,13 @@ import FormatUpload from '../partials/formatUpload'
 import Formats from './formats'
 import PostIdea from '../partials/postIdea'
 import IdeasList from './ideasList'
-import Group from './person/group/group'
+import Groups from './person/group/groups'
 
 import Commtiee from './person/committee/committee'
 import Milestones from './milestones'
 import Department from './department'
 import DepartmentDetails from '../partials/department/departmentDetails'
-import DepartmentModel from '../partials/department/departmentModel'
+// import DepartmentModel from '../partials/department/departmentModel'
 import Meeting from '../partials/meeting'
 import Meetings from './meetings'
 import FAQ from '../partials/FAQ'
@@ -55,7 +55,7 @@ const Dashboard = ({user}) => {
                             <Route exact path="/" element={<WelcomeBanner user={user} />} />
                             <Route exact path="/user/students" element={<Student/>} />
                             <Route exact path="/user/advisors" element={<Supervisor/>} />
-                            <Route exact path="/user/groups" element ={<Group/>}/>
+                            <Route exact path="/user/groups" element ={<Groups/>}/>
                             <Route exact path="/user/committee" element={<Commtiee/>} />
                             <Route exact path="/user/student/new" element={<StudentDetail/>} />
                             <Route exact path="/user/advisor/new" element={<SupervisorDetail/>} />

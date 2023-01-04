@@ -2,7 +2,7 @@ import React from 'react'
 import Item from './item'
 
 const List = ({count,members,max,handleClick}) => {
-  const disable = 0 === 0 ? true : false;
+ 
   return (
     
 <ul className="max-w-md divide-y divide-gray-200 dark:divide-gray-700 rounded-xl" >

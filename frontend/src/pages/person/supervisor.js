@@ -109,13 +109,10 @@ const Supervisor = () => {
                         Email
                       </th>
                       <th className='p-2 md:px-6 md:py-3 text-left font-medium'>
-                        Contact
+                        Role
                       </th>
                       <th className='p-2 md:px-6 md:py-3 text-left font-medium'>
                         Gender
-                      </th>
-                      <th className='p-2 md:px-6 md:py-3 text-left font-medium'>
-                        Role
                       </th>
                       <th className=' md:px-0 md:py-0 text-left font-medium'>
                         Actions
@@ -135,22 +132,17 @@ const Supervisor = () => {
                             {person.name}
                           </td>
                           <td className='p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200'>
-                            {person.email}
+                            {person.email.slice(0, 16) + '...'}
                           </td>
                           <td className='p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200'>
                             <div className='text-sm leading-5 text-gray-900'>
-                              {person.contact}
+                              {person.role}
                             </div>
                           </td>
                           <td className='p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200'>
                             <span className='px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-purple-100 text-green-800'>
                               {person.gender}
                             </span>
-                          </td>
-                          <td className='p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200'>
-                            <div className='text-sm leading-5 text-gray-900'>
-                              {person.role}
-                            </div>
                           </td>
                           <td className=' whitespace-no-wrap border-b border-gray-200'>
                             <NavLink
