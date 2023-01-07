@@ -11,18 +11,15 @@ const GroupCard = ({ group }) => {
                 </div>
                 <div className="flex-1 min-w-0">
                     <p className="text-lg font-medium text-gray-900 truncate dark:text-white">
-                        {JSON.parse(group).id}
+                        {group.id}
                     </p>
                     <div className='flex flex-row flex-wrap gap-1 '>
 
-                        {JSON.parse(group).students.map((student, index) => 
-                           
-                                
                             
-                            <p key={index} className="text-sm text-gray-500 truncate dark:text-gray-400">
-                                {student.regno}
+                            <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                                {group.students.map(s=>s.regno).join()}
                             </p>
-                           )}
+                           
                        
                     </div>
                     <p className="text-sm text-gray-500 truncate dark:text-gray-400">

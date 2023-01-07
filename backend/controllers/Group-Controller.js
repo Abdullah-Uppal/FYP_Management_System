@@ -162,7 +162,10 @@ const add_project = async (req, res) => {
 
 const all = async (req, res) => {
   try {
-    const groups = await Group.find().populate('students');
+    const groups = await Group.find().populate({
+        path: 'students',
+        select: 'regno',
+    });
     return res.status(200).json(groups);
   }
   catch (err) {
@@ -177,7 +180,10 @@ const one = async (req, res) => {
   try {
     const group = await Group.findOne({
       id: req.params.id,
-    }).populate();
+    }).populate({
+        path: 'students',
+        select: 'regno',
+    });
     return res.status(200).json(group);
   }
   catch (err) {
@@ -215,18 +221,18 @@ const update = async (req, res) => {
 const getStudentGroup = async (req, res) => {
   try {
     const groups = await Group.find();
-    console.log(groups);
+    // console.log(groups);
     if (groups) {
       const studentGroups = groups.filter(
         (group) => {
           return group.students.map(student => student.toString()).includes(req.params.id);
         }
       );
-      console.log(studentGroups)
+    //   console.log(await studentGroups[0].populate({path:'students', select: '_id regno'}))
       if (studentGroups[0] === undefined) {
         return res.status(200).json([]);
       }
-      return res.status(200).json(await studentGroups[0].populate('students'));
+      return res.status(200).json(await studentGroups[0].populate({path:'students', select: '_id regno'}));
     }
     else {
       return res.status(404).json(null);

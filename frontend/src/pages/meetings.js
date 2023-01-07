@@ -80,10 +80,10 @@ const Meetings = () => {
                                 {meetings.length >0 && meetings.map((m) => (
                                     <tr id={m._id} key={meetings.indexOf(m) + 1}>
                                         <td className="p-2 text-sm md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
-                                            {m.group}
+                                            {m.group.students.map(s=>s.regno).join()}
                                         </td>
                                         <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
-                                            {m.committee}
+                                            {m.committee.members.map(a=>a.name).join()}
                                         </td>
                                         <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
                                             <div className="text-sm leading-5 text-gray-900">

@@ -33,7 +33,7 @@ const addPerson = async (req, res) => {
 const getPerson = async (req, res) => {
     let person;
     try {
-        person = await Person.find();
+        person = await Person.find().select('_id fname lname regno email gender');
     } catch (error) {
         console.log(error);
     }
@@ -49,7 +49,7 @@ const getPerson = async (req, res) => {
 const getOnePerson = async (req, res) => {
     let person;
     try {
-        person = await Person.findOne({ _id: req.params.id });
+        person = await Person.findOne({ _id: req.params.id }).select('_id fname lname regno email gender');
     } catch (error) {
         console.log(error);
     }
@@ -72,7 +72,9 @@ const deletePerson = async (req, res,next) => {
             return res.status(404).json({ message: 'No Persons found' });
            
         }else
-    {        await persons.remove();
+    {        
+        await Group.updateMany({}, { $pull: { students:  _id } });
+        await persons.remove();
     }
         return res.status(200).json({ message: 'Person Deleted Successfully' });
     } catch (error) {
@@ -104,7 +106,7 @@ const updatePerson = async (req, res) => {
 
 const ungroupedStudents = async (req, res) => {
     var groups = await Group.find({});
-    var persons = await Person.find();
+    var persons = await Person.find().select('_id fname lname regno');
     // console.log(persons);
     // console.log(groups);
     var grouped = groups.map(group => group.students).flat();

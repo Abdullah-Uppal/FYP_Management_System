@@ -8,6 +8,11 @@ const StudentGroup = () => {
     const [myGroup, setMyGroup] = useState({})
     const id = JSON.parse(localStorage.getItem('user')).id
     const [show, setShow] = useState(false);
+
+    const [count, setCount] = useState(0);
+    const [group, setGroup] = useState([]);
+    const [title, setTitle] = React.useState("");
+    
     useEffect(() => {
 
 
@@ -43,25 +48,29 @@ const StudentGroup = () => {
 
 
 
-        getPersons().then((data) => {
-            setMembers(data);
-        });
+
         getMyGroup().then((d) => {
-            console.log('data', d)
+            // console.log('data', d)
 
             if (d.length !== 0) {
                 setShow(true);
-                d.students = d.students.map(student => student.regno);
+                // d.students = d.students.map(student => student.regno);
             }
+            else {
+                getPersons().then((data) => {
+                    console.log('data', data)
+                    setMembers(data.filter((member) => member._id !== id));
+                    setGroup([...group, ...data.filter((member) => member._id === id)]);
+                    setCount(count + 1);
 
-            console.log('myGroup', d)
+                });
+            }
+            // console.log('myGroup', d)
             setMyGroup(d)
         })
     }, [id]);
 
-    const [count, setCount] = useState(0);
-    const [group, setGroup] = useState([]);
-    const [title, setTitle] = React.useState("");
+
 
 
     const handleClick = (e) => {
@@ -91,19 +100,19 @@ const StudentGroup = () => {
                     alert('data is added')
 
                 }
-         } );
-        
+            });
+
 
         } catch
-    (error) {
-        console.log(error)
-    }
-};
-return (
-    <>
-        {show ? <GroupCard group={myGroup} /> : <Model min={2} max={4} setTitle={setTitle} members={members} count={count} handleClick={handleClick} addGroup={addGroup} />}
-    </>
-)
+        (error) {
+            console.log(error)
+        }
+    };
+    return (
+        <>
+            {show ? <GroupCard group={myGroup} /> : <Model min={2} max={4} setTitle={setTitle} members={members} count={count} handleClick={handleClick} addGroup={addGroup} />}
+        </>
+    )
 
 }
 

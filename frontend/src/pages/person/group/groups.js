@@ -34,7 +34,7 @@ const Groups = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 p-5 min-w-max">
             {
                 groups.map((group,index) => {
-                    return <GroupCard key={index} group={JSON.stringify(group)}/>
+                    return <GroupCard key={index} group={group}/>
                 })
             }
             

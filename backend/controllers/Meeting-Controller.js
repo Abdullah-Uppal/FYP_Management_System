@@ -29,7 +29,24 @@ const addMeeeting = async (req, res) => {
 const getMeeeting = async (req, res) => {
     let meeeting;
     try {
-        meeeting = await Meeeting.find();
+        meeeting = await Meeeting.find().populate(
+            {
+                path:'committee',
+                populate:{
+                    path:'members',
+                    select:'name'
+                }
+            }
+        ).populate(
+            {
+                path:'group',
+                populate:{
+                    path:'students',
+                    select:'regno'
+                    
+                }
+            }
+        )
     } catch (error) {
         console.log(error);
     }
@@ -37,6 +54,7 @@ const getMeeeting = async (req, res) => {
     if (!meeeting) {
         return res.status(404).json({ message: 'No Meeetings found' });
     } else {
+        console.log(meeeting);
         return res.status(200).json({meeeting});
     }
 }
@@ -45,7 +63,24 @@ const getMeeeting = async (req, res) => {
 const getOneMeeeting = async (req, res) => {
     let meeeting;
     try {
-        meeeting = await Meeeting.findOne({ _id: req.params.id });
+        meeeting = await Meeeting.findOne({ _id: req.params.id }).populate(
+            {
+                path:'committee',
+                populate:{
+                    path:'members',
+                    select:'name'
+                }
+            }
+        ).populate(
+            {
+                path:'group',
+                populate:{
+                    path:'students',
+                    select:'regno'
+                    
+                }
+            }
+        );
     } catch (error) {
         console.log(error);
     }

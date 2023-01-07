@@ -25,7 +25,7 @@ const Model = ({ min, max, members,count,handleClick,addGroup,setTitle }) => {
             </div>
           </div>
           <div>
-            <input type="text" placeholder="Group Name" className="w-full p-2 px-3 rounded-xl active:border-0 focus:border-0" onChange={(e) => setTitle(e.target.value)} />
+            <input type="text" placeholder="Group Name" className="w-full p-2 px-3 rounded-xl border-2 active:border-0 focus:border-0" onChange={(e) => setTitle(e.target.value)} />
           </div>
           <p className="py-4 px-2">Add members:</p>
           <div className="h-32 border-2 overflow-y-scroll  rounded-xl">

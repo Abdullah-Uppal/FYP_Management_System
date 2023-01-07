@@ -30,7 +30,7 @@ const addSupervisor = async (req, res) => {
 const getSupervisor = async (req, res) => {
     let supervisor;
     try {
-        supervisor = await Supervisor.find();
+        supervisor = await Supervisor.find().select('_id name email role gender');
     } catch (error) {
         console.log(error);
     }
@@ -46,7 +46,7 @@ const getSupervisor = async (req, res) => {
 const getOneSupervisor = async (req, res) => {
     let supervisor;
     try {
-        supervisor = await Supervisor.findOne({ _id: req.params.id });
+        supervisor = await Supervisor.findOne({ _id: req.params.id }).select('_id name email role gender');
     } catch (error) {
         console.log(error);
     }
