@@ -21,4 +21,13 @@ npm run serverstart
 # start server on windows
 SET DEBUG=backend:* & npm run devstart
 ```
+To run frontend
+```
+cd frontend
 
+# install packages
+npm i
+
+# start app
+
+npm start
