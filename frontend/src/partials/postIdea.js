@@ -13,6 +13,7 @@ const PostIdea = () => {
         {
             title: "",
             description: "",
+            modelType: JSON.parse(localStorage.getItem('user')).model,
             postedBy: ""
             
         }
@@ -72,6 +73,7 @@ const PostIdea = () => {
             title: Input.title,
             description: Input.description,
             proposalDocument:file.name,
+            modelType: Input.modelType,
             postedBy: id,
              
         }

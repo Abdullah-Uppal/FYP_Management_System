@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 // import { FiEdit } from 'react-icons/fi';
 import { FaTrash } from 'react-icons/fa';
 import { MdOpenInNew } from 'react-icons/md';
@@ -61,6 +61,49 @@ const IdeaList = () => {
     //     // Delete(file, url1);
     //     // setFile(files.filter((file) => file._id !== e));
     // }
+    const column = useMemo(() => [
+        {
+            name: '#',
+            selector: row => row.regno,
+            sortable: true,
+            filterable: true,
+            cell: (row, index) => index + 1,
+        },
+        {
+            name: 'Name',
+            selector: row => row.fname + ' ' + row.lname,
+            sortable: true,
+            filterable: true,
+            // minWidth: 'fit-content',
+        },
+        {
+            name: 'Registration Number',
+            selector: row => row.regno,
+            filterable: true,
+            sortable: true,
+            // minWidth: 'fit-content',
+        },
+        {
+            name: 'Email',
+            selector: row => row.email,
+            filterable: true,
+            sortable: true,
+            // minWidth: 'fit-content',
+        },
+        // {
+        //     name: '',
+        //     cell: (person) => <div className='flex gap-2'>
+        //         <EditCell path={'/user/student/update/' + person._id} />
+        //         <DeleteCell Event={handleDelete} param={person._id} />
+
+        //     </div>,
+        //     ignoreRowClick: true,
+        //     allowOverflow: true,
+        //     button: true,
+        // },
+
+    ], []);
+
     return (
         <div>
             <div className="w-full bg-gray-100 py-10 px-5 md:px-0">
@@ -93,6 +136,9 @@ const IdeaList = () => {
                                                 Description
                                             </th>
                                             <th className="p-2 md:px-6 md:py-3 text-left font-medium">
+                                                Posted By
+                                            </th>
+                                            <th className="p-2 md:px-6 md:py-3 text-left font-medium">
                                                 Date Posted
                                             </th>
                                             <th className="p-2 md:px-6 md:py-3 text-left font-medium">
@@ -112,6 +158,13 @@ const IdeaList = () => {
                                                 </td>
                                                 <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
                                                     {file.description.length >= 30 ? file.description.slice(0, 30) + '...' : file.description}
+                                                </td>
+                                                <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
+                                                    {file.modelType === 'Person' ? (
+                                                        <React.Fragment> {file.postedBy.fname + " " + file.postedBy.lname}  <small>{file.postedBy.regno}</small></React.Fragment>
+                                                    ) : (
+                                                        file.postedBy.name
+                                                    )}
                                                 </td>
                                                 <td className="p-2 md:px-6 md:py-4 whitespace-no-wrap border-b border-gray-200">
                                                     <div className="text-sm leading-5 text-gray-900">

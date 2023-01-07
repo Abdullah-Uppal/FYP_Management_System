@@ -1,17 +1,26 @@
 import React from 'react'
 import { useEffect, useState, useMemo, useCallback } from 'react'
 import axios from 'axios'
-import EditCell from '../components/tableCells/editCell'
 import DeleteCell from '../components/tableCells/deleteCell'
 import Detail from '../partials/detail'
+import { FaBuilding } from 'react-icons/fa'
+import Model from '../components/model'
+
 const Department = () => {
     const [departments, setDepartments] = useState([])
+    const [addDepartment, setDepartment] = useState([])
 
-    useEffect(() => {
+    const getAllDepartments = useCallback(() => {
         getDepartments().then(data => {
             setDepartments(data.department)
         })
-    }, [])
+    },[])
+
+
+    useEffect(() => {
+        getAllDepartments()
+    }, [getAllDepartments])
+
 
     const url = 'http://localhost:5000/department/getDepartment'
     const getDepartments = async () => {
@@ -59,6 +68,27 @@ const Department = () => {
     //     a.click()
     //     document.body.removeChild(a)
     //   }
+    const handleAdd = () => {
+        addDepartmentHandler(addDepartment)
+     }
+    const addDepartmentHandler = async (name) => {
+        await axios
+            .post('http://localhost:5000/department/addDepartment', {
+                title: String(name)
+            })
+            .then(res => {
+                if (res.status === 200) {
+                    alert('Department Added Successfully')
+                    getAllDepartments()
+                    
+                   
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
     const column = useMemo(() => [
         {
             name: '#',
@@ -76,7 +106,7 @@ const Department = () => {
         {
             name: '',
             cell: (department) => <div className='flex gap-2'>
-                <EditCell path={'/department/update/' + department._id} />
+                {/* <EditCell path={'/department/update/' + department._id} /> */}
                 <DeleteCell Event={handleDelete} param={department._id} />
 
             </div>,
@@ -187,7 +217,14 @@ const Department = () => {
         //     </div>
         //   </div>
         // </div>
-        <Detail title={'Departments'} column={column} data={filterFunction(search,departments)} search={search} setSearch={setSearch} path={'/department/new'} />
+        <Detail title={'Departments'} column={column} data={filterFunction(search, departments)} search={search} setSearch={setSearch}>
+            {/* <CreateNew title={'Add Department'} path={'/department/new'}  >
+                <FaBuilding  size={17} className='text-white'  />
+            </CreateNew> */}
+            <Model title={'Add'} handleAdd={handleAdd} setTitle={setDepartment} value={addDepartment}>
+                <div className="inline-flex items-center gap-2 px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline justify-center "> Add Department <FaBuilding size={17} className='text-white' /></div>
+            </Model>
+        </Detail>
     )
 }
 

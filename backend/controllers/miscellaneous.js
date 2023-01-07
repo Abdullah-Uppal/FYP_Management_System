@@ -1,14 +1,16 @@
 const { getMaxListeners } = require('../models/Person');
 const Person = require('../models/Person');
 const Supervisor = require('../models/Supervisor');
+const Admin = require('../models/Admin');
 const { ObjectId } = require('mongodb');
 const modelType = async (req, res) => {
 
   var _email = req.body.email;
   if (_email === "fypmanagement20@gmail.com"){
+    const admin = await Admin.findOne({email:_email})
     return res.status(200).json({
       model: "Admin",
-      id:ObjectId("adf203921d31"),
+      id:admin._id,
       username:"Admin"
     })
   }
@@ -22,7 +24,7 @@ const modelType = async (req, res) => {
         console.log('person',person)
         console.log('name', person.fname);
         return res.status(200).json({
-          model: "Student",
+          model: "Person",
           id:person._id,
           username: person.fname
         })
@@ -31,7 +33,7 @@ const modelType = async (req, res) => {
       var advisor = await Supervisor.findOne({ email: _email });
       if (advisor) {
         return res.status(200).json({
-          model: "Advisor",
+          model: "Supervisor",
           id:advisor._id,
           username:advisor.name
 

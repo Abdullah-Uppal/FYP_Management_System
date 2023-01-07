@@ -1,8 +1,8 @@
 import React from 'react'
 import ShowTitle from '../../utils/showTitle';
-import MyDataTable from '../../utils/table';
 
-const WelcomeBanner = ({user}) => {
+
+const WelcomeBanner = ({ user }) => {
 
     const u = JSON.parse(user);
     const greeting = () => {
@@ -66,10 +66,8 @@ const WelcomeBanner = ({user}) => {
                 <h1 className="text-2xl md:text-3xl text-slate-800 font-bold mb-1 flex">{greeting()},<ShowTitle name={u ? u.username:''} />  👋</h1>
                 <p>Here is what’s happening with your projects today:</p>
             </div>
+       
         </div>
-                    // <div className='container'>
-                    // <MyDataTable/>
-                    // </div>
     )
 }
 

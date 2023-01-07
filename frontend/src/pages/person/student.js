@@ -1,10 +1,12 @@
-import React, { useMemo,useCallback } from 'react'
+import React, { useMemo, useCallback } from 'react'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Detail from '../../partials/detail'
 import EditCell from '../../components/tableCells/editCell'
 import DeleteCell from '../../components/tableCells/deleteCell'
 import GenderCell from '../../components/tableCells/genderCell'
+import { FaUserPlus } from 'react-icons/fa'
+import CreateNew from '../../components/createNew'
 const Student = () => {
     const [persons, setPersons] = useState([])
 
@@ -74,26 +76,26 @@ const Student = () => {
         {
             name: '',
             cell: (person) => <div className='flex gap-2'>
-                <EditCell path={'/user/student/update/' + person._id}/>
-                <DeleteCell Event={handleDelete} param={person._id}/>
-               
+                <EditCell path={'/user/student/update/' + person._id} />
+                <DeleteCell Event={handleDelete} param={person._id} />
+
             </div>,
             ignoreRowClick: true,
             allowOverflow: true,
             button: true,
         },
-       
+
     ], [handleDelete]);
 
     const [search, setSearch] = useState('');
-    
- const filterFunction = (search,data) => {
-      return data.filter((row) =>
-        row.fname.toLowerCase().includes(search.toLowerCase()) ||
-        row.lname.toLowerCase().includes(search.toLowerCase()) ||
-        row.email.toLowerCase().includes(search.toLowerCase()) ||
-        row.gender.toLowerCase().includes(search.toLowerCase())
-      );
+
+    const filterFunction = (search, data) => {
+        return data.filter((row) =>
+            row.fname.toLowerCase().includes(search.toLowerCase()) ||
+            row.lname.toLowerCase().includes(search.toLowerCase()) ||
+            row.email.toLowerCase().includes(search.toLowerCase()) ||
+            row.gender.toLowerCase().includes(search.toLowerCase())
+        );
     };
     return (
         // <div>
@@ -199,7 +201,11 @@ const Student = () => {
         //         </div>
         //     </div>
         // </div>
-      <Detail title={"All Students"} column={column} data={filterFunction(search,persons)} search={search} setSearch={setSearch} path={'/user/student/new'} />
+        <Detail title={"All Students"} column={column} data={filterFunction(search, persons)} search={search} setSearch={setSearch} >
+            <CreateNew title={'Add New'} path={'/user/student/new'} >
+                <FaUserPlus size={17} className='text-white' />
+            </CreateNew>
+        </Detail>
     )
 }
 

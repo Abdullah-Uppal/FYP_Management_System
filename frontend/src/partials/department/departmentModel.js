@@ -165,7 +165,7 @@ const DepartmentModel = props => {
                         value={Input.title}
                         onChange={handleChange}
                         name='title'
-                        className='form-input block w-full py-2 px-3 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5'
+                        className='form-input appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200  py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 rounded-md transition duration-150 ease-in-out sm:text-sm sm:leading-5'
                         type='text'
                         placeholder='Department of ...'
                         required

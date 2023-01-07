@@ -150,14 +150,14 @@ const Sidebar = ({ role, sidebarOpen, setSidebarOpen }) => {
                                     setSidebarExpanded={setSidebarExpanded}
                                 />
                             }
-                            {role === "Student" &&
+                            {role === "Person" &&
                                 <StudentSection
                                     pathname={pathname}
                                     sidebarExpanded={sidebarExpanded}
                                     setSidebarExpanded={setSidebarExpanded}
                                 />
                             }
-                            {role === "Advisor" &&
+                            {role === "Supervisor" &&
                                 <AdvisorSection
                                     pathname={pathname}
                                     sidebarExpanded={sidebarExpanded}

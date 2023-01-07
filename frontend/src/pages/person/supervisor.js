@@ -5,6 +5,8 @@ import GenderCell from '../../components/tableCells/genderCell'
 import EditCell from '../../components/tableCells/editCell'
 import DeleteCell from '../../components/tableCells/deleteCell'
 import Detail from '../../partials/detail'
+import { FaUserPlus } from 'react-icons/fa'
+import CreateNew from '../../components/createNew'
 
 const Supervisor = () => {
     const [persons, setPersons] = useState([])
@@ -228,8 +230,15 @@ const Supervisor = () => {
         //       </div>
         //     </div>
         //   </div>
+        
         // </div>
-        <Detail title={' All Supervisor & Co-Supervisors'} column={column} data={filterFunction(search,persons)} search={search} setSearch={setSearch} path={'/user/advisor/new'} />
+
+        <Detail title={' All Supervisor & Co-Supervisors'} column={column} data={filterFunction(search,persons)} search={search} setSearch={setSearch}>
+            <CreateNew title={'Add New'} path={'/user/advisor/new'} >
+                <FaUserPlus size={17} className='text-white' />
+            </CreateNew>
+       </Detail>  
+        
     )
 }
 

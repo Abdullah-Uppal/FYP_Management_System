@@ -1,4 +1,5 @@
 const Project = require('../models/Project');
+
 var multer = require('multer')
 
 // FOR FILE UPLOADS
@@ -35,7 +36,7 @@ const uploadFile = async (req, res) => {
 const create = async (req, res) => {
   try {
     console.log(req.body);
-    let { title, description, proposalDocument,postedBy } =
+    let { title, description, proposalDocument,postedBy,modelType } =
 
       req.body;
       let post;
@@ -44,6 +45,7 @@ const create = async (req, res) => {
       title,
       description,
       proposalDocument,
+      modelType,
       postedBy  
     });
     await project.save();
@@ -61,7 +63,7 @@ const create = async (req, res) => {
 
 const all = async (req, res) => {
   try {
-    const projects = await Project.find().populate('postedBy');
+    const projects = await Project.find().populate({ path: 'postedBy', select: 'name fname lname regno'});
     return res.status(200).json(projects);
   }
   catch (err) {

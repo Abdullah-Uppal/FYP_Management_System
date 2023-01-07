@@ -7,9 +7,8 @@ const ProjectSchema=new Schema({
   description: { type: String },
   proposalDocument: { type: String, required: true},
   isAccepted: { type: String, default: "Waiting", enum: ["Approved", "Rejected", "Waiting"] },
-  postedBy: { type: Schema.Types.ObjectId, refPath: "modelType" },
-  
-  modelType: { type: String, enum: ["Person", "Supervisor"] },
+  postedBy: { type: mongoose.Schema.Types.ObjectId, refPath: 'modelType' },
+  modelType: { type: String, enum: ['Person', 'Supervisor','Admin'] },
   date: { type: Date, default: Date.now }
 });
 
